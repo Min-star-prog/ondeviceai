@@ -1,0 +1,7 @@
+*design* DebussyLib (btIdent Verdi_X-2025.06-1)
+Command arguments:  -elab  simv.daidir/kdb.elab++ 
+*design* DebussyLib (btIdent Verdi_X-2025.06-1)
+
+*Error* failed to find class ram_test or class ram_test is not inherited from class ovm_test/uvm_test of package ovm_pkg/uvm_pkg
+"./tb/tb_top.sv", 37: 
+Total	1 error(s),   0 warning(s)

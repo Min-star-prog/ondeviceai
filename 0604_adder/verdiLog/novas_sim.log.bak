@@ -1,0 +1,27 @@
+Invoking simulator...
+Verdi>./simv -sml=verdi +fsdb+gate=off -ucli2Proc -ucli
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid re-execution or '-suppress=ASLR_DETECTED_INFO' to suppress this message.
+*Verdi* Loading libsscore_vcs202409.so
+FSDB Dumper for VCS, Release Verdi_X-2025.06-1, Linux x86_64/64bit, 07/19/2025
+(C) 1996 - 2025 by Synopsys, Inc.
+*Verdi* : Create FSDB file '/home/pedu24/workspace_mini/260604_adder/inter.fsdb'
+*Verdi* : Flush all FSDB Files at 0 ps.
+*Verdi* : Enable RPC Server(2948785)
+Chronologic VCS simulator copyright 1991-2024
+Contains Synopsys proprietary information.
+Compiler version W-2024.09-SP2_Full64; Runtime version W-2024.09-SP2_Full64;  Jun  4 15:37 2026
+Warning : License for product VCS-BASE-RUNTIME will expire within 19 days, on: 22-jun-2026.
+If you would like to temporarily disable this message, set 
+ the VCS_LIC_EXPIRE_WARNING environment variable to the number of days
+before expiration that you want this message to start (the minimum is 0).
+Verdi>fsdbDumpvars 0 "tb_adder.dut.a"  +all +trace_process;fsdbDumpvars 0 "tb_adder.dut.b"  +all +trace_process;fsdbDumpvars 0 "tb_adder.dut.y"  +all +trace_process
+*Verdi* : Dumping the signal (tb_adder.dut.a).
+*Verdi* : Dumping the signal (tb_adder.dut.b).
+*Verdi* : Dumping the signal (tb_adder.dut.y).
+*Verdi* : Flush all FSDB Files at 0 ps.
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 0 ps
+CPU Time:      0.080 seconds;       Data structure size:   0.0Mb
+Thu Jun  4 15:37:59 2026
+debExit

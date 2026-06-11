@@ -1,0 +1,4 @@
+Command Line: /tools/synopsys/verdi/X-2025.06-1/platform/LINUXAMD64/bin/Novas
+uname(Linux kccipangyo1 4.18.0-553.83.1.el8_10.x86_64 #1 SMP Fri Oct 31 03:39:01 EDT 2025 x86_64)
+KdbImportParallelMixAllLib time 0.036397 0.040548 0.002957 delta 3186688 3186688 total 1327640576 1327640576
+au time 84.067312 4.026051 0.539101 delta 433254400 433254400 total 1500422144 1500422144

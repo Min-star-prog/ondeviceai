@@ -1,0 +1,345 @@
+Magic 271485
+Revision Verdi_X-2025.06-1
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 11 2560 609 100 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/pedu24/workspace_mini/0607_ram_test/wave_ram.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 2020000.000000
+cursor 0.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 228
+; marker line index
+markerPos 262
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/pedu24/workspace_mini/0607_ram_test/wave_ram.fsdb"
+addSignal -h 16 /tb_ram/clk
+addSignal -h 16 -UNSIGNED -HEX /tb_ram/dut/addr[7:0]
+addSignal -expanded -h 16 -holdScope mem[0:255]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[0][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[1][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[2][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[3][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[4][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[5][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[6][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[7][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[8][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[9][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[10][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[11][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[12][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[13][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[14][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[15][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[16][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[17][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[18][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[19][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[20][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[21][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[22][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[23][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[24][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[25][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[26][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[27][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[28][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[29][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[30][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[31][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[32][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[33][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[34][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[35][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[36][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[37][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[38][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[39][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[40][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[41][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[42][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[43][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[44][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[45][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[46][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[47][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[48][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[49][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[50][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[51][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[52][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[53][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[54][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[55][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[56][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[57][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[58][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[59][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[60][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[61][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[62][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[63][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[64][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[65][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[66][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[67][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[68][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[69][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[70][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[71][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[72][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[73][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[74][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[75][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[76][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[77][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[78][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[79][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[80][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[81][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[82][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[83][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[84][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[85][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[86][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[87][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[88][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[89][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[90][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[91][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[92][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[93][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[94][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[95][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[96][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[97][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[98][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[99][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[100][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[101][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[102][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[103][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[104][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[105][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[106][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[107][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[108][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[109][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[110][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[111][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[112][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[113][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[114][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[115][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[116][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[117][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[118][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[119][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[120][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[121][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[122][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[123][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[124][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[125][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[126][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[127][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[128][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[129][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[130][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[131][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[132][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[133][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[134][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[135][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[136][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[137][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[138][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[139][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[140][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[141][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[142][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[143][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[144][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[145][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[146][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[147][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[148][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[149][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[150][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[151][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[152][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[153][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[154][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[155][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[156][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[157][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[158][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[159][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[160][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[161][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[162][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[163][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[164][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[165][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[166][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[167][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[168][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[169][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[170][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[171][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[172][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[173][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[174][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[175][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[176][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[177][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[178][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[179][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[180][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[181][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[182][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[183][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[184][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[185][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[186][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[187][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[188][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[189][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[190][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[191][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[192][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[193][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[194][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[195][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[196][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[197][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[198][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[199][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[200][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[201][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[202][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[203][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[204][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[205][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[206][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[207][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[208][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[209][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[210][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[211][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[212][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[213][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[214][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[215][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[216][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[217][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[218][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[219][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[220][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[221][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[222][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[223][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[224][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[225][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[226][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[227][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[228][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[229][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[230][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[231][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[232][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[233][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[234][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[235][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[236][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[237][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[238][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[239][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[240][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[241][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[242][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[243][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[244][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[245][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[246][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[247][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[248][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[249][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[250][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[251][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[252][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[253][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[254][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope mem[255][7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope rdata[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope wdata[7:0]
+addSignal -h 16 -holdScope we
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/pedu24/workspace_mini/0607_ram_test/wave_ram.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/_vcs_msglog"
+"/tb_ram"
+"/uvm_custom_install_recording"
+"/uvm_custom_install_verdi_recording"
+"/uvm_custom_install_verdi_recording/unnamed$$_1"
+"/uvm_custom_install_verdi_recording/unnamed$$_1/unnamed$$_2"
+
+SCOPE_LIST_BEGIN
+"/_vcs_msglog"
+"/_vcs_unit__2374409791"
+"/tb_ram"
+"/uvm_custom_install_verdi_recording/unnamed$$_0"
+"/uvm_custom_install_verdi_recording/unnamed$$_1"
+"/uvm_custom_install_verdi_recording/unnamed$$_1/unnamed$$_3"
+"/uvm_custom_install_verdi_recording/unnamed$$_1/unnamed$$_4"
+"/uvm_custom_install_verdi_recording"
+"/uvm_custom_install_recording/unnamed$$_0"
+"/uvm_custom_install_recording"
+"/tb_ram/ram_if"
+"/tb_ram/dut"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

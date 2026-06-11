@@ -1,0 +1,5 @@
+{"vcs1":{"timestamp_begin":1780633060.468291901, "rt":0.08, "ut":0.03, "st":0.02}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1780633060.062911839}
+{"VCS_COMP_START_TIME": 1780633060.062911839}
+{"VCS_COMP_END_TIME": 1780633060.583445789}
+{"VCS_USER_OPTIONS": "-full64 -sverilog -debug_access+all -kdb -lca -ntb_opts uvm-1.2 -timescale=1ns/1ps helloworld.sv"}

@@ -1,0 +1,502 @@
+#######################################################################################
+# log primitive debug message of FSDB dumping                                         #
+# This is for R&D to analyze when there are issues happening when FSDB dump           #
+#######################################################################################
+ANF: vcsd_get_serial_mode_status('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_get_serial_mode_status')
+ANF: vcsd_enable_sva_success_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_enable_sva_success_callback')
+ANF: vcsd_disable_sva_success_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_disable_sva_success_callback')
+ANF: vcsd_generate_forced_signal_list('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_generate_forced_signal_list')
+ANF: vcsd_enable_forced_signal_track('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_enable_forced_signal_track')
+ANF: vcsd_get_power_scope_name('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_get_power_scope_name')
+ANF: vcsd_dump_var_vpdg('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_dump_var_vpdg')
+ANF: vcsd_begin_no_value_var_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_begin_no_value_var_info')
+ANF: vcsd_end_no_value_var_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_end_no_value_var_info')
+ANF: vcsd_remove_xprop_merge_mode_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_remove_xprop_merge_mode_callback')
+ANF: vhpi_get_cb_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhpi_get_cb_info')
+ANF: vhpi_free_handle('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhpi_free_handle')
+ANF: vhpi_fetch_vcsd_handle('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhpi_fetch_vcsd_handle')
+ANF: vhpi_fetch_vpi_handle('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhpi_fetch_vpi_handle')
+ANF: vhpi_has_verilog_parent('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhpi_has_verilog_parent')
+ANF: vhpi_is_verilog_scope('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhpi_is_verilog_scope')
+ANF: scsd_xprop_is_enabled('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_is_enabled')
+ANF: scsd_xprop_sig_is_promoted('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_sig_is_promoted')
+ANF: scsd_xprop_int_xvalue('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_int_xvalue')
+ANF: scsd_xprop_bool_xvalue('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_bool_xvalue')
+ANF: scsd_xprop_enum_xvalue('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_enum_xvalue')
+ANF: scsd_xprop_register_merge_mode_cb('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_register_merge_mode_cb')
+ANF: scsd_xprop_delete_merge_mode_cb('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_delete_merge_mode_cb')
+ANF: scsd_xprop_get_merge_mode('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_xprop_get_merge_mode')
+ANF: scsd_thread_get_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_thread_get_info')
+ANF: scsd_thread_vc_init('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_thread_vc_init')
+ANF: scsd_master_set_delta_sync_cbk('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_master_set_delta_sync_cbk')
+ANF: scsd_fgp_get_fsdb_cores('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_fgp_get_fsdb_cores')
+ANF: scsd_fgp_get_is_cpu_affinity_disabled('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: scsd_fgp_get_is_cpu_affinity_disabled')
+ANF: vdi_enc_def_get_handle_by_module_id_uniqify_id('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_enc_def_get_handle_by_module_id_uniqify_id')
+ANF: vdi_get64('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_get64')
+ANF: vdi_dbg_set_client_control('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_dbg_set_client_control')
+ANF: vdi_set_ipidx_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_set_ipidx_callback')
+ANF: vdi_fn_check_ipidx_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_fn_check_ipidx_callback')
+ANF: vdi_fn_add_ipidx_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_fn_add_ipidx_callback')
+ANF: vdi_ip_get_total_idx('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_ip_get_total_idx')
+ANF: vcsd_node_fn_check_ipidx_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_node_fn_check_ipidx_callback')
+ANF: vcsd_node_fn_add_ipidx_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vcsd_node_fn_add_ipidx_callback')
+ANF: vdi_dbg_begin('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_dbg_begin')
+ANF: vdi_dbg_end('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_dbg_end')
+ANF: vhdi_dt_get_type('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_type')
+ANF: vhdi_dt_get_key('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_key')
+ANF: vhdi_dt_get_vhdl_enum_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_vhdl_enum_info')
+ANF: vhdi_dt_get_vhdl_physical_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_vhdl_physical_info')
+ANF: vhdi_dt_get_vhdl_array_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_vhdl_array_info')
+ANF: vhdi_dt_get_vhdl_record_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_vhdl_record_info')
+ANF: vhdi_dt_get_vhdl_integer_range_info('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_dt_get_vhdl_integer_range_info')
+ANF: vhdi_def_traverse_module('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_traverse_module')
+ANF: vhdi_def_traverse_scope('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_traverse_scope')
+ANF: vhdi_def_traverse_variable('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_traverse_variable')
+ANF: vhdi_def_get_module_id_by_vhpi('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_get_module_id_by_vhpi')
+ANF: vhdi_def_get_handle_by_module_id('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_get_handle_by_module_id')
+ANF: vhdi_def_get_variable_info_by_vhpi('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_get_variable_info_by_vhpi')
+ANF: vhdi_def_free('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_def_free')
+ANF: vhdi_ist_traverse_scope('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_traverse_scope')
+ANF: vhdi_ist_traverse_variable('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_traverse_variable')
+ANF: vhdi_ist_convert_by_vhpi('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_convert_by_vhpi')
+ANF: vhdi_ist_clone('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_clone')
+ANF: vhdi_ist_free('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_free')
+ANF: vhdi_ist_hash_key('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_hash_key')
+ANF: vhdi_ist_compare('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_compare')
+ANF: vhdi_ist_get_value_addr('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_get_value_addr')
+ANF: vhdi_set_scsd_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_set_scsd_callback')
+ANF: vhdi_cbk_set_force_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_cbk_set_force_callback')
+ANF: vhdi_trigger_init_force('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_trigger_init_force')
+ANF: vhdi_ist_check_scsd_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_check_scsd_callback')
+ANF: vhdi_ist_add_scsd_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_add_scsd_callback')
+ANF: vhdi_ist_remove_scsd_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_remove_scsd_callback')
+ANF: vhdi_ist_get_scsd_user_data('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_get_scsd_user_data')
+ANF: vhdi_add_time_change_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_add_time_change_callback')
+ANF: vhdi_get_real_value_by_value_addr('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_get_real_value_by_value_addr')
+ANF: vhdi_get_64_value_by_value_addr('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_get_64_value_by_value_addr')
+ANF: vhdi_xprop_inst_is_promoted('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_xprop_inst_is_promoted')
+ANF: vdi_ist_convert_by_vhdi('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vdi_ist_convert_by_vhdi')
+ANF: vhdi_ist_get_module_id('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_ist_get_module_id')
+ANF: vhdi_refine_foreign_scope_type('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_refine_foreign_scope_type')
+ANF: vhdi_flush_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_flush_callback')
+ANF: vhdi_set_orig_name('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_set_orig_name')
+ANF: vhdi_set_dump_pt('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_set_dump_pt')
+ANF: vhdi_set_int_subtype('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_set_int_subtype')
+ANF: vhdi_set_fixed_point('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_set_fixed_point')
+ANF: vhdi_get_fsdb_option('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_get_fsdb_option')
+ANF: vhdi_fgp_get_mode('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_fgp_get_mode')
+ANF: vhdi_node_register_composite_var('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_node_register_composite_var')
+ANF: vhdi_node_analysis('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_node_analysis')
+ANF: vhdi_node_id('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_node_id')
+ANF: vhdi_node_ist_check_scsd_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_node_ist_check_scsd_callback')
+ANF: vhdi_node_ist_add_scsd_callback('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_node_ist_add_scsd_callback')
+ANF: vhdi_node_ist_get_value_addr('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_node_ist_get_value_addr')
+ANF: vhdi_enc_def_traverse_module('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_def_traverse_module')
+ANF: vhdi_enc_def_traverse_scope('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_def_traverse_scope')
+ANF: vhdi_enc_def_traverse_variable('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_def_traverse_variable')
+ANF: vhdi_enc_ist_traverse_scope('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_ist_traverse_scope')
+ANF: vhdi_enc_ist_traverse_variable('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_ist_traverse_variable')
+ANF: vhdi_enc_ist_get_module_id('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_ist_get_module_id')
+ANF: vhdi_enc_def_get_handle_by_module_id('/home/pedu24/workspace_mini/260604_adder/simv: undefined symbol: vhdi_enc_def_get_handle_by_module_id')
+VCS compile option:
+ option[0]: /home/pedu24/workspace_mini/260604_adder/simv
+ option[1]: -sml=verdi
+ option[2]: +fsdb+gate=off
+ option[3]: -ucli2Proc
+ option[4]: -ucli
+ option[5]: -l
+ option[6]: /home/pedu24/workspace_mini/260604_adder/verdiLog/sim.log
+ option[7]: /tools/synopsys/vcs/W-2024.09-SP2/linux64/bin/vcs1
+ option[8]: -Mcc=gcc
+ option[9]: -Mcplusplus=g++
+ option[10]: -Masflags=
+ option[11]: -Mcfl= -pipe -fPIC -O -I/tools/synopsys/vcs/W-2024.09-SP2/include 
+ option[12]: -Mxllcflags=
+ option[13]: -Mxcflags= -pipe -fPIC -I/tools/synopsys/vcs/W-2024.09-SP2/include
+ option[14]: -Mldflags= -rdynamic 
+ option[15]: -Mout=simv
+ option[16]: -Mamsrun=
+ option[17]: -Mvcsaceobjs=
+ option[18]: -Mobjects= /tools/synopsys/vcs/W-2024.09-SP2/linux64/lib/libvirsim.so /tools/synopsys/vcs/W-2024.09-SP2/linux64/lib/liberrorinf.so /tools/synopsys/vcs/W-2024.09-SP2/linux64/lib/libsnpsmalloc.so /tools/synopsys/vcs/W-2024.09-SP2/linux64/lib/libvfs.so 
+ option[19]: -Mexternalobj=
+ option[20]: -Msaverestoreobj=/tools/synopsys/vcs/W-2024.09-SP2/linux64/lib/vcs_save_restore_new.o
+ option[21]: -Mcrt0=
+ option[22]: -Mcrtn=
+ option[23]: -Mcsrc=
+ option[24]: -Msyslibs=/tools/synopsys/verdi/X-2025.06-1/share/PLI/VCS/LINUX64/pli.a -ldl 
+ option[25]: -full64
+ option[26]: -debug_access+all
+ option[27]: +vpi
+ option[28]: +vcsd1
+ option[29]: +itf+/tools/synopsys/vcs/W-2024.09-SP2/linux64/lib/vcsdp_lite.tab
+ option[30]: -kdb
+ option[31]: -Xufe=2steps
+ option[32]: -kdb=common_elab
+ option[33]: -Xufe=2steps
+ option[34]: -lca
+ option[35]: -timescale=1ns/1ps
+ option[36]: -o
+ option[37]: simv
+ option[38]: -kdb=common_elab
+ option[39]: -Xufe=2steps
+ option[40]: -kdb=common_elab
+ option[41]: -Xufe=2steps
+ option[42]: -picarchive
+ option[43]: -P
+ option[44]: /tools/synopsys/verdi/X-2025.06-1/share/PLI/VCS/LINUX64/verdi.tab
+ option[45]: -fsdb
+ option[46]: -sverilog
+ option[47]: -gen_obj
+ option[48]: adder.sv
+ option[49]: tb_adder.sv
+ option[50]: -load
+ option[51]: /tools/synopsys/verdi/X-2025.06-1/share/PLI/VCS/LINUX64/libnovas.so:FSDBDumpCmd
+ option[52]: timescale=1ns/1ps
+Chronologic Simulation VCS Release W-2024.09-SP2_Full64
+Linux 4.18.0-553.83.1.el8_10.x86_64 #1 SMP Fri Oct 31 03:39:01 EDT 2025 x86_64
+CPU cores: 64
+Limit information:
+======================================
+cputime		unlimited
+filesize		unlimited
+datasize		unlimited
+stacksize		8192 kbytes
+coredumpsize		0 kbytes
+memoryuse		unlimited
+vmemoryuse		unlimited
+descriptors		262144
+memorylocked		64 kbytes
+maxproc		4124036
+======================================
+(Special)Runtime environment variables:
+
+Runtime environment variables:
+LC_ALL=C
+LD_LIBRARY_PATH=
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.m4a=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.oga=01;36:*.opus=01;36:*.spx=01;36:*.xspf=01;36:
+HOSTTYPE=x86_64-linux
+STARRC_HOME=/tools/synopsys/starrc/W-2024.09-SP4-1
+SYS_INST_DIR=/tools/synopsys/verdi/X-2025.06-1
+SSH_CONNECTION=10.10.20.27 6222 10.10.20.251 20022
+CUSTOM_COMPILER=/tools/synopsys/customcompiler/W-2024.09-SP2-3
+LANG=C
+DISPLAY=localhost:10.0
+HSP_HOME=/tools/synopsys/hspice/W-2024.09-SP2-2/hspice
+SNPSLMD_LICENSE_FILE=27020@kccipangyo1:27020@61.108.38.195
+VENDOR=unknown
+MACHTYPE=x86_64
+S_COLORS=auto
+OSTYPE=linux
+SALT_LICENSE_SERVER=1717@kccipangyo1:1717@61.108.38.195
+XDG_SESSION_ID=498
+NOVAS_SYNC_MOTIF_DISP=
+USER=pedu24
+SYNOPSYS_LC_ROOT=/tools/synopsys/lc/V-2023.12-SP5-6
+GROUP=pedu24
+PWD=/home/pedu24/workspace_mini/260604_adder
+FM_HOME=/tools/synopsys/fm/W-2024.09-SP4-1
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+HOME=/home/pedu24
+HOST=kccipangyo1
+SSH_CLIENT=10.10.20.27 6222 20022
+XNLSPATH=/tools/synopsys/verdi/X-2025.06-1/etc/access/nls
+QT_VERDI_ENABLE_ICON_MEM_FIX=1
+VERDI_QT5=1
+SPS_XFONT_PATH=/tools/synopsys/verdi/X-2025.06-1/XFont
+PT_HOME=/tools/synopsys/prime/W-2024.09-SP4-1
+SSH_TTY=/dev/pts/2
+SPYGLASS_HOME_DIR=/tools/synopsys/spyglass/X-2025.06-1/SPYGLASS_HOME
+MAIL=/var/spool/mail/pedu24
+ICC2_HOME=/tools/synopsys/icc2/W-2024.09-SP3
+LD_NOVERSION=1
+QT_PLUGIN_PATH=/tools/synopsys/verdi/X-2025.06-1/platform/LINUXAMD64/lib/Qt5/plugins
+REMOTEHOST=10.10.20.27
+TERM=xterm
+SHELL=/usr/bin/csh
+XMODIFIERS=@im=none
+LM_LICENSE_FILE=27020@kccipangyo1:27020@61.108.38.195
+ICV_HOME_DIR=/tools/synopsys/icvalidator/W-2024.09-SP1
+FS_HOME_DIR=/tools/synopsys/fusioncompiler/X-2025.06-SP3
+VERDI_HOME=/tools/synopsys/verdi/X-2025.06-1
+PRIMEWAVE=/tools/synopsys/primewave/W-2024.09-SP2-3
+SHLVL=2
+SPS_FONT_PATH=/tools/synopsys/verdi/X-2025.06-1/font
+PRIMESIM_HOME=/tools/synopsys/primesim/W-2024.09-SP2-2
+GDK_BACKEND=x11
+VERDI_ORIGNAL_LD_LIBRARY_PATH=
+LOGNAME=pedu24
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-97V1hpovab,guid=288f05bfa3bceb153afafb116a20c5e1
+SPS_RGB_PATH=/tools/synopsys/verdi/X-2025.06-1/etc/rgb
+XDG_RUNTIME_DIR=/run/user/1034
+XAUTHORITY=/home/pedu24/.Xauthority
+MALLOC_ARENA_MAX=1
+SYN_HOME=/tools/synopsys/syn/W-2024.09-SP5-2
+PATH=/tools/siemens/calibre/aok_cal_2024.3_16.10/bin:/tools/synopsys/spyglass/X-2025.06-1/SPYGLASS_HOME/bin:/tools/synopsys/fusioncompiler/X-2025.06-SP3/bin:/tools/synopsys/icc2/W-2024.09-SP3/bin:/tools/synopsys/prime/W-2024.09-SP4-1/bin:/tools/synopsys/lc/V-2023.12-SP5-6/bin:/tools/synopsys/syn/W-2024.09-SP5-2/bin:/tools/synopsys/fm/W-2024.09-SP4-1/bin:/tools/synopsys/vcs/W-2024.09-SP2/bin:/tools/synopsys/verdi/X-2025.06-1/bin:/tools/synopsys/starrc/W-2024.09-SP4-1/bin:/tools/synopsys/starrc/W-2024.09-SP4-1/bin:/tools/synopsys/icvalidator/W-2024.09-SP1/bin/linux64:/tools/siemens/calibre/aok_cal_2024.3_16.10/bin:/tools/synopsys/spyglass/X-2025.06-1/SPYGLASS_HOME/bin:/tools/synopsys/fusioncompiler/X-2025.06-SP3/bin:/tools/synopsys/icc2/W-2024.09-SP3/bin:/tools/synopsys/prime/W-2024.09-SP4-1/bin:/tools/synopsys/lc/V-2023.12-SP5-6/bin:/tools/synopsys/syn/W-2024.09-SP5-2/bin:/tools/synopsys/fm/W-2024.09-SP4-1/bin:/tools/synopsys/vcs/W-2024.09-SP2/bin:/tools/synopsys/verdi/X-2025.06-1/bin:/tools/synopsys/starrc/W-2024.09-SP4-1/bin:/tools/synopsys/starrc/W-2024.09-SP4-1/bin:/tools/synopsys/icvalidator/W-2024.09-SP1/bin/linux64:/usr/local/bin:/usr/bin:/bin:/tools/siemens/calibre/aok_cal_2024.3_16.10/bin:/tools/synopsys/spyglass/X-2025.06-1/SPYGLASS_HOME/bin:/tools/synopsys/fusioncompiler/X-2025.06-SP3/bin:/tools/synopsys/icc2/W-2024.09-SP3/bin:/tools/synopsys/prime/W-2024.09-SP4-1/bin:/tools/synopsys/lc/V-2023.12-SP5-6/bin:/tools/synopsys/syn/W-2024.09-SP5-2/bin:/tools/synopsys/fm/W-2024.09-SP4-1/bin:/tools/synopsys/vcs/W-2024.09-SP2/bin:/tools/synopsys/verdi/X-2025.06-1/bin:/tools/synopsys/starrc/W-2024.09-SP4-1/bin:/tools/synopsys/starrc/W-2024.09-SP4-1/bin:/tools/synopsys/icvalidator/W-2024.09-SP1/bin/linux64:/usr/local/bin:/usr/bin:/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+CALIBRE_HOME=/tools/siemens/calibre/aok_cal_2024.3_16.10
+VCS_HOME=/tools/synopsys/vcs/W-2024.09-SP2
+SYS_PROG_NAME=verdi
+NOVASHLPPATH=/tools/synopsys/verdi/X-2025.06-1/doc
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_HOME=/tools/synopsys/lc/V-2023.12-SP5-6
+WV_HOME=/tools/synopsys/wv/W-2024.09-SP2-4
+NOVAS_LC_ALL=C
+SIMV_DAIDIR_PATH=/home/pedu24/workspace_mini/260604_adder/./simv.daidir
+NOVAS_SIGNAL_BASE_EXTRACTION=1
+SIGNAL_BASE_EXTRACTION=1
+NOVAS_VERDI_SVTB_BETA=1
+VERDI_SVTB_BETA=1
+NOVAS_VERDI_SVTB_ALPHA=1
+VERDI_SVTB_ALPHA=1
+NOVAS_VERDI_TB_HT=1
+VERDI_TB_HT=1
+NOVAS_WAVE_REDRAW_ALLVC=1
+WAVE_REDRAW_ALLVC=1
+NOVAS_TCL_LIBRARY=/tools/synopsys/verdi/X-2025.06-1/etc/access/tcl86_library
+TCL_LIBRARY=/tools/synopsys/verdi/X-2025.06-1/etc/access/tcl86_library
+XKEYSYMDB=/tools/synopsys/verdi/X-2025.06-1/etc/access/XKeysymDB2.1
+QTWEBENGINE_CHROMIUM_FLAGS=--log-level=3
+QT_XCB_NO_XI2=1
+NOVAS_SIGNAL_BASED_BA=0
+SIGNAL_BASED_BA=0
+SYNOPSYS_SIM=/tools/synopsys/vcs/W-2024.09-SP2
+DISABLE_LIBRARY_MAP_CHECK=1
+AST_DUMP=11
+TRMIS_REVERSE_JUMP_TO_EARLIEST=1
+TS_TRMIS_DECIDE_RM_RC_ATTR=0
+TFV_FSDB_MIS_BATCH_REMOVE_INTF_RC_HAVING_INTF_MISMATCH=0
+TFV_FSDB_MIS_BATCH_ENABLE_FSDB_GATE=1
+TFV_FSDB_MIS_BATCH_DUMP_TDC=0
+TFV_FSDB_MIS_RCA_MODE=1
+SNPS_SIM_DEFAULT_GUI=verdi
+FSDB_FILE=/home/pedu24/workspace_mini/260604_adder/inter.fsdb
+VCS_UCLI_STDIN_BLOCKING=1
+FSDB_VHDL_PROTECTED=1
+FSDB_RD_IR_ENABLE=1
+FSDB_SVA_STATUS=1
+XLOCALEDIR=/tools/synopsys/verdi/X-2025.06-1/etc/access/locale
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_STACK_EXEC=true
+VCS_EXEC_DONE=1
+VCS_STOP_SAFE=1
+DVE_SIM_SELECT_LOOP=on
+FLEXLM_BORROWFILE=/home/pedu24/.kccipangyo1-borrow.txt
+Runtime command line arguments:
+argv[0]=/home/pedu24/workspace_mini/260604_adder/simv
+argv[1]=-sml=verdi
+argv[2]=+fsdb+gate=off
+argv[3]=-ucli2Proc
+argv[4]=-ucli
+argv[5]=-l
+argv[6]=/home/pedu24/workspace_mini/260604_adder/verdiLog/sim.log
+**********Message Rewind**************
+290 profile - 100
+          CPU/Mem usage: 0.020 sys,  0.020 user,  222.20M mem
+291 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+292 User CPU time used: 0 seconds
+293 System CPU time used: 0 seconds
+294 pliAppInit
+295 ndpGetenv(FSDB_FILE): /home/pedu24/workspace_mini/260604_adder/inter.fsdb
+296 ndpGetenv(FSDB_SVA_STATUS): 1
+297 ndpGetenv(FSDB_VHDL_PROTECTED): 1
+298 FSDB_GATE & FSDB_RTL is disabled.
+299 FSDB_DYNAMIC_ALIAS is enabled.
+300 libnuma.so open fail. libnuma.so: cannot open shared object file: No such file or directory
+301 FSDB NUMA optimize not available.
+302 FSDB_PACKED_MODE is enabled.
+303 FSDB_GATE_PACKED is enabled.
+304 [SC]Init: MemoryConsumed=0.00MB ElapsedTime=0hour 0min. 0sec.
+305 FSDB_REDUCE_VC_MEM is enabled.
+306 Enable Parallel Dumping.
+307 pliAppMiscSet: New Sim Round
+308 pliEntryInit
+309 LIBSSCORE=found /tools/synopsys/verdi/X-2025.06-1/share/PLI/lib/LINUXAMD64/libsscore_vcs202409.so through $NOVAS_HOME setting.
+310 FSDB Dumper for VCS, Release Verdi_X-2025.06-1, Linux x86_64/64bit, 07/19/2025
+311 (C) 1996 - 2025 by Synopsys, Inc.
+312 sps_tcl_fsdbDumpfile_main at 0
+313 argv[0]: /home/pedu24/workspace_mini/260604_adder/inter.fsdb
+314 *Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+315 *Verdi* : Create FSDB file '/home/pedu24/workspace_mini/260604_adder/inter.fsdb'
+316 [spi_vcs_vd_ppi_create_root]: no upf option
+317 DUMPER_MEMORY_REDUCTION is enabled.
+318 compile option from '/home/pedu24/workspace_mini/260604_adder/simv.daidir/vcs_rebuild'.
+319   "vcs '-full64' '-sverilog' '-debug_access+all' '-kdb' '-lca' '-timescale=1ns/1ps' '-o' 'simv' 'adder.sv' 'tb_adder.sv' 2>&1"
+320 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+321 *Verdi* : Flush all FSDB Files at 0 ps.
+322 DVDI_is_vir_unload_enabled is enable
+323 FSDB_VCS_ENABLE_NATIVE_VC is enable
+324 FSDB_VCS_ENABLE_MEMORY_NATIVE_VC is enabled
+325 spi_vcs_vd_vlog_vc_enable_vector_strength is skipped since VCS is not support.
+326 sps_tcl_fsdbDumpvars_vd_main
+327 argv[0]: 0
+328 argv[1]: tb_adder.dut.a
+329 argv[2]: +all
+330 argv[3]: +trace_process
+331 *Verdi* : Dumping the signal (tb_adder.dut.a).
+332 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.020 sys,  0.020 user,  320.99M mem
+                   incr: 0.000 sys,  0.000 user,  7.45M mem
+                   accu: 0.000 sys,  0.000 user,  7.45M mem
+              accu incr: 0.000 sys,  0.000 user,  7.45M mem
+
+          Count usage: 0 var,  1 idcode,  1 callback
+                 incr: 0 var,  1 idcode,  1 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  1 idcode,  1 callback
+333 Idcode  0 - bc1:0  mda:0
+334 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+335 User CPU time used: 0 seconds
+336 System CPU time used: 0 seconds
+337 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.020 sys,  0.020 user,  320.99M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  7.45M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 0 var,  1 idcode,  1 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+338 Idcode  0 - bc1:0  mda:0
+339 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+340 User CPU time used: 0 seconds
+341 System CPU time used: 0 seconds
+342 sps_tcl_fsdbDumpvars_vd_main
+343 argv[0]: 0
+344 argv[1]: tb_adder.dut.b
+345 argv[2]: +all
+346 argv[3]: +trace_process
+347 *Verdi* : Dumping the signal (tb_adder.dut.b).
+348 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.020 sys,  0.020 user,  320.99M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 0 var,  2 idcode,  2 callback
+                 incr: 0 var,  1 idcode,  1 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  1 idcode,  1 callback
+349 Idcode  0 - bc1:0  mda:0
+350 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+351 User CPU time used: 0 seconds
+352 System CPU time used: 0 seconds
+353 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.020 sys,  0.020 user,  320.99M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 0 var,  2 idcode,  2 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+354 Idcode  0 - bc1:0  mda:0
+355 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+356 User CPU time used: 0 seconds
+357 System CPU time used: 0 seconds
+358 sps_tcl_fsdbDumpvars_vd_main
+359 argv[0]: 0
+360 argv[1]: tb_adder.dut.y
+361 argv[2]: +all
+362 argv[3]: +trace_process
+363 *Verdi* : Dumping the signal (tb_adder.dut.y).
+364 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.020 sys,  0.020 user,  320.99M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 0 var,  3 idcode,  3 callback
+                 incr: 0 var,  1 idcode,  1 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  1 idcode,  1 callback
+365 Idcode  0 - bc1:0  mda:0
+366 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+367 User CPU time used: 0 seconds
+368 System CPU time used: 0 seconds
+369 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.020 sys,  0.020 user,  320.99M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 0 var,  3 idcode,  3 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 0 var,  1 idcode,  1 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+370 Idcode  0 - bc1:0  mda:0
+371 Elapsed time:    0:00:00    Thu Jun  4 15:42:50 2026
+372 User CPU time used: 0 seconds
+373 System CPU time used: 0 seconds
+374 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+375 *Verdi* : Flush all FSDB Files at 0 ps.
+376 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+377 *Verdi* : Flush all FSDB Files at 0 ps.
+378 sps_call_fsdbDumpfile_main at 0 : tb_adder.sv(14)
+379 argv[0]: (wave.fsdb)
+380 *Verdi* WARNING: Env/runtime option has specified fsdbfile name as "/home/pedu24/workspace_mini/260604_adder/inter.fsdb". Fsdbfile name in task "wave.fsdb" is ignored.
+381 sps_call_fsdbDumpvars_vd_main at 0 : tb_adder.sv(15)
+382 argv[0]: (0)
+383 *Verdi* : Begin traversing the scopes, layer (0).
+384 *Verdi* : End of traversing.
+385 pliAppHDL_DumpVarComplete traverse var: profile - 
+          CPU/Mem usage: 0.050 sys,  0.030 user,  344.01M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 6 var,  6 idcode,  6 callback
+                 incr: 6 var,  3 idcode,  3 callback
+                 accu: 6 var,  3 idcode,  3 callback
+            accu incr: 6 var,  3 idcode,  3 callback
+386 Idcode  0 - bc1:0  mda:0
+387 Elapsed time:    0:00:04    Thu Jun  4 15:42:54 2026
+388 User CPU time used: 0 seconds
+389 System CPU time used: 0 seconds
+390 pliAppHDL_DumpVarComplete: profile - 
+          CPU/Mem usage: 0.050 sys,  0.030 user,  344.01M mem
+                   incr: 0.000 sys,  0.000 user,  0.00M mem
+                   accu: 0.000 sys,  0.000 user,  0.00M mem
+              accu incr: 0.000 sys,  0.000 user,  0.00M mem
+
+          Count usage: 6 var,  6 idcode,  6 callback
+                 incr: 0 var,  0 idcode,  0 callback
+                 accu: 6 var,  3 idcode,  3 callback
+            accu incr: 0 var,  0 idcode,  0 callback
+391 Idcode  0 - bc1:0  mda:0
+392 Elapsed time:    0:00:04    Thu Jun  4 15:42:54 2026
+393 User CPU time used: 0 seconds
+394 System CPU time used: 0 seconds
+395 sps_tcl_fsdbDumpflush_vd_main at 0 : N/A(0)
+396 *Verdi* : Flush all FSDB Files at 0 ps.
+397 sps_tcl_fsdbDumpflush_vd_main at 20000 : N/A(0)
+398 *Verdi* : Flush all FSDB Files at 20,000 ps.
+399 sps_tcl_fsdbDumpflush_vd_main at 60000 : N/A(0)
+400 *Verdi* : Flush all FSDB Files at 60,000 ps.
+401 End of simulation at 60000
+402 Memory usage: 344.097 M
+403 Maximum resident set size: 117 MB
+404 Hard page faults: 2
+405 Soft page faults: 5777
+406 Elapsed time:    0:00:44    Thu Jun  4 15:43:34 2026
+407 User CPU time used: 0 seconds
+408 System CPU time used: 0 seconds
+409 Begin FSDB profile info:
+410 FSDB Writer : bc1(0) bcn(18) mtf/stf(0/6)
+FSDB Writer elapsed time : flush(0.004597) io wait(0.000000) theadpool wait(0.000000)
+FSDB Writer cpu time : MT Compression : 0
+411 End FSDB profile info
+412 FSDB closed. Name: /home/pedu24/workspace_mini/260604_adder/inter.fsdb Size: 9477
+413 Parallel profile     - ProducerThread:1 ConsumerThread:1 Buffer:64MB
+414                      - BlockUsed:1 Acquire:0 BufferUsed:357
+415                      - Flush:13 Expand:0 ProducerWait:0 ConsumerWait:0
+416                      - MainProducerTime:0.121983803 TotalConsumerTime:0.000000000
+417                      - ElapsedTime:43.207971000
+418 Producer   0 profile - BlockUsed:4 Acquire:0 BufferUsed:357
+419 Consumer   0 profile - Affinity:-1 CPUTime:0.000000000 LifeTime:0.000000000 (-nan%)
+420                      - BlockUsed:4 Acquire:0 BufferUsed:357
+421 SimExit
+422 Elapsed time:    0:00:44    Thu Jun  4 15:43:34 2026
+423 User CPU time used: 0 seconds
+424 System CPU time used: 0 seconds
+425 Sim process exit
