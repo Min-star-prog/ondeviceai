@@ -1,0 +1,7 @@
+Command exited with non-zero status 255
+{"vcs1":{"timestamp_begin":1781576763.943462478, "rt":0.65, "ut":0.75, "st":0.11}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1781576763.482950020}
+{"VCS_COMP_START_TIME": 1781576763.482950020}
+{"VCS_COMP_END_TIME": 1781576764.643279772}
+{"VCS_USER_OPTIONS": "-full64 -sverilog -ntb_opts uvm-1.2 -timescale=1ns/1ps -debug_access+all -kdb -lca -cm line+cond+fsm+tgl+branch+assert +incdir+tb +incdir+rtl -o simv ./tb/spi_pkg.sv ./rtl/spi_master.sv ./rtl/spi_slave.sv ./rtl/spi_loopback.sv ./tb/tb_top.sv"}
+{"vcs1": {"peak_mem": 475084}}

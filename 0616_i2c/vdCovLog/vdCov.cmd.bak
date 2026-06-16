@@ -1,0 +1,37 @@
+verdiWindowResize -win $_vdCoverage_1 "0" "23" "2560" "1369"
+gui_set_pref_value -category {coveragesetting} -key {geninfodumping} -value 1
+gui_exclusion -set_force true
+verdiSetFont  -font  {DejaVu Sans}  -size  12
+verdiSetFont -font "DejaVu Sans" -size "12"
+gui_assert_mode -mode flat
+gui_class_mode -mode hier
+gui_excl_mgr_flat_list -on  0
+gui_covdetail_select -id  CovDetail.1   -name   Line
+verdiWindowWorkMode -win $_vdCoverage_1 -coverageAnalysis
+gui_open_cov  -hier coverage.vdb -testdir {} -test {coverage/sim1} -merge MergedTest -db_max_tests 10 -sdc_level 1 -fsm transition
+gui_set_pref_value -category {ColumnCfg} -key {covtblAssertList_Assert} -value {true}
+verdiSetActWin -dock widgetDock_<CovDetail>
+verdiSetActWin -dock widgetDock_<Summary>
+gui_covtable_show -show  { Function Groups } -id  CoverageTable.1  -test  MergedTest
+gui_list_select -id CoverageTable.1 -list covtblFGroupsList { /i2c_pkg::i2c_coverage::i2c_cg   }
+gui_list_expand -id  CoverageTable.1   -list {covtblFGroupsList} /i2c_pkg::i2c_coverage::i2c_cg
+gui_list_expand -id CoverageTable.1   /i2c_pkg::i2c_coverage::i2c_cg
+gui_list_action -id  CoverageTable.1 -list {covtblFGroupsList} /i2c_pkg::i2c_coverage::i2c_cg  -column {} 
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cp_act   } -type { {Cover Group}  }
+verdiSetActWin -dock widgetDock_<CovDetail>
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cp_op   } -type { {Cover Group}  }
+verdiSetActWin -dock widgetDock_Message
+gui_set_pref_value -category {ColumnCfg} -key {covergroup detail_V1.1_cp_act_width} -value {73}
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cp_op  i2c_pkg::i2c_coverage::i2c_cg.cross_op_act   } -type { {Cover Group} {Cover Group}  }
+verdiSetActWin -dock widgetDock_<CovDetail>
+gui_set_pref_value -category {ColumnCfg} -key {covergroup detail_V1.1_cp_op_width} -value {244}
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cross_op_act   } -type { {Cover Group}  }
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cp_op   } -type { {Cover Group}  }
+verdiSetActWin -dock widgetDock_Message
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cp_op  i2c_pkg::i2c_coverage::i2c_cg.cp_act   } -type { {Cover Group} {Cover Group}  }
+verdiSetActWin -dock widgetDock_<CovDetail>
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cp_act  i2c_pkg::i2c_coverage::i2c_cg.cross_read_data   } -type { {Cover Group} {Cover Group}  }
+gui_list_select -id CovDetail.1 -list covergroup { i2c_pkg::i2c_coverage::i2c_cg.cross_read_data  i2c_pkg::i2c_coverage::i2c_cg.cross_op_act   } -type { {Cover Group} {Cover Group}  }
+gui_list_select -id CoverageTable.1 -list covtblFGroupsList { /i2c_pkg::i2c_coverage::i2c_cg   }
+verdiSetActWin -dock widgetDock_<Summary>
+vdCovExit -noprompt

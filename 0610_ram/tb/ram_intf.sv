@@ -27,7 +27,7 @@ interface ram_intf (
     endclocking
 
     modport DRV(clocking drv_cb, input clk);  //Modport : interface에서 signal 방향을 정의
-    modport MON(clocking mon_cb, input clk);
+    modport MON(clocking mon_cb, input clk);  //Clk block 넣는 이유 : Driver/Monitor가 clocking block만 보도록 제한하기 위해서
 
 
 

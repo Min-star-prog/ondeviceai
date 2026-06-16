@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1781576088.609373391, "rt":6.88, "ut":7.01, "st":0.27}}
+{"vcselab":{"timestamp_begin":1781576095.544513132, "rt":0.18, "ut":0.12, "st":0.04}}
+{"link":{"timestamp_begin":1781576095.760567350, "rt":0.57, "ut":0.44, "st":0.14}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1781576088.168233132}
+{"VCS_COMP_START_TIME": 1781576088.168233132}
+{"VCS_COMP_END_TIME": 1781576096.409601078}
+{"VCS_USER_OPTIONS": "-full64 -sverilog -ntb_opts uvm-1.2 -timescale=1ns/1ps -debug_access+all -kdb -lca -cm line+cond+fsm+tgl+branch+assert +incdir+tb +incdir+rtl -o simv ./tb/spi_pkg.sv ./rtl/spi_master.sv ./rtl/spi_slave.sv ./rtl/spi_loopback.sv ./tb/tb_top.sv"}
+{"vcs1": {"peak_mem": 481796}}
+{"vcselab": {"peak_mem": 174956}}

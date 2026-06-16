@@ -78,15 +78,15 @@ class ram_random_seq extends ram_base_seq;
 
         repeat (num) begin
             item = ram_seq_item::type_id::create("item");
-            start_item(item);
-            if (!item.randomize() with {
+            start_item(item);       //sqr에게 item 전송 준비 완료 보고, sqr 응답 대기.
+            if (!item.randomize() with {        //여기서 random option을 줘서 seq를 control
                     we dist {
                         1 := 6,
                         0 := 4
                     };
                 })
                 `uvm_error("SEQ", "randomize 실패")
-            finish_item(item);
+            finish_item(item);      //tr 생성 후 sqr에게 전송. sqr가 응답을 줘야 다음 line으로 간다(다음 line은 repeat이긴 하다)
         end
         `uvm_info(get_type_name(), $sformatf("wr_rd 시나리오 종료"), UVM_LOW)
 

@@ -1,0 +1,4 @@
+\$unit::./rtl/i2c_loopback.sv::./rtl/i2c_master.sv...@1784185550 02
+tb_top4070
+uvm_custom_install_recording4070
+uvm_custom_install_verdi_recording4070

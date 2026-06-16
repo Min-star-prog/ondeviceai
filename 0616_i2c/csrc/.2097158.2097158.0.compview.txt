@@ -1,0 +1,5 @@
+{"vcs1":{"timestamp_begin":1781599313.425206668, "rt":0.09, "ut":0.03, "st":0.03}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1781599312.970756591}
+{"VCS_COMP_START_TIME": 1781599312.970756591}
+{"VCS_COMP_END_TIME": 1781599313.548069815}
+{"VCS_USER_OPTIONS": "-full64 -sverilog -ntb_opts uvm-1.2 -timescale=1ns/1ps -debug_access+all -kdb -lca -cm line+cond+fsm+tgl+branch+assert +incdir+tb +incdir+rtl -o simv ./tb/i2c_pkg.sv ./rtl/i2c_master.sv ./rtl/i2c_slave.sv ./rtl/i2c_loopback.sv ./tb/tb_top.sv"}

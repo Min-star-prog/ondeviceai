@@ -1,0 +1,141 @@
+Magic 271485
+Revision Verdi_X-2025.06-1
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 11 2560 609 100 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/pedu24/workspace_mini/0616_spi/wave_spi.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 84315715.312500 108405919.687500
+cursor 20365000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 74
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/pedu24/workspace_mini/0616_spi/wave_spi.fsdb"
+addSignal -h 16 /tb_top/clk
+addSignal -h 16 /tb_top/dut/clk
+addSignal -h 16 -UNSIGNED -HEX -holdScope clk_div[7:0]
+addSignal -h 16 -holdScope cpha
+addSignal -h 16 -holdScope cpol
+addSignal -h 16 -holdScope master_busy
+addSignal -h 16 -holdScope master_done
+addSignal -h 16 -UNSIGNED -HEX -holdScope master_rx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope master_tx_data[7:0]
+addSignal -h 16 -holdScope miso
+addSignal -h 16 -holdScope mosi
+addSignal -h 16 -holdScope rst
+addSignal -h 16 -holdScope sclk
+addSignal -h 16 -holdScope slave_busy
+addSignal -h 16 -holdScope slave_done
+addSignal -h 16 -UNSIGNED -HEX -holdScope slave_rx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope slave_tx_data[7:0]
+addSignal -h 16 -holdScope ss_n
+addSignal -h 16 -holdScope start
+addSignal -h 16 -UNSIGNED -HEX /tb_top/dut/u_spi_master/bit_cnt[2:0]
+addSignal -h 16 -holdScope busy
+addSignal -h 16 -holdScope clk
+addSignal -h 16 -UNSIGNED -HEX -holdScope clk_div[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope clk_div_reg[7:0]
+addSignal -h 16 -holdScope cpha
+addSignal -h 16 -holdScope cpha_reg
+addSignal -h 16 -holdScope cpol
+addSignal -h 16 -holdScope cpol_reg
+addSignal -h 16 -UNSIGNED -HEX -holdScope div_cnt[7:0]
+addSignal -h 16 -holdScope done
+addSignal -h 16 -holdScope half_tick
+addSignal -h 16 -holdScope miso
+addSignal -h 16 -holdScope mosi
+addSignal -h 16 -holdScope rst
+addSignal -h 16 -UNSIGNED -HEX -holdScope rx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope rx_shift_reg[7:0]
+addSignal -h 16 -holdScope sclk
+addSignal -h 16 -holdScope sclk_reg
+addSignal -h 16 -holdScope ss_n
+addSignal -h 16 -holdScope start
+addSignal -h 16 -UNSIGNED -holdScope state[1:0]
+addSignal -h 16 -holdScope step
+addSignal -h 16 -UNSIGNED -HEX -holdScope tx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope tx_shift_reg[7:0]
+addSignal -h 16 -UNSIGNED -HEX /tb_top/dut/u_spi_slave/bit_cnt[2:0]
+addSignal -h 16 -holdScope busy
+addSignal -h 16 -holdScope done
+addSignal -h 16 -holdScope miso
+addSignal -h 16 -holdScope mosi
+addSignal -h 16 -UNSIGNED -HEX -holdScope rx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope rx_shift_reg[7:0]
+addSignal -h 16 -holdScope sclk
+addSignal -h 16 -holdScope ss_n
+addSignal -h 16 -UNSIGNED -holdScope state[1:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope tx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope tx_shift_reg[7:0]
+addSignal -h 16 /tb_top/spi_if/clk
+addSignal -h 16 -UNSIGNED -HEX -holdScope clk_div[7:0]
+addSignal -h 16 -holdScope cpha
+addSignal -h 16 -holdScope cpol
+addSignal -h 16 -holdScope master_busy
+addSignal -h 16 -holdScope master_done
+addSignal -h 16 -UNSIGNED -HEX -holdScope master_rx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope master_tx_data[7:0]
+addSignal -h 16 -holdScope miso
+addSignal -h 16 -holdScope mosi
+addSignal -h 16 -holdScope rst
+addSignal -h 16 -holdScope sclk
+addSignal -h 16 -holdScope slave_busy
+addSignal -h 16 -holdScope slave_done
+addSignal -h 16 -UNSIGNED -HEX -holdScope slave_rx_data[7:0]
+addSignal -h 16 -UNSIGNED -HEX -holdScope slave_tx_data[7:0]
+addSignal -h 16 -holdScope ss_n
+addSignal -h 16 -holdScope start
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/pedu24/workspace_mini/0616_spi/wave_spi.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/tb_top"
+
+SCOPE_LIST_BEGIN
+"/tb_top"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+
