@@ -1,0 +1,520 @@
+simSetSimulator "-vcssv" -exec "./simv" -args \
+           "+UVM_TESTNAME=i2c_test +UVM_VERBOSITY=UVM_MEDIUM +ntb_random_seed=2 -cm line+cond+fsm+tgl+branch+assert -cm_dir coverage.vdb -cm_name sim1"
+debImport "-dbdir" "./simv.daidir"
+debLoadSimResult /home/pedu24/workspace_mini/0616_i2c/wave_i2c.fsdb
+wvCreateWindow
+verdiSetActWin -win $_nWave2
+verdiWindowResize -win $_Verdi_1 "1265" "362" "1250" "800"
+verdiSetActWin -dock widgetDock_MTB_SOURCE_TAB_1
+verdiSetActWin -dock widgetDock_<Inst._Tree>
+verdiSetActWin -win $_nWave2
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/tb_top"
+wvSetPosition -win $_nWave2 {("G1" 21)}
+wvSetPosition -win $_nWave2 {("G1" 21)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/tb_top/dut/clk} -height 16 \
+{/tb_top/dut/cmd_read} -height 16 \
+{/tb_top/dut/cmd_start} -height 16 \
+{/tb_top/dut/cmd_stop} -height 16 \
+{/tb_top/dut/cmd_write} -height 16 \
+{/tb_top/dut/master_ack_in} -height 16 \
+{/tb_top/dut/master_ack_out} -height 16 \
+{/tb_top/dut/master_busy} -height 16 \
+{/tb_top/dut/master_done} -height 16 \
+{/tb_top/dut/master_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/master_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/rst} -height 16 \
+{/tb_top/dut/scl} -height 16 \
+{/tb_top/dut/sda} -height 16 \
+{/tb_top/dut/slave_ack_in} -height 16 \
+{/tb_top/dut/slave_ack_out} -height 16 \
+{/tb_top/dut/slave_busy} -height 16 \
+{/tb_top/dut/slave_done} -height 16 \
+{/tb_top/dut/slave_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/slave_rx_valid} -height 16 \
+{/tb_top/dut/slave_tx_data\[7:0\]} -height 16 \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 \
+           18 19 20 21 )} 
+wvSetPosition -win $_nWave2 {("G1" 21)}
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvSetPosition -win $_nWave2 {("G1" 23)}
+wvSetPosition -win $_nWave2 {("G1" 23)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/tb_top/dut/clk} -height 16 \
+{/tb_top/dut/cmd_read} -height 16 \
+{/tb_top/dut/cmd_start} -height 16 \
+{/tb_top/dut/cmd_stop} -height 16 \
+{/tb_top/dut/cmd_write} -height 16 \
+{/tb_top/dut/master_ack_in} -height 16 \
+{/tb_top/dut/master_ack_out} -height 16 \
+{/tb_top/dut/master_busy} -height 16 \
+{/tb_top/dut/master_done} -height 16 \
+{/tb_top/dut/master_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/master_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/rst} -height 16 \
+{/tb_top/dut/scl} -height 16 \
+{/tb_top/dut/sda} -height 16 \
+{/tb_top/dut/slave_ack_in} -height 16 \
+{/tb_top/dut/slave_ack_out} -height 16 \
+{/tb_top/dut/slave_busy} -height 16 \
+{/tb_top/dut/slave_done} -height 16 \
+{/tb_top/dut/slave_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/slave_rx_valid} -height 16 \
+{/tb_top/dut/slave_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_o} -height 16 \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 22 23 )} 
+wvSetPosition -win $_nWave2 {("G1" 23)}
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvSetPosition -win $_nWave2 {("G1" 26)}
+wvSetPosition -win $_nWave2 {("G1" 26)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/tb_top/dut/clk} -height 16 \
+{/tb_top/dut/cmd_read} -height 16 \
+{/tb_top/dut/cmd_start} -height 16 \
+{/tb_top/dut/cmd_stop} -height 16 \
+{/tb_top/dut/cmd_write} -height 16 \
+{/tb_top/dut/master_ack_in} -height 16 \
+{/tb_top/dut/master_ack_out} -height 16 \
+{/tb_top/dut/master_busy} -height 16 \
+{/tb_top/dut/master_done} -height 16 \
+{/tb_top/dut/master_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/master_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/rst} -height 16 \
+{/tb_top/dut/scl} -height 16 \
+{/tb_top/dut/sda} -height 16 \
+{/tb_top/dut/slave_ack_in} -height 16 \
+{/tb_top/dut/slave_ack_out} -height 16 \
+{/tb_top/dut/slave_busy} -height 16 \
+{/tb_top/dut/slave_done} -height 16 \
+{/tb_top/dut/slave_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/slave_rx_valid} -height 16 \
+{/tb_top/dut/slave_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_o} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/rx_valid} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/sda_o} -height 16 \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 24 25 26 )} 
+wvSetPosition -win $_nWave2 {("G1" 26)}
+wvGetSignalSetScope -win $_nWave2 "/tb_top/i2c_vif"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut"
+wvSelectSignal -win $_nWave2 {( "G1" 21 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 22 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 22 23 )} 
+wvSetCursor -win $_nWave2 808987429.379697 -snap {("G1" 20)}
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 20)}
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvSetPosition -win $_nWave2 {("G1" 12)}
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvSetPosition -win $_nWave2 {("G1" 13)}
+wvSelectSignal -win $_nWave2 {( "G1" 14 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 14 15 16 )} 
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvSetPosition -win $_nWave2 {("G1" 10)}
+wvSetPosition -win $_nWave2 {("G1" 8)}
+wvSetPosition -win $_nWave2 {("G1" 7)}
+wvSetPosition -win $_nWave2 {("G1" 6)}
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvSetPosition -win $_nWave2 {("G1" 4)}
+wvSetPosition -win $_nWave2 {("G1" 3)}
+wvSetPosition -win $_nWave2 {("G1" 2)}
+wvSetPosition -win $_nWave2 {("G1" 1)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 1)}
+wvSetPosition -win $_nWave2 {("G1" 4)}
+wvSetPosition -win $_nWave2 {("G1" 3)}
+wvSetPosition -win $_nWave2 {("G1" 5)}
+wvSetPosition -win $_nWave2 {("G1" 6)}
+wvSetPosition -win $_nWave2 {("G1" 10)}
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvSetPosition -win $_nWave2 {("G1" 12)}
+wvSetPosition -win $_nWave2 {("G1" 14)}
+wvSetPosition -win $_nWave2 {("G1" 15)}
+wvSetPosition -win $_nWave2 {("G1" 16)}
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvSetPosition -win $_nWave2 {("G1" 16)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 16)}
+wvSelectSignal -win $_nWave2 {( "G1" 11 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 10 11 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 10 11 )} 
+wvSetRadix -win $_nWave2 -format UDec
+wvSelectSignal -win $_nWave2 {( "G1" 21 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 21 23 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 21 23 )} 
+wvSetRadix -win $_nWave2 -format UDec
+wvSetCursor -win $_nWave2 3384799624.209259 -snap {("G2" 0)}
+wvSelectSignal -win $_nWave2 {( "G1" 23 )} 
+wvSetPosition -win $_nWave2 {("G1" 22)}
+wvSetPosition -win $_nWave2 {("G1" 21)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 21)}
+wvSetPosition -win $_nWave2 {("G1" 22)}
+wvSetCursor -win $_nWave2 3486868131.654361 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 3840327592.621658 -snap {("G1" 11)}
+wvSelectSignal -win $_nWave2 {( "G1" 11 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 11 )} 
+wvSetRadix -win $_nWave2 -format Hex
+wvSelectSignal -win $_nWave2 {( "G1" 11 )} 
+wvSetRadix -win $_nWave2 -format UDec
+wvSetCursor -win $_nWave2 4496212260.833702 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 3975473857.109155 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 7739220435.867913 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 7838453706.995096 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 7916895245.124202 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 7367804478.220459 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 7447191095.122205 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 7441520622.486366 -snap {("G1" 11)}
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSetCursor -win $_nWave2 7930128981.814747 -snap {("G1" 5)}
+wvSetCursor -win $_nWave2 7930115137.887413 -snap {("G1" 9)}
+wvSetCursor -win $_nWave2 7930185280.452570 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 7930272035.730527 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 7930206969.272059 -snap {("G1" 16)}
+wvSetCursor -win $_nWave2 7930270651.337793 -snap {("G1" 3)}
+wvSetCursor -win $_nWave2 8020121377.505726 -snap {("G1" 14)}
+srcActiveTrace "tb_top.dut.rst" -TraceByDConWave -TraceTime 95000 -TraceValue 0 \
+           -win $_nTrace1
+wvSetCursor -win $_nWave2 277801.475161 -snap {("G1" 21)}
+wvSetCursor -win $_nWave2 19510263233.062832 -snap {("G1" 11)}
+wvSetSearchMode -win $_nWave2 -anyChange
+wvSetCursor -win $_nWave2 19540169369.792187 -snap {("G1" 11)}
+wvZoomIn -win $_nWave2
+wvSetCursor -win $_nWave2 19540214939.387581 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 19540153564.643070 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 19540189558.854137 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 19540196480.817802 -snap {("G1" 11)}
+wvSetCursor -win $_nWave2 19540236628.207069 -snap {("G1" 11)}
+srcActiveTrace "tb_top.dut.master_tx_data\[7:0\]" -TraceByDConWave -TraceTime \
+           19540125000 -TraceValue 10000000 -win $_nTrace1
+wvSetCursor -win $_nWave2 19540373913.819794 -snap {("G1" 11)}
+wvZoom -win $_nWave2 19540124723.127792 19540292234.648525
+wvSetSearchMode -win $_nWave2 -anyChange
+wvSearchNext -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top/U_I2C_SLAVE"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_master_top/u_i2c_master"
+wvSetPosition -win $_nWave2 {("G1" 24)}
+wvSetPosition -win $_nWave2 {("G1" 24)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/tb_top/dut/clk} -height 16 \
+{/tb_top/dut/cmd_read} -height 16 \
+{/tb_top/dut/cmd_start} -height 16 \
+{/tb_top/dut/cmd_stop} -height 16 \
+{/tb_top/dut/cmd_write} -height 16 \
+{/tb_top/dut/master_ack_in} -height 16 \
+{/tb_top/dut/master_ack_out} -height 16 \
+{/tb_top/dut/master_busy} -height 16 \
+{/tb_top/dut/master_done} -height 16 \
+{/tb_top/dut/master_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/master_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_o} -height 16 \
+{/tb_top/dut/rst} -height 16 \
+{/tb_top/dut/scl} -height 16 \
+{/tb_top/dut/sda} -height 16 \
+{/tb_top/dut/slave_ack_in} -height 16 \
+{/tb_top/dut/slave_ack_out} -height 16 \
+{/tb_top/dut/slave_busy} -height 16 \
+{/tb_top/dut/slave_done} -height 16 \
+{/tb_top/dut/slave_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/slave_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/u_i2c_master/state\[2:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/u_i2c_master/step\[1:0\]} -height 16 \
+{/tb_top/dut/slave_rx_valid} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/rx_valid} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/sda_o} -height 16 \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 23 24 )} 
+wvSetPosition -win $_nWave2 {("G1" 24)}
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut/u_i2c_slave_top/U_I2C_SLAVE"
+wvSetPosition -win $_nWave2 {("G1" 25)}
+wvSetPosition -win $_nWave2 {("G1" 25)}
+wvAddSignal -win $_nWave2 -clear
+wvAddSignal -win $_nWave2 -group {"G1" \
+{/tb_top/dut/clk} -height 16 \
+{/tb_top/dut/cmd_read} -height 16 \
+{/tb_top/dut/cmd_start} -height 16 \
+{/tb_top/dut/cmd_stop} -height 16 \
+{/tb_top/dut/cmd_write} -height 16 \
+{/tb_top/dut/master_ack_in} -height 16 \
+{/tb_top/dut/master_ack_out} -height 16 \
+{/tb_top/dut/master_busy} -height 16 \
+{/tb_top/dut/master_done} -height 16 \
+{/tb_top/dut/master_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/master_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_master_top/sda_o} -height 16 \
+{/tb_top/dut/rst} -height 16 \
+{/tb_top/dut/scl} -height 16 \
+{/tb_top/dut/sda} -height 16 \
+{/tb_top/dut/slave_ack_in} -height 16 \
+{/tb_top/dut/slave_ack_out} -height 16 \
+{/tb_top/dut/slave_busy} -height 16 \
+{/tb_top/dut/slave_done} -height 16 \
+{/tb_top/dut/slave_rx_data\[7:0\]} -height 16 \
+{/tb_top/dut/slave_tx_data\[7:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/u_i2c_master/state\[2:0\]} -height 16 \
+{/tb_top/dut/u_i2c_master_top/u_i2c_master/step\[1:0\]} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/U_I2C_SLAVE/state\[3:0\]} -height 16 \
+{/tb_top/dut/slave_rx_valid} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/rx_valid} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/sda_i} -height 16 \
+{/tb_top/dut/u_i2c_slave_top/sda_o} -height 16 \
+}
+wvAddSignal -win $_nWave2 -group {"G2" \
+}
+wvSelectSignal -win $_nWave2 {( "G1" 25 )} 
+wvSetPosition -win $_nWave2 {("G1" 25)}
+wvGetSignalClose -win $_nWave2
+wvSelectSignal -win $_nWave2 {( "G1" 23 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 23 24 )} 
+wvSetPosition -win $_nWave2 {("G1" 22)}
+wvSetPosition -win $_nWave2 {("G1" 21)}
+wvSetPosition -win $_nWave2 {("G1" 20)}
+wvSetPosition -win $_nWave2 {("G1" 19)}
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvSetPosition -win $_nWave2 {("G1" 16)}
+wvSetPosition -win $_nWave2 {("G1" 14)}
+wvSetPosition -win $_nWave2 {("G1" 13)}
+wvSetPosition -win $_nWave2 {("G1" 12)}
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvSetPosition -win $_nWave2 {("G1" 10)}
+wvSetPosition -win $_nWave2 {("G1" 9)}
+wvSetPosition -win $_nWave2 {("G1" 8)}
+wvSetPosition -win $_nWave2 {("G1" 7)}
+wvSetPosition -win $_nWave2 {("G1" 8)}
+wvSetPosition -win $_nWave2 {("G1" 9)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 9)}
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvSetCursor -win $_nWave2 19630118326.441757 -snap {("G1" 13)}
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSelectSignal -win $_nWave2 {( "G1" 13 )} 
+wvSearchPrev -win $_nWave2
+wvSetCursor -win $_nWave2 19540222670.198048 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 19540195030.433449 -snap {("G1" 13)}
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSetCursor -win $_nWave2 20409528315.670006 -snap {("G1" 2)}
+wvSelectSignal -win $_nWave2 {( "G1" 2 )} 
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSetCursor -win $_nWave2 20600147650.053883 -snap {("G1" 9)}
+wvSetCursor -win $_nWave2 20600129320.525780 -snap {("G1" 2)}
+wvSelectSignal -win $_nWave2 {( "G1" 2 )} 
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvZoomAll -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSetCursor -win $_nWave2 19888085530.111965 -snap {("G2" 0)}
+wvSelectGroup -win $_nWave2 {G2}
+wvSelectGroup -win $_nWave2 {G2}
+wvSelectSignal -win $_nWave2 {( "G1" 22 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 23 )} 
+wvSelectGroup -win $_nWave2 {G2}
+wvSelectSignal -win $_nWave2 {( "G1" 27 )} 
+wvCut -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 11)}
+wvSelectGroup -win $_nWave2 {G2}
+wvSetCursor -win $_nWave2 19625154876.752216 -snap {("G1" 10)}
+wvSetCursor -win $_nWave2 19603880404.799873 -snap {("G1" 10)}
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSetCursor -win $_nWave2 19991798580.883396 -snap {("G1" 10)}
+wvSelectSignal -win $_nWave2 {( "G1" 10 )} 
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSelectSignal -win $_nWave2 {( "G1" 18 )} 
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvSetPosition -win $_nWave2 {("G1" 16)}
+wvMoveSelected -win $_nWave2
+wvSetPosition -win $_nWave2 {("G1" 16)}
+wvSetPosition -win $_nWave2 {("G1" 17)}
+wvSetCursor -win $_nWave2 20242304274.765678 -snap {("G2" 0)}
+wvSelectSignal -win $_nWave2 {( "G1" 13 )} 
+wvSetCursor -win $_nWave2 15671519483.258007 -snap {("G1" 8)}
+wvZoomOut -win $_nWave2
+wvSelectGroup -win $_nWave2 {G2}
+wvSetCursor -win $_nWave2 15577625419.554007 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 15640562399.070942 -snap {("G1" 5)}
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSelectSignal -win $_nWave2 {( "G1" 5 )} 
+wvZoomIn -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSetCursor -win $_nWave2 15699289800.807323 -snap {("G1" 5)}
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchNext -win $_nWave2
+wvSearchPrev -win $_nWave2
+wvSetCursor -win $_nWave2 15836814809.160641 -snap {("G2" 0)}
+wvZoomAll -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvSetCursor -win $_nWave2 19984523024.291561 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 19939826210.620953 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 19913096765.984039 -snap {("G2" 0)}
+wvSetCursor -win $_nWave2 20055574252.127434 -snap {("G2" 0)}
+wvSelectGroup -win $_nWave2 {G2}
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvZoomAll -win $_nWave2
+wvZoomIn -win $_nWave2
+srcDeselectAll -win $_nTrace1
+verdiSetActWin -dock widgetDock_MTB_SOURCE_TAB_1
+srcDeselectAll -win $_nTrace1
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+verdiSetActWin -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomIn -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+debExit

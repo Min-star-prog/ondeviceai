@@ -1,0 +1,4 @@
+Command Line: /tools/synopsys/verdi/X-2025.06-1/platform/LINUXAMD64/bin/Novas -dbdir ./simv.daidir -ssf wave_i2c.fsdb
+uname(Linux kccipangyo1 4.18.0-553.83.1.el8_10.x86_64 #1 SMP Fri Oct 31 03:39:01 EDT 2025 x86_64)
+KdbImportParallelMixAllLib time 0.036867 0.040336 0.005216 delta 24305664 24305664 total 1303957504 1303957504
+au time 1074.994765 9.827268 1.911788 delta 402325504 402325504 total 1469501440 1469501440
