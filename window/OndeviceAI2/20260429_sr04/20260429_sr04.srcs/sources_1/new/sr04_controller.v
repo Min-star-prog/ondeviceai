@@ -1,0 +1,405 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2026/04/29 16:41:31
+// Design Name: 
+// Module Name: sr04_controller
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module TOP_sr04_controller (
+    input        clk,
+    input        rst,
+    input        btn_R,
+    input        echo,
+    input          [1:0] sw,
+    output       trig,
+    output [3:0] fnd_com,
+    output [7:0] fnd_data
+);
+
+    wire [8:0] w_distance;
+    wire w_sr04_start, w_tick_us;
+    wire w_timeout;
+
+    ila_0 U_ila0 (
+        .clk(clk),
+        .probe0(w_sr04_start),
+        .probe1(w_distance)
+    );
+
+    button_debounce U_BD_SR04_START (
+        .clk  (clk),
+        .rst  (rst),
+        .i_btn(sw[1]&&sw[0]&&btn_R),
+        .o_btn(w_sr04_start)
+    );
+
+    tick_gen_us U_TICK_GEN_US (
+        .clk(clk),
+        .rst(rst),
+        .tick_us(w_tick_us)
+    );
+
+    sr04_controller U_SR04_CTRL (
+
+        .clk(clk),
+        .rst(rst),
+        .sr04_start(w_sr04_start),
+        .tick_us(w_tick_us),
+        .echo(echo),
+        .sw(sw),
+        .trig(trig),
+        .distance(w_distance),
+        .timeout(w_timeout)
+
+    );
+
+    fnd_controller U_FND_CTRL (
+        .clk(clk),
+        .rst(rst),
+        .fnd_in({5'b00000, w_distance}),
+        .timeout(w_timeout),
+        .fnd_com(fnd_com),
+        .fnd_data(fnd_data)
+    );
+
+
+
+
+
+endmodule
+
+
+
+
+
+
+
+module tick_gen_us (
+    input clk,
+    input rst,
+    output reg tick_us
+);
+
+    parameter F_COUNT = 100_000_000 / 1_000_000;  // us
+    reg [$clog2(F_COUNT)-1:0] counter_reg;
+
+
+
+    always @(posedge clk, posedge rst) begin
+
+        if (rst) begin
+            counter_reg <= 0;
+            tick_us <= 1'b0;
+
+
+        end else begin
+            counter_reg <= counter_reg + 1;
+
+            if (counter_reg == F_COUNT - 1) begin
+                counter_reg <= 0;
+                tick_us <= 1'b1;
+            end else begin
+                tick_us <= 1'b0;
+            end
+        end
+
+    end
+
+
+
+endmodule
+
+
+
+// module sr04_controller (
+
+//     input        clk,
+//     input        rst,
+//     input        sr04_start,
+//     input        tick_us,
+//     input        echo,
+//     output       trig,
+//     output [8:0] distance
+// );
+
+
+//     parameter IDLE = 0, START = 1, WAIT = 2, RESPONSE = 3;
+
+//     reg [1:0] c_state, n_state;
+//     reg trig_reg, trig_next;
+//     reg [14:0] tick_us_cnt_reg, tick_us_cnt_next;
+
+//     reg [14:0] distance_cnt_reg, distance_cnt_next;
+
+
+//     assign trig = trig_reg;
+
+//     assign distance = distance_cnt_reg / 58;
+
+//     always @(posedge clk, posedge rst) begin
+//         if (rst) begin
+//             c_state <= IDLE;
+//             trig_reg <= 1'b0;
+//             tick_us_cnt_reg <= 15'b0;
+//             distance_cnt_reg <= 15'b0;
+//         end else begin
+//             c_state <= n_state;
+//             trig_reg <= trig_next;
+//             tick_us_cnt_reg <= tick_us_cnt_next;
+//             distance_cnt_reg <= distance_cnt_next;
+
+//         end
+
+//     end
+
+
+//     always @(*) begin
+//         n_state = c_state;
+//         trig_next = trig_reg;
+//         tick_us_cnt_next = tick_us_cnt_reg;
+//         distance_cnt_next = distance_cnt_reg;
+//         case (c_state)
+//             IDLE: begin
+//                 trig_next = 1'b0;
+//                 if (sr04_start) begin
+//                     n_state = START;
+//                     trig_next = 1'b1;
+//                     tick_us_cnt_next = 15'b0;
+//                     distance_cnt_next = 15'b0;
+//                 end
+//             end
+
+//             START: begin
+//                 trig_next = 1'b1;
+//                 if (tick_us) begin
+//                     if (tick_us_cnt_reg == 10) begin
+//                         tick_us_cnt_next = 0;
+//                         trig_next = 1'b0;
+//                         n_state = WAIT;
+
+//                     end else begin
+//                         tick_us_cnt_next = tick_us_cnt_reg + 1;
+//                     end
+//                 end
+//             end
+
+//             WAIT: begin
+//                 if (tick_us) begin
+//                     if (echo) begin
+//                         n_state = RESPONSE;
+//                         tick_us_cnt_next = 0;
+//                     end else if (tick_us_cnt_reg >= 30_000) begin  // timeout
+//                         n_state = IDLE;
+//                     end else begin
+//                         tick_us_cnt_next = tick_us_cnt_reg + 1;
+
+//                     end
+//                 end
+//             end
+
+//             RESPONSE: begin
+//                 if (tick_us) begin
+//                     if (!echo) begin
+//                         n_state = IDLE;
+//                         tick_us_cnt_next = 0;
+//                         distance_cnt_next = distance_cnt_reg;
+//                     end else begin
+//                         tick_us_cnt_next  = tick_us_cnt_reg + 1;
+//                         distance_cnt_next = distance_cnt_reg + 1;
+//                         if (distance_cnt_reg == 23199) begin
+//                             n_state = IDLE;
+//                         end
+//                     end
+//                 end
+//             end
+
+//             // begin 
+//             //     if (echo) begin
+//             //     if(tick_us) begin
+//             //             tick_us_cnt_next = tick_us_cnt_reg + 1;
+//             //             distance_cnt_next = distance_cnt_reg + 1;   
+
+//             //     end
+//             //     end else begin 
+//             //             n_state = IDLE;
+//             //             tick_us_cnt_next = 0;
+//             //             distance_cnt_next = 0;
+//             //     end
+//             // end
+
+
+//             default: begin
+//                 n_state = IDLE;
+//                 trig_next = 1'b0;
+//                 tick_us_cnt_next = 15'b0;
+//                 distance_cnt_next = 15'b0;
+//             end
+//         endcase
+//     end
+
+
+
+
+
+// endmodule
+
+
+
+
+
+module sr04_controller (
+
+    input        clk,
+    input        rst,
+    input        sr04_start,
+    input        tick_us,
+    input        echo,
+    input [1:0] sw,
+    output       trig,
+    output [8:0] distance,
+    output       timeout
+);
+
+
+    parameter IDLE = 0, START = 1, WAIT = 2, RESPONSE = 3;
+
+    reg [1:0] c_state, n_state;
+    reg trig_reg, trig_next;
+    reg [14:0] tick_us_cnt_reg, tick_us_cnt_next;
+    reg [8:0] distance_reg, distance_next;
+    reg timeout_reg, timeout_next;
+
+    assign trig = trig_reg;
+    assign distance = distance_reg;
+    assign timeout = timeout_reg;
+
+    always @(posedge clk, posedge rst) begin
+        if (rst || !(sw[1] && sw[0])) begin
+            c_state <= IDLE;
+            trig_reg <= 1'b0;
+            tick_us_cnt_reg <= 15'b0;
+            distance_reg <= 0;
+            timeout_reg <= 1'b0;
+        end else begin
+            c_state <= n_state;
+            trig_reg <= trig_next;
+            tick_us_cnt_reg <= tick_us_cnt_next;
+            distance_reg <= distance_next;
+            timeout_reg <= timeout_next;
+
+        end
+
+    end
+
+
+    always @(*) begin
+        n_state = c_state;
+        trig_next = trig_reg;
+        tick_us_cnt_next = tick_us_cnt_reg;
+        distance_next = distance_reg;
+        timeout_next = timeout_reg;
+        case (c_state)
+            IDLE: begin
+                trig_next = 1'b0;
+                if (sr04_start) begin
+                    n_state = START;
+                    trig_next = 1'b1;
+                    tick_us_cnt_next = 15'b0;
+                    timeout_next = 1'b0;
+                end
+            end
+
+            START: begin
+                trig_next = 1'b1;
+                if (tick_us) begin
+                    if (tick_us_cnt_reg == 10) begin
+                        tick_us_cnt_next = 0;
+                        trig_next = 1'b0;
+                        n_state = WAIT;
+
+                    end else begin
+                        tick_us_cnt_next = tick_us_cnt_reg + 1;
+                    end
+                end
+            end
+
+            WAIT: begin
+                if (tick_us) begin
+                    if (echo) begin
+                        n_state = RESPONSE;
+                        tick_us_cnt_next = 0;
+                    end else if (tick_us_cnt_reg >= 30_000) begin  // timeout
+                        n_state = IDLE;
+                        tick_us_cnt_next = 0;
+                        timeout_next = 1'b1;
+                    end else begin
+                        tick_us_cnt_next = tick_us_cnt_reg + 1;
+
+                    end
+                end
+            end
+
+            RESPONSE: begin
+                if (tick_us) begin
+                    if (!echo) begin
+                        n_state = IDLE;
+                        distance_next = (tick_us_cnt_reg >= 15'd23200) ? 9'd400 
+                                                   : tick_us_cnt_reg / 58;
+                        tick_us_cnt_next = 0;
+                    end else begin
+                        tick_us_cnt_next = tick_us_cnt_reg + 1;
+                        if (tick_us_cnt_reg == 23199) begin
+                            n_state = IDLE;
+                            tick_us_cnt_next = 0;
+                            timeout_next = 1'b1;
+                        end
+                    end
+                end
+            end
+
+            // begin 
+            //     if (echo) begin
+            //     if(tick_us) begin
+            //             tick_us_cnt_next = tick_us_cnt_reg + 1;
+            //             distance_cnt_next = distance_cnt_reg + 1;   
+
+            //     end
+            //     end else begin 
+            //             n_state = IDLE;
+            //             tick_us_cnt_next = 0;
+            //             distance_cnt_next = 0;
+            //     end
+            // end
+
+
+            default: begin
+                n_state = IDLE;
+                trig_next = 1'b0;
+                tick_us_cnt_next = 15'b0;
+            end
+        endcase
+    end
+
+
+
+
+
+endmodule
+
+
+

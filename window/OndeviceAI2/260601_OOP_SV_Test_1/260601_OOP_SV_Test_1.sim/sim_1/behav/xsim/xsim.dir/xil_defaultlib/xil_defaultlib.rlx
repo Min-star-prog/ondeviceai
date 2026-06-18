@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/260601_OOP_SV_Test_1/260601_OOP_SV_Test_1.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/260601_OOP_SV_Test_1/260601_OOP_SV_Test_1.srcs/sim_1/new/tb_ALU.sv,1780282523,systemVerilog,,,,alu_intf;tb_ALU,,uvm,,,,,,
+C:/Working/OndeviceAI2/260601_OOP_SV_Test_1/260601_OOP_SV_Test_1.srcs/sources_1/new/ALU.sv,1780282524,systemVerilog,C:/Working/OndeviceAI2/260601_OOP_SV_Test_1/260601_OOP_SV_Test_1.srcs/sim_1/new/tb_ALU.sv,C:/Working/OndeviceAI2/260601_OOP_SV_Test_1/260601_OOP_SV_Test_1.srcs/sim_1/new/tb_ALU.sv,,$unit_ALU_sv;ALU,,uvm,,,,,,

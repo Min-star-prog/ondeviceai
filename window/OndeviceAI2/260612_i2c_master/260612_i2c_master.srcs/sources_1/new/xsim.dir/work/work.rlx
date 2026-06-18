@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+c:/Working/OndeviceAI2/260612_i2c_master/260612_i2c_master.srcs/sources_1/new/i2c_demo_counter.sv,1781491396,systemVerilog,,,,i2c_demo_counter,,,,,,,,
+c:/Working/OndeviceAI2/260612_i2c_master/260612_i2c_master.srcs/sources_1/new/i2c_master.sv,1781516016,systemVerilog,,,,i2c_master;i2c_master_top,,,,,,,,
+c:/Working/OndeviceAI2/260612_i2c_master/260612_i2c_master.srcs/sources_1/new/i2c_master_stopwatch.sv,1781522811,systemVerilog,,,,button_debounce;control_unit;fnd_controller;i2c_master_stopwatch;stopwatch_datapath_99;tick_counter;tick_gen_1hz,,,,,,,,

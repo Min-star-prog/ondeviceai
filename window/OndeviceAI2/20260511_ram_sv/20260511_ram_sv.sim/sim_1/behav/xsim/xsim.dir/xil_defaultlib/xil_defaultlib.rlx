@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/20260511_ram_sv/20260511_ram_sv.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_ram_sv/20260511_ram_sv.srcs/sim_1/new/tb_ram_sv.sv,1778473009,systemVerilog,,,,ram_interface;tb_ram_sv,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_ram_sv/20260511_ram_sv.srcs/sources_1/new/ram_ip.sv,1778462071,systemVerilog,C:/Working/OndeviceAI2/20260511_ram_sv/20260511_ram_sv.srcs/sim_1/new/tb_ram_sv.sv,C:/Working/OndeviceAI2/20260511_ram_sv/20260511_ram_sv.srcs/sim_1/new/tb_ram_sv.sv,,$unit_ram_ip_sv;ram_ip,,uvm,,,,,,

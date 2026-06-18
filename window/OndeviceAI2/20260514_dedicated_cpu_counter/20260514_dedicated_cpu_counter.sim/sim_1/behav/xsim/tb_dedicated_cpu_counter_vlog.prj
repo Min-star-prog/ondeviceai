@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../20260514_dedicated_cpu_counter.srcs/sources_1/new/dedicated_cpu_counter.sv" \
+"../../../../20260514_dedicated_cpu_counter.srcs/sim_1/new/tb_dedicated_cpu_counter.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

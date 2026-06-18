@@ -1,0 +1,26 @@
+# Vivado generated files
+*.jou
+*.log
+*.str
+
+*.rpt
+*.dcp
+*.bit
+*.bin
+*.ltx
+*.vcd
+*.wdb
+*.vdi
+*.vds
+
+.cache/
+.hw/
+.ip_user_files/
+.sim/
+.runs/
+.gen/
+.Xil/
+
+# Windows
+Thumbs.db
+Desktop.ini

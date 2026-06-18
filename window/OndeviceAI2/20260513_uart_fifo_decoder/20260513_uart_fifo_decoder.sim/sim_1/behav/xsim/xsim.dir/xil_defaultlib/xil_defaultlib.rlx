@@ -1,0 +1,15 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_fifo.sv,1778738303,systemVerilog,,,,fifo_interface;tb_fifo_sv,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_fifo_decoder_sv.sv,1778670891,systemVerilog,,,,tb_uart_fifo_decoder_sv;uart_fifo_decoder_interface,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_fifo_loopback_sv.sv,1778655332,systemVerilog,,,,tb_uart_fifo_loopback_sv;uart_fifo_loopback_interface,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_sv.sv,1778655308,systemVerilog,,,,tb_uart_sv;uart_loopback_interface,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/ascii_decoder.sv,1778661212,systemVerilog,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_fifo_decoder_sv.sv;C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/fifo_sv.sv;C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart.sv;C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart_fifo_decoder.sv,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/fifo_sv.sv,,$unit_ascii_decoder_sv;ascii_decoder,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/fifo_sv.sv,1778487622,systemVerilog,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_fifo.sv,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart.sv,,fifo_control_unit;fifo_sv;reg_file,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart.sv,1778589281,systemVerilog,,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart_fifo_decoder.sv,,baud_tick_gen;uart;uart_rx;uart_tx,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart_fifo_decoder.sv,1778667652,systemVerilog,,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_fifo_decoder_sv.sv,,uart_fifo_decoder,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart_fifo_loopback.sv,1778645867,systemVerilog,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_fifo_loopback_sv.sv,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_fifo_loopback_sv.sv,,$unit_uart_fifo_loopback_sv;uart_fifo_loopback,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sources_1/new/uart_loopback.sv,1778590075,systemVerilog,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_sv.sv,C:/Working/OndeviceAI2/20260511_FIFO/20260511_FIFO.srcs/sim_1/new/tb_uart_sv.sv,,$unit_uart_loopback_sv;uart_loopback,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260513_uart_fifo_decoder/20260513_uart_fifo_decoder.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,

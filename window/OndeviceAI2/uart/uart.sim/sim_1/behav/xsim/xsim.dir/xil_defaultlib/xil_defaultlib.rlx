@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/uart/uart.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/Working/OndeviceAI2/uart/uart.srcs/sim_1/new/tb_uart_loopback.v,1777342782,verilog,,,,tb_uart_loopback,,,,,,,,
+C:/Working/OndeviceAI2/uart/uart.srcs/sources_1/new/uart.v,1777118670,verilog,,C:/Working/OndeviceAI2/uart/uart.srcs/sources_1/new/uart_loopback.v,,baud_tick_gen;uart;uart_tx,,,,,,,,
+C:/Working/OndeviceAI2/uart/uart.srcs/sources_1/new/uart_loopback.v,1777118484,verilog,,C:/Working/OndeviceAI2/uart/uart.srcs/sources_1/new/uart_rx.v,,uart_loopback,,,,,,,,
+C:/Working/OndeviceAI2/uart/uart.srcs/sources_1/new/uart_rx.v,1777342541,verilog,,C:/Working/OndeviceAI2/uart/uart.srcs/sim_1/new/tb_uart_loopback.v,,uart_rx,,,,,,,,

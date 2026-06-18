@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/counter_10000/counter_10000.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/Working/OndeviceAI2/counter_10000/counter_10000.srcs/sim_1/new/tb_counter_10000.v,1775723354,verilog,,,,tb_counter_10000,,,,,,,,
+C:/Working/OndeviceAI2/counter_10000/counter_10000.srcs/sim_1/new/tb_datapath.v,1775719372,verilog,,,,tb_datapath,,,,,,,,
+C:/Working/OndeviceAI2/counter_10000/counter_10000.srcs/sim_1/new/tb_tick_gen.v,1775715181,verilog,,,,tb_tick_gen,,,,,,,,
+C:/Working/OndeviceAI2/counter_10000/counter_10000.srcs/sources_1/new/counter_10000.v,1775714861,verilog,,C:/Working/OndeviceAI2/counter_10000/counter_10000.srcs/sim_1/new/tb_tick_gen.v,,clk_tick_gen;counter_10000,,,,,,,,

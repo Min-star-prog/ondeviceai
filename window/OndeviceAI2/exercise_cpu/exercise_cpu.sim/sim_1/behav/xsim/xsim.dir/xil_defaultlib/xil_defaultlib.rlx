@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/exercise_cpu/exercise_cpu.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/exercise_cpu/exercise_cpu.srcs/sim_1/new/tb_cpu.sv,1779095541,systemVerilog,,,,tb_cpu,,uvm,,,,,,
+C:/Working/OndeviceAI2/exercise_cpu/exercise_cpu.srcs/sources_1/new/cpu.sv,1779095453,systemVerilog,,C:/Working/OndeviceAI2/exercise_cpu/exercise_cpu.srcs/sim_1/new/tb_cpu.sv,,alu;comparator;control_unit;cpu;data_path;mux_2x1;register_file,,uvm,,,,,,

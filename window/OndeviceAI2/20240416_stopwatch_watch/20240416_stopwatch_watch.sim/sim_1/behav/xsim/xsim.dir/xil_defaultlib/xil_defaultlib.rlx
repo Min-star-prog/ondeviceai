@@ -1,0 +1,17 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sim_1/new/tb_stopwatch_datapath.v,1776318456,verilog,,,,tb_stopwatch_datapath,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sim_1/new/tb_tick_gen_100hz.v,1776304006,verilog,,,,tb_tick_gen_100hz,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/20240416_stopwatch_watch.srcs/watch_control_unit.v,1776419846,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/20240416_stopwatch_watch.srcs/watch_datapath.v,,watch_control_unit,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/20240416_stopwatch_watch.srcs/watch_datapath.v,1776506476,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/tb_watch.v,,watch_datapath;watch_tick_counter;watch_tick_gen_100hz,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/new/control_unit.v,1776427033,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/fnd_controller.v,,control_unit,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/fnd_controller.v,1776426744,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/stopwatch_datapath.v,,BCD_decoder;clk_div_1khz;comparator;counter_8;decoder_2x4;digit_splitter;fnd_controller;mux_2x1;mux_8x1,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/sources_1/new/button_debounce.v,1776323189,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/new/control_unit.v,,button_debounce,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/stopwatch_datapath.v,1776427499,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/top_stopwatch_watch.v,,moment;stopwatch_datapath;tick_counter;tick_gen_100hz,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/tb_watch.v,1776507447,verilog,,,,tb_watch,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/top_stopwatch_watch.v,1776426868,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/toptop.v,,top_stopwatch_watch,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/toptop.v,1776426765,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/watch.v,,mux_2x1_final;toptop,,,,,,,,
+C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/new/watch.v,1776424930,verilog,,C:/Working/OndeviceAI2/20240416_stopwatch_watch/20240416_stopwatch_watch.srcs/sources_1/imports/20240416_stopwatch_watch.srcs/watch_control_unit.v,,watch,,,,,,,,

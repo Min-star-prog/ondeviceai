@@ -1,0 +1,12 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/20260413_1/20260413_1.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sim_1/new/tb_dut.v,1776144312,verilog,,,,tb_dut,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sim_1/new/tb_mealy_moore_1010.v,1776154735,verilog,,,,tb_mealy_moore_1010,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sources_1/imports/new/fsm_led.v,1776143055,verilog,,C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sources_1/imports/new/tb_fsm_led.v,,fsm_led,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sources_1/imports/new/tb_fsm_led.v,1776073559,verilog,,,,tb_fsm_led,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sources_1/new/mealy_1010.v,1776156845,verilog,,C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sim_1/new/tb_mealy_moore_1010.v,,mealy_1010,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sources_1/new/moore_1010.v,1776153937,verilog,,C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sim_1/new/tb_mealy_moore_1010.v,,moore_1010,,,,,,,,
+C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sources_1/new/seq_det_mealy.v,1776145113,verilog,,C:/Working/OndeviceAI2/20260413_1/20260413_1.srcs/sim_1/new/tb_dut.v,,seq_det_mealy,,,,,,,,

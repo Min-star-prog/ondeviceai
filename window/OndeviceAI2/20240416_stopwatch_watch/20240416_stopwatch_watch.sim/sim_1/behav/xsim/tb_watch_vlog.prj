@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/imports/sources_1/new/button_debounce.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/imports/new/control_unit.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/fnd_controller.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/new/stopwatch_datapath.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/new/top_stopwatch_watch.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/new/toptop.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/new/watch.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/imports/20240416_stopwatch_watch.srcs/watch_control_unit.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/imports/20240416_stopwatch_watch.srcs/watch_datapath.v" \
+"../../../../20240416_stopwatch_watch.srcs/sources_1/new/tb_watch.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

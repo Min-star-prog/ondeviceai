@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../20260408.srcs/sources_1/imports/new/BCD_decoder.v" \
+"../../../../../project_1/project_1.srcs/sources_1/new/adder_8bit.v" \
+"../../../../20260408.srcs/sources_1/imports/new/adder_fnd.v" \
+"../../../../../project_1/project_1.srcs/sources_1/new/clk_div_1khz.v" \
+"../../../../../project_1/project_1.srcs/sources_1/new/counter_4.v" \
+"../../../../../project_1/project_1.srcs/sources_1/new/decoder_2x4.v" \
+"../../../../../project_1/project_1.srcs/sources_1/new/digit_splitter.v" \
+"../../../../20260408.srcs/sources_1/imports/new/fnd_controller.v" \
+"../../../../20260408.srcs/sources_1/imports/new/full_adder.v" \
+"../../../../20260408.srcs/sources_1/imports/new/full_adder_4bit.v" \
+"../../../../20260408.srcs/sources_1/imports/new/half_adder.v" \
+"../../../../../project_1/project_1.srcs/sources_1/new/mux_4x1.v" \
+"../../../../20260408.srcs/sim_1/new/tb_8bit_adder_fnd.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

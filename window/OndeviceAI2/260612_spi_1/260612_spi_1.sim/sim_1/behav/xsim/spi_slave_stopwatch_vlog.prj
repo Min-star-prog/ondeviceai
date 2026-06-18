@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../260612_spi_1.srcs/sources_1/new/spi_slave.sv" \
+"../../../../260612_spi_1.srcs/sources_1/new/spi_slave_stopwatch.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

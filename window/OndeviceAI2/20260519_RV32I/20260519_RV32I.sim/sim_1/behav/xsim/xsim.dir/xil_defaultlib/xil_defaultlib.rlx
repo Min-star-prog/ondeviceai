@@ -1,0 +1,13 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sim_1/new/tb_rv32i.sv,1779752002,systemVerilog,,,,tb_rv32i,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/control_unit.sv,1779433361,systemVerilog,,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/data_mem.sv,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/define.vh,control_unit,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/data_mem.sv,1779434693,systemVerilog,,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/instruction_mem.sv,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/define.vh,data_mem,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/define.vh,1779343587,verilog,,,,,,,,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/instruction_mem.sv,1779751979,systemVerilog,,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/rv32i_cpu.sv,,instruction_mem,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/rv32i_cpu.sv,1779343442,systemVerilog,,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/rv32i_datapath.sv,,rv32i_cpu,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/rv32i_datapath.sv,1779417518,systemVerilog,,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/top_rv32i_soc.sv,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/define.vh,alu;imm_extend;mux_2x1;mux_wb;program_counter;register_file;rv32i_datapath,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sources_1/new/top_rv32i_soc.sv,1779347400,systemVerilog,,C:/Working/OndeviceAI2/20260519_RV32I/20260519_RV32I.srcs/sim_1/new/tb_rv32i.sv,,top_rv32i_soc,,uvm,../../../../20260519_RV32I.srcs/sources_1/new,,,,,

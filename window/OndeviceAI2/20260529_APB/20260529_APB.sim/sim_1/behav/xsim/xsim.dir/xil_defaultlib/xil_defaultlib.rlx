@@ -1,0 +1,15 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Working/OndeviceAI2/20260528_multi_cycle/20260528_multi_cycle.srcs/sim_1/new/tb_rv32i.sv,1779949487,systemVerilog,,,,tb_rv32i,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sim_1/new/tb_apb_master.sv,1780035228,systemVerilog,,,,tb_apb_master,,uvm,,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/apb_master.sv,1780038919,systemVerilog,,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/apb_slave.sv,,address_decoder;apb_master;apb_mux,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/apb_slave.sv,1780042324,systemVerilog,,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/control_unit.sv,,apb_bram,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/control_unit.sv,1780041689,systemVerilog,,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/instruction_mem.sv,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/define.vh,control_unit,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/define.vh,1779343587,verilog,,,,,,,,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/instruction_mem.sv,1780041089,systemVerilog,,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/rv32i_cpu.sv,,instruction_mem,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/rv32i_cpu.sv,1780039209,systemVerilog,,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/rv32i_datapath.sv,,rv32i_cpu,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/rv32i_datapath.sv,1780039185,systemVerilog,,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/top_rv32i_soc.sv,C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/define.vh,alu;imm_extend;mux_2x1;mux_wb;program_counter;register_file;register_s;rv32i_datapath,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
+C:/Working/OndeviceAI2/20260529_APB/20260529_APB.srcs/sources_1/new/top_rv32i_soc.sv,1780040857,systemVerilog,,C:/Working/OndeviceAI2/20260528_multi_cycle/20260528_multi_cycle.srcs/sim_1/new/tb_rv32i.sv,,top_rv32i_soc,,uvm,../../../../20260529_APB.srcs/sources_1/new,,,,,
