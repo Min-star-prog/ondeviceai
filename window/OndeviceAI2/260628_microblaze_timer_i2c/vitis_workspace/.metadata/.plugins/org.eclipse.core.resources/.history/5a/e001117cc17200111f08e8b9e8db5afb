@@ -1,0 +1,63 @@
+#include "interrupt.h"
+#include "../delay/delay.h"
+#include "../../driver/FND/FND.h"
+#include "../../HAL/I2C/I2C.h"
+
+XIntc IntrController;
+
+void TMR_ISR(void *CallbackRef)
+{
+    (void)CallbackRef;
+
+    /* One 1-ms timer period: FND multiplexing and software tick. */
+    FND_Execute();
+    incTick();
+}
+
+void I2C_ISR(void *CallbackRef)
+{
+    /* Completion only; main() sends the next I2C/LCD command. */
+    I2C_InterruptHandler(CallbackRef);
+}
+
+int SetupInterruptSystem(void)
+{
+    int status;
+
+    status = XIntc_Initialize(&IntrController, INTC_DEV_ID);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+
+    status = XIntc_Connect(&IntrController,
+                           TMR_VEC_ID,
+                           (XInterruptHandler)TMR_ISR,
+                           (void *)0);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+
+    status = XIntc_Connect(&IntrController,
+                           I2C_VEC_ID,
+                           (XInterruptHandler)I2C_ISR,
+                           (void *)I2C0);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+
+    status = XIntc_Start(&IntrController, XIN_REAL_MODE);
+    if (status != XST_SUCCESS) {
+        return XST_FAILURE;
+    }
+
+    XIntc_Enable(&IntrController, TMR_VEC_ID);
+    XIntc_Enable(&IntrController, I2C_VEC_ID);
+
+    Xil_ExceptionInit();
+    Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+                                 (Xil_ExceptionHandler)XIntc_InterruptHandler,
+                                 &IntrController);
+    Xil_ExceptionEnable();
+
+    return XST_SUCCESS;
+}

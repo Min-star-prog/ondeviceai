@@ -1,0 +1,140 @@
+/*
+ * StopWatch.c
+ *
+ *  Created on: 2026. 6. 24.
+ *      Author: kccistc
+ */
+
+
+#include "StopWatch.h"
+#define STOP_STATE_LED 	5
+#define RUN_STATE_LED 	7
+
+
+StopWatch_e StopWatchState;
+uint32_t counter;
+uint32_t StopWatchLed;
+uint32_t StopWatchStateLed;
+
+
+
+void StopWatch_Init()
+{
+
+	LED_Init();
+	FND_Init();
+	Button_Init();
+	StopWatchState = STOP;
+	StopWatchStateLed = 0;
+	counter =0;
+	StopWatchLed = 0x01;   // LED[0]부터 시작
+}
+
+
+void StopWatch_Execute()
+{
+	StopWatch_ControlState();
+	StopWatch_RunTime();
+	if(counter % 10 < 5) {
+		FND_SetDP(FND_DIGIT_1,FND_DP_SET);
+	}
+	else {
+
+		FND_SetDP(FND_DIGIT_1,FND_DP_RESET);
+	}
+	FND_SetNum(counter);
+	StopWatch_ControlLed();
+}
+
+void StopWatch_ControlState()
+{
+	switch (StopWatchState)	{
+	case STOP:
+		if(Button_GetState(&hbtnRunStop) == ACT_PUSHED)
+		{
+			StopWatchState = RUN;
+		}
+		else if(Button_GetState(&hbtnClear) == ACT_PUSHED)
+		{
+			StopWatchState = CLEAR;
+		}
+		break;
+	case RUN:
+		if(Button_GetState(&hbtnRunStop) == ACT_PUSHED)
+		{
+			StopWatchState = STOP;
+		}
+		break;
+	case CLEAR:
+		StopWatchState = STOP;
+		counter =0;
+		StopWatchLed = 0x01;
+		break;
+	default:
+		StopWatchState = STOP;
+		break;
+	}
+
+}
+void StopWatch_ControlLed()
+{
+	switch (StopWatchState)	{
+	case STOP:
+		StopWatch_StopLed();
+		break;
+	case RUN:
+		StopWatch_RunLed();
+		break;
+	case CLEAR:
+		StopWatch_ClearLed();
+		break;
+	default:
+		break;
+	}
+
+}
+
+
+void StopWatch_RunLed()
+{
+	static uint32_t prevTime = 0;
+	uint32_t curTime = millis();
+
+
+	StopWatchStateLed |= (1 << STOP_STATE_LED);
+	StopWatchStateLed &= ~(1 << RUN_STATE_LED);
+	LED_WritePort8(LED_HI_GPIO, StopWatchStateLed);
+
+	if(curTime - prevTime <100) return;
+	prevTime = curTime;
+
+	StopWatchLed = (StopWatchLed << 1) | (StopWatchLed >> 7);
+	LED_WritePort8(LED_LOW_GPIO, StopWatchLed);
+}
+
+void StopWatch_StopLed()
+{
+	StopWatchStateLed |= (1 << RUN_STATE_LED);
+	StopWatchStateLed &= ~(1 << STOP_STATE_LED);
+	LED_WritePort8(LED_HI_GPIO, StopWatchStateLed);
+}
+
+void StopWatch_ClearLed()
+{
+	StopWatchLed = 0x01;
+	LED_WritePort8(LED_LOW_GPIO, StopWatchLed);
+}
+void StopWatch_RunTime()
+{
+	static uint32_t prevTime = 0;
+	uint32_t curTime = millis();
+	if(curTime - prevTime <100) return;
+	prevTime = curTime;
+
+	if(StopWatchState == RUN)	{
+		counter++;
+
+	}
+}
+
+

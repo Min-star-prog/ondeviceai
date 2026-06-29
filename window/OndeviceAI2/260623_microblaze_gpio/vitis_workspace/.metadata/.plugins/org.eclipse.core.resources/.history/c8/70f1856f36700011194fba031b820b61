@@ -1,0 +1,36 @@
+
+#include "xil_printf.h"
+
+#include "ap/StopWatch_ex.h"
+#include "common/delay/delay.h"
+
+int main()
+{
+
+	StopWatch_Init();
+	while(1)
+	{
+		StopWatch_Execute();
+
+
+
+//		curTime = millis();
+//		if(curTime - prevTime >99) {
+//			prevTime = curTime;
+//		xil_printf("counter = %d\n", counter++);
+//
+//		//ledState = (ledState << 1) | (ledState >> 7);	//왼쪽 shift
+//		ledState = (ledState >> 1) | (ledState << 15);	//오른쪽 shift
+//		LED_WritePort16(ledState);
+//
+//		FND_SetNum(counter++);
+//		}
+		//*****************polling service routine***********
+		//이 아래쪽은 항상 돌아야하는 code임.}
+		FND_Execute();
+		incTick();
+		delay_ms(1);
+	}
+	return 0;
+}
+

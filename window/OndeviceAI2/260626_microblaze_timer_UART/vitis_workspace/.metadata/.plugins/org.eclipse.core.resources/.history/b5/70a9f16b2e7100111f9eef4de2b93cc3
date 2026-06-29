@@ -1,0 +1,17 @@
+
+
+
+#ifndef SRC_COMMON_INTERRUPT_INTERRUPT_H_
+#define SRC_COMMON_INTERRUPT_INTERRUPT_H_
+
+
+#define INTC_DEV_ID 	XPAR_INTC_0_DEVICE_ID
+#define TMR_DEV_ID 		XPAR_TIMER_0_DEVICE_ID
+#define UART_DEV_ID 		XPAR_UART_0_DEVICE_ID
+
+
+void TMR_ISR(void *CallbackRef);
+void UART_ISR(void *CallbackRef);
+
+
+#endif /* SRC_COMMON_INTERRUPT_INTERRUPT_H_ */

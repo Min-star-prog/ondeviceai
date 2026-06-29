@@ -1,0 +1,286 @@
+//#include "xil_printf.h"
+//#include "xstatus.h"
+//
+//#include "ap/StopWatch.h"
+//#include "common/delay/delay.h"
+//#include "common/interrupt/interrupt.h"
+//#include "HAL/TMR/TMR.h"
+//#include "HAL/I2C/I2C.h"
+//#include "driver/LCD_I2C/LCD_I2C.h"
+//
+//int main(void)
+//{
+//    uint32_t prev_lcd_time = 0U;
+//    uint8_t hour;
+//    uint8_t min;
+//    uint8_t sec;
+//    uint8_t centisecond;
+//    I2C_Status_t status;
+//
+//    StopWatch_Init();
+//    I2C_Init(I2C0);
+//    LCD_I2C_Init(I2C0);
+//
+//    /* 100 MHz / (100 * 1000) = 1 kHz -> 1 ms timer ISR */
+//    TMR_SetPSC(TMR0, 100U - 1U);
+//    TMR_SetARR(TMR0, 1000U - 1U);
+//    TMR_SetCNT(TMR0, 0U);
+//
+//    if (SetupInterruptSystem() != XST_SUCCESS) {
+//        xil_printf("Interrupt setup failed\r\n");
+//        return -1;
+//    }
+//
+//    /* First enable controller routing, then assert IP-level interrupt enable. */
+////    I2C_EnableInterrupt(I2C0);
+//
+//    TMR_StartInterrupt(TMR0);
+//    TMR_StartTimer(TMR0);
+//
+//    status = LCD_Init();
+//    if (status != I2C_OK) {
+//        xil_printf("LCD init failed: %d\r\n", (int)status);
+//    } else {
+//        (void)LCD_WriteLine(0U, "I2C LCD READY");
+//        (void)LCD_WriteLine(1U, "STOPWATCH INTR");
+//        delay_ms(800U);
+//    }
+//
+//    while (1) {
+//        StopWatch_Execute();
+//
+//        /* LCD transfer is intentionally foreground code, not ISR code. */
+//        if ((millis() - prev_lcd_time) >= 100U) {
+//            prev_lcd_time = millis();
+//
+//            StopWatch_GetTime(&hour, &min, &sec, &centisecond);
+//            status = LCD_ShowStopWatch(hour,
+//                                       min,
+//                                       sec,
+//                                       centisecond,
+//                                       (StopWatch_GetState() == RUN) ? 1U : 0U);
+//
+//            if (status != I2C_OK) {
+//                xil_printf("I2C LCD error=%d SR=0x%08lx irq=%lu\r\n",
+//                           (int)status,
+//                           (unsigned long)I2C0->SR,
+//                           (unsigned long)I2C_GetInterruptCount());
+//            }
+//        }
+//    }
+//}
+#include "xil_printf.h"
+#include "xstatus.h"
+
+#include "ap/StopWatch.h"
+
+#include "common/delay/delay.h"
+#include "common/interrupt/interrupt.h"
+
+#include "HAL/TMR/TMR.h"
+#include "HAL/I2C/I2C.h"
+
+#include "driver/LCD_I2C/LCD_I2C.h"
+
+
+/* ------------------------------------------------------------
+ * I2C LCD raw communication test
+ *
+ * LCD address 0x27
+ * Write address byte = 0x27 << 1 = 0x4E
+ * ------------------------------------------------------------ */
+static void LCD_RawI2CTest(void)
+{
+    I2C_Status_t status;
+    uint8_t lcd_write_addr;
+
+    lcd_write_addr = (uint8_t)(LCD_I2C_ADDR << 1U);
+
+    xil_printf("\r\n");
+    xil_printf("========================================\r\n");
+    xil_printf("[RAW I2C LCD TEST]\r\n");
+    xil_printf("LCD 7-bit addr : 0x%02X\r\n", LCD_I2C_ADDR);
+    xil_printf("WRITE byte     : 0x%02X\r\n", lcd_write_addr);
+    xil_printf("Initial SR     : 0x%08lx\r\n",
+               (unsigned long)I2C0->SR);
+    xil_printf("========================================\r\n");
+
+
+    /* ---------------- START ---------------- */
+    xil_printf("\r\n[1] START begin\r\n");
+
+    status = I2C_Start(I2C0);
+
+    xil_printf("[1] START end"
+               " : status=%d, SR=0x%08lx\r\n",
+               (int)status,
+               (unsigned long)I2C0->SR);
+
+    if (status != I2C_OK) {
+        xil_printf("START failed. Stop test.\r\n");
+        return;
+    }
+
+
+    /* ---------------- LCD address ----------------
+     * 0x27 -> 0x4E
+     */
+    xil_printf("\r\n[2] ADDR 0x%02X begin\r\n", lcd_write_addr);
+
+    status = I2C_WriteByte(I2C0, lcd_write_addr);
+
+    xil_printf("[2] ADDR 0x%02X end"
+               " : status=%d, SR=0x%08lx",
+               lcd_write_addr,
+               (int)status,
+               (unsigned long)I2C0->SR);
+
+    if (status == I2C_OK) {
+        xil_printf(", ACK received\r\n");
+    } else {
+        xil_printf(", NACK or timeout\r\n");
+
+        (void)I2C_Stop(I2C0);
+        return;
+    }
+
+
+    /* ---------------- PCF8574 output byte ----------------
+     * 0x08은 일반적인 PCF8574 LCD backpack에서
+     * backlight bit만 켠 값이다.
+     *
+     * 여기서도 ACK가 와야
+     * "주소만 ACK되고 data write가 실패하는 문제"가 아닌지 확인 가능.
+     */
+    xil_printf("\r\n[3] PCF data 0x08 begin\r\n");
+
+    status = I2C_WriteByte(I2C0, 0x08U);
+
+    xil_printf("[3] PCF data 0x08 end"
+               " : status=%d, SR=0x%08lx",
+               (int)status,
+               (unsigned long)I2C0->SR);
+
+    if (status == I2C_OK) {
+        xil_printf(", ACK received\r\n");
+    } else {
+        xil_printf(", NACK or timeout\r\n");
+    }
+
+
+    /* ---------------- STOP ---------------- */
+    xil_printf("\r\n[4] STOP begin\r\n");
+
+    status = I2C_Stop(I2C0);
+
+    xil_printf("[4] STOP end"
+               " : status=%d, SR=0x%08lx\r\n",
+               (int)status,
+               (unsigned long)I2C0->SR);
+
+
+    xil_printf("\r\n");
+    xil_printf("========================================\r\n");
+
+    if (status == I2C_OK) {
+        xil_printf("[RAW I2C LCD TEST END]\r\n");
+    } else {
+        xil_printf("[RAW I2C LCD TEST STOP FAIL]\r\n");
+    }
+
+    xil_printf("========================================\r\n");
+}
+
+
+/* ------------------------------------------------------------
+ * Main
+ * ------------------------------------------------------------ */
+int main(void)
+{
+    int status;
+
+    /* --------------------------------------------------------
+     * Stopwatch peripheral initialization
+     * -------------------------------------------------------- */
+    StopWatch_Init();
+
+
+    /* --------------------------------------------------------
+     * I2C initialization
+     *
+     * 지금은 raw polling test가 목적이므로
+     * I2C interrupt는 잠시 끈 상태로 검사한다.
+     * Timer interrupt는 계속 사용한다.
+     * -------------------------------------------------------- */
+    I2C_Init(I2C0);
+    I2C_DisableInterrupt(I2C0);
+
+
+    /* --------------------------------------------------------
+     * Timer setup
+     *
+     * Input clock : 100 MHz 가정
+     * PSC         : 100 - 1
+     * ARR         : 1000 - 1
+     *
+     * 100 MHz / 100 / 1000 = 1 kHz
+     * 따라서 1 ms마다 TMR_ISR 실행
+     * -------------------------------------------------------- */
+    TMR_SetPSC(TMR0, 100U - 1U);
+    TMR_SetARR(TMR0, 1000U - 1U);
+    TMR_SetCNT(TMR0, 0U);
+
+
+    /* --------------------------------------------------------
+     * Interrupt controller setup
+     *
+     * TMR_ISR:
+     *   - FND_Execute()
+     *   - incTick()
+     *
+     * I2C interrupt는 연결되어 있어도,
+     * 위에서 I2C_DisableInterrupt()를 했으므로
+     * 현재 raw test에는 영향이 없다.
+     * -------------------------------------------------------- */
+    status = SetupInterruptSystem();
+
+    if (status != XST_SUCCESS) {
+        xil_printf("\r\n[ERROR] Interrupt setup failed: %d\r\n", status);
+
+        while (1) {
+        }
+    }
+
+
+    /* Timer interrupt enable / timer start */
+    TMR_StartInterrupt(TMR0);
+    TMR_StartTimer(TMR0);
+
+
+    xil_printf("\r\n");
+    xil_printf("========================================\r\n");
+    xil_printf("I2C LCD DEBUG PROGRAM START\r\n");
+    xil_printf("LCD_I2C_ADDR = 0x%02X\r\n", LCD_I2C_ADDR);
+    xil_printf("I2C BaseAddr = 0x%08lx\r\n",
+               (unsigned long)I2C0);
+    xil_printf("========================================\r\n");
+
+
+    /* --------------------------------------------------------
+     * 딱 한 번만 I2C raw test 수행
+     * -------------------------------------------------------- */
+    LCD_RawI2CTest();
+
+
+    /* --------------------------------------------------------
+     * Stopwatch는 계속 실행
+     *
+     * LCD 전체 초기화 및 LCD_WriteLine은 여기서 실행하지 않는다.
+     * 먼저 serial log로 I2C command sequence부터 확인한다.
+     * -------------------------------------------------------- */
+    while (1) {
+        StopWatch_Execute();
+    }
+
+    return 0;
+}

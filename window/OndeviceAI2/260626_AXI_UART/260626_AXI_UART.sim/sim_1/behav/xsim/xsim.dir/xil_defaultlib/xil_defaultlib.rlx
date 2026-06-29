@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Users/kccistc/Downloads/uart.v,1782438090,verilog,,,,uart_rx;uart_top;uart_tx,,uvm,,,,,,
+C:/Working/OndeviceAI2/260626_AXI_UART/260626_AXI_UART.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/260626_AXI_UART/260626_AXI_UART.srcs/sim_1/new/tb_axi_uart.sv,1782448538,systemVerilog,,,,tb_axi_uart,,uvm,,,,,,
+C:/Working/OndeviceAI2/260626_AXI_UART/260626_AXI_UART.srcs/sources_1/new/axi_uart.sv,1782448007,systemVerilog,,C:/Working/OndeviceAI2/260626_AXI_UART/260626_AXI_UART.srcs/sources_1/new/axi_uart_top.sv,,axi_uart,,uvm,,,,,,
+C:/Working/OndeviceAI2/260626_AXI_UART/260626_AXI_UART.srcs/sources_1/new/axi_uart_top.sv,1782439863,systemVerilog,,C:/Working/OndeviceAI2/260626_AXI_UART/260626_AXI_UART.srcs/sim_1/new/tb_axi_uart.sv,,axi_uart_top,,uvm,,,,,,

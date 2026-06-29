@@ -1,0 +1,73 @@
+#include <stdint.h>
+#include "sleep.h"
+#include "xil_printf.h"
+#include "driver/LED/LED.h"
+
+#define FND_DATA_GPIO 	GPIOA
+#define FND_COM_GPIO	GPIOB
+
+#define FND_DIGIT_0 0
+#define FND_DIGIT_1 1
+#define FND_DIGIT_2 2
+#define FND_DIGIT_3 3
+
+void FND_Init()
+{
+	uint32_t fndComTemp = GPIO_GetCR(GPIOB);
+	fndComTemp |= 0x0f;
+	GPIO_SetMode(GPIOB, fndComTemp);
+	GPIO_SetMode(GPIOA, 0xff);
+}
+
+
+void FND_SelDigit(uint32_t digit)
+{
+	uint32_t digitPos;
+
+	digitPos = GPIO_GetODR(FND_COM_GPIO);
+	digitPos = (digitPos &0xff) & ~(1<<digit);	// 상위 bit는 유지, 하위 bit만 손대겠다.
+
+	GPIO_WritePort(FND_COM_GPIO,  digitPos);
+
+
+
+}
+
+
+
+
+void FND_DispDigit(uint32_t num)
+{
+	uint8_t fndFont[16] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8,
+            0x80, 0x90, 0x88, 0x83, 0xc6, 0xa1, 0x86, 0x8e};
+	GPIO_WritePort(FND_DATA_GPIO, fndFont[num%10]);
+}
+
+
+
+
+int main()
+{
+	int counter = 0;
+	uint16_t ledState = 1;
+
+	LED_Init();
+	FND_Init();
+	while(1)
+	{
+		xil_printf("counter = %d\n", counter++);
+
+//		ledState = (ledState << 1) | (ledState >> 15);	//왼쪽 shift
+		ledState = (ledState >> 1) | (ledState << 15);	//오른쪽 shift
+		LED_WritePort16(ledState);
+//		LED_PinToggle(15);
+//		LED_PinOff(1);
+//		GPIO_WritePort(FND_COM_GPIO, 0x00);
+
+		FND_SelDigit(FND_DIGIT_0);
+		FND_DispDigit(counter%10);
+		usleep(300000);
+	}
+	return 0;
+}
+

@@ -1,0 +1,56 @@
+
+
+#include "interrupt.h"
+#include "../delay/delay.h"
+#include "../../driver/FND/FND.h"
+
+XIntc IntrController;		//handler
+
+void TMR_ISR(void *CallbackRef)
+{
+			FND_Execute();
+			incTick();
+
+}
+void UART_ISR(void *CallbackRef)
+{
+
+	LED_PinToggle(3);
+}
+int SetupInterruptSystem()
+{
+	int status;
+
+	//**변경없음 1.interrupt Controller reset
+	status = XIntc_Initialize(&IntrController, INTC_DEV_ID);		//Interrupt HW 초기화
+	if(status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	// 2-1. TMR_ISR 함수를 interrupt Controller 와 연결	//Timer Interrupt가 걸리면 TMR_ISR로 가겠다
+	status = XIntc_Connect(&IntrController, TMR_VEC_ID,(XInterruptHandler)TMR_ISR, (void *)0);
+	if(status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+	// 2-1. UART_ISR 함수를 interrupt Controller 와 연결 //UART Interrupt가 걸리면 UART_ISR로 가겠다
+	status = XIntc_Connect(&IntrController, UART_VEC_ID,(XInterruptHandler)UART_ISR, (void *)0);
+	if(status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	//**변경없음 3. Interrupt Controller 시작( Hw mode)
+	status = XIntc_Start(&IntrController, XIN_REAL_MODE);
+	if(status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	//4.각각의 Interrupt channel 활성화
+	 XIntc_Enable(&IntrController, TMR_VEC_ID);
+	 XIntc_Enable(&IntrController, UART_VEC_ID);
+
+	//**변경없음 5. Microblaze의 exception 초기화 및 활성화
+	 Xil_ExceptionInit();
+	 Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,(Xil_ExceptionHandler)XIntc_InterruptHandler,&IntrController);
+	 Xil_ExceptionEnable();
+
+	 return XST_SUCCESS;
+}

@@ -76,6 +76,7 @@
       <Filter Type="Srcs"/>
       <File Path="$PPRDIR/../260615_i2c_slave/260615_i2c_slave.srcs/sources_1/new/i2c_slave.sv">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

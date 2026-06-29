@@ -7,3 +7,6 @@ C:/Working/OndeviceAI2/260618_axi_master/260618_axi_master.srcs/sources_1/new/ax
 C:/Working/OndeviceAI2/260618_axi_master/260618_axi_master.srcs/sources_1/new/axi_master_1.sv,1781850927,systemVerilog,,C:/Working/OndeviceAI2/260618_axi_master/260618_axi_master.srcs/sources_1/new/axi_slave.sv,,axi_master1,,uvm,,,,,,
 C:/Working/OndeviceAI2/260618_axi_master/260618_axi_master.srcs/sources_1/new/axi_slave.sv,1781852323,systemVerilog,,C:/Working/OndeviceAI2/260618_axi_master/260618_axi_master.srcs/sim_1/new/tb_axi_master_slave.sv,,axi_slave,,uvm,,,,,,
 C:/Working/OndeviceAI2/260619_axi_master_slave/260619_axi_master_slave.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
+C:/Working/OndeviceAI2/260619_axi_master_slave/260619_axi_master_slave.srcs/sim_1/new/tb_axi_slave.sv,1782103224,systemVerilog,,,,tb_axi_slave,,uvm,,,,,,
+C:/Working/OndeviceAI2/ip_repo/myip_1.0/hdl/myip_v1_0.v,1781854015,verilog,,C:/Working/OndeviceAI2/ip_repo/myip_1.0/hdl/myip_v1_0_S00_AXI.v,,myip_v1_0,,uvm,,,,,,
+C:/Working/OndeviceAI2/ip_repo/myip_1.0/hdl/myip_v1_0_S00_AXI.v,1782096052,verilog,,,,myip_v1_0_S00_AXI,,uvm,,,,,,

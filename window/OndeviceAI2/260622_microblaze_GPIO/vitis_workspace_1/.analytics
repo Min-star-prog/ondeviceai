@@ -1,0 +1,13 @@
+timestamp=[2026-06-22 17:46:24], mode=WORKBENCH_START, duration=0:00:03.936, duration_ms=3936, data={}
+timestamp=[2026-06-22 17:46:25], mode=WORKBENCH_UI_INIT, duration=0:00:00.298, duration_ms=298, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2026-06-22 17:46:27], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:02.034, duration_ms=2034, data={}
+timestamp=[2026-06-22 17:47:10], mode=APP_CREATION, duration=0:00:04.207, duration_ms=4207, data={name=led, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=gpio_test_wrapper_1, application_type=application}
+timestamp=[2026-06-22 17:48:47], mode=PLATFORM_GENERATION, duration=0:00:05.750, duration_ms=5750, data={name=gpio_test_wrapper_1}
+timestamp=[2026-06-22 17:48:49], mode=BUILD, duration=0:00:01.568, duration_ms=1568, data={name=led, configuration=Debug, clean_build=false}
+timestamp=[2026-06-22 17:50:05], mode=BUILD, duration=0:00:00.961, duration_ms=961, data={name=led, configuration=Debug, clean_build=false}
+timestamp=[2026-06-23 10:39:53], mode=WORKBENCH_START, duration=0:00:09.030, duration_ms=9030, data={}
+timestamp=[2026-06-23 10:39:54], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.096, duration_ms=96, data={}
+timestamp=[2026-06-23 10:39:54], mode=WORKBENCH_UI_INIT, duration=0:00:00.805, duration_ms=805, data={editors_count=2, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=true, projects=RemoteSystemsTempFiles,gpio_test_wrapper_1,led,led_system}
+timestamp=[2026-06-23 10:41:50], mode=WORKBENCH_START, duration=0:00:06.360, duration_ms=6360, data={}
+timestamp=[2026-06-23 10:41:50], mode=WORKBENCH_UI_INIT, duration=0:00:00.519, duration_ms=519, data={editors_count=2, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=true, projects=RemoteSystemsTempFiles,gpio_test_wrapper_1,led,led_system}
+timestamp=[2026-06-23 10:41:50], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.035, duration_ms=35, data={}

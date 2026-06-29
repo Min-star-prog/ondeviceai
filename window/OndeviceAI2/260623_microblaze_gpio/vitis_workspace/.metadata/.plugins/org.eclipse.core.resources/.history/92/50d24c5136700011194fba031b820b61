@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="stopwatch" location="C:/Working/OndeviceAI2/260623_microblaze_gpio/vitis_workspace/stopwatch" platform="C:/Working/OndeviceAI2/260623_microblaze_gpio/vitis_workspace/stopwatch_design_wrapper/export/stopwatch_design_wrapper/stopwatch_design_wrapper.xpfm" platformUID="xilinx:basys3::0.0(custom)" systemProject="stopwatch_system" sysConfig="stopwatch_design_wrapper" runtime="cpp" cpu="standalone_microblaze_0" cpuInstance="microblaze_0" os="standalone" mssSignature="4c20ecbced2f46861f84621dbc57fe88">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1069045977">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.934344409" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

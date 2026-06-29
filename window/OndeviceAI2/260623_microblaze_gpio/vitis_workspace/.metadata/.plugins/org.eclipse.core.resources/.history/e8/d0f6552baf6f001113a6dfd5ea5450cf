@@ -1,0 +1,117 @@
+
+#include "FND.h"
+
+uint32_t fndNumber = 0;
+static uint8_t fndDotMask = 0;
+uint32_t dotOn = 0;
+
+void FND_Init()
+{
+	uint32_t fndComTemp = GPIO_GetCR(GPIOB);
+	fndComTemp |= 0x0f;
+	GPIO_SetMode(GPIOB, fndComTemp);
+	GPIO_SetMode(GPIOA, 0xff);
+}
+void FND_SetDotMask(uint8_t dotMask)
+{
+    fndDotMask = dotMask & 0x0f;
+}
+
+
+void FND_SetNum(uint32_t num)
+{
+	fndNumber =num;
+}
+
+void FND_Execute()
+{
+	FND_DispNum(fndNumber);
+}
+void FND_SelDigit(uint32_t digit)
+{
+	uint32_t digitPos;
+
+	digitPos = GPIO_GetODR(FND_COM_GPIO);
+
+	digitPos = (digitPos | 0x0f) & ~(1<<digit);	// 상위 bit는 유지, 하위 bit만 손대겠다.
+
+	GPIO_WritePort(FND_COM_GPIO,  digitPos);
+}
+
+
+void FND_DispDigit(uint32_t num,uint8_t dotOn)
+{
+	uint8_t fndFont[16] = {0xc0, 0xf9, 0xa4, 0xb0, 0x99, 0x92, 0x82, 0xf8,
+			0x80, 0x90, 0x88, 0x83, 0xc6, 0xa1, 0x86, 0x8e};
+	GPIO_WritePort(FND_DATA_GPIO, fndFont[num%10]);
+    uint8_t segData = fndFont[num % 10];
+
+    segData = FND_SetDot(segdata, dotOn);
+
+    GPIO_WritePort(FND_DATA_GPIO, segData);
+}
+
+void FND_DispAllOff()
+{
+	uint32_t digitPos;
+
+	digitPos = GPIO_GetODR(FND_COM_GPIO);
+	digitPos = digitPos | 0x0f;	//-> 1로 만들고
+
+	GPIO_WritePort(FND_COM_GPIO,  digitPos);
+
+}
+void FND_DispNum(uint32_t num)
+{
+	static uint32_t fndDigitState = 0;
+	fndDigitState = (fndDigitState + 1) % 4;
+
+	FND_DispAllOff();//잔상이 남음
+
+	switch (fndDigitState)
+	  {
+	    case 0:
+	        // 오른쪽 끝: 0.1초
+	        FND_DispDigit(num % 10,fndDotMask & (1 << FND_DIGIT_0));
+	        FND_SelDigit(FND_DIGIT_0);
+	        break;
+
+	    case 1:
+	        // 오른쪽에서 두 번째: 초 1의 자리
+	        FND_DispDigit((num / 10) % 10,
+	                      fndDotMask & (1 << FND_DIGIT_1));
+	        FND_SelDigit(FND_DIGIT_1);
+	        break;
+
+	    case 2:
+	        // 오른쪽에서 세 번째: 초 10의 자리
+	        FND_DispDigit((num / 100) % 10,
+	                      fndDotMask & (1 << FND_DIGIT_2));
+	        FND_SelDigit(FND_DIGIT_2);
+	        break;
+
+	    case 3:
+	        // 왼쪽 끝: 분 1의 자리
+	        FND_DispDigit((num / 1000) % 10,
+	                      fndDotMask & (1 << FND_DIGIT_3));
+	        FND_SelDigit(FND_DIGIT_3);
+	        break;
+	    }
+}
+
+
+
+
+uint8_t FND_SetDot(uint8_t segData, uint8_t dotOn)
+{
+    if (dotOn) {
+        // active-low: 0이면 dot ON
+        return (uint8_t)(segData & ~(1 << 7));
+    } else {
+        // active-low: 1이면 dot OFF
+        return (uint8_t)(segData | (1 << 7));
+    }
+}
+
+
+

@@ -1,0 +1,23 @@
+verilog xil_defaultlib --include "../../../../260628_microblaze_timer_i2c.gen/sources_1/bd/design_1/ipshared/d0f7" --include "../../../../260628_microblaze_timer_i2c.gen/sources_1/bd/design_1/ipshared/ec67/hdl" \
+"../../../bd/design_1/ip/design_1_lmb_bram_0/sim/design_1_lmb_bram_0.v" \
+"../../../bd/design_1/ip/design_1_clk_wiz_1_0/design_1_clk_wiz_1_0_clk_wiz.v" \
+"../../../bd/design_1/ip/design_1_clk_wiz_1_0/design_1_clk_wiz_1_0.v" \
+"../../../bd/design_1/ipshared/e16c/hdl/gpio_v1_0_S00_AXI.v" \
+"../../../bd/design_1/ipshared/e16c/hdl/gpio_v1_0.v" \
+"../../../bd/design_1/ip/design_1_gpio_0_0/sim/design_1_gpio_0_0.v" \
+"../../../bd/design_1/ip/design_1_gpio_0_1/sim/design_1_gpio_0_1.v" \
+"../../../bd/design_1/ip/design_1_gpio_0_2/sim/design_1_gpio_0_2.v" \
+"../../../bd/design_1/ip/design_1_gpio_0_3/sim/design_1_gpio_0_3.v" \
+"../../../bd/design_1/ipshared/2df5/hdl/timer_v1_0_S00_AXI.v" \
+"../../../bd/design_1/ipshared/2df5/hdl/timer_v1_0.v" \
+"../../../bd/design_1/ip/design_1_timer_0_0/sim/design_1_timer_0_0.v" \
+"../../../bd/design_1/ipshared/e300/hdl/i2c_v1_0_S00_AXI.v" \
+"../../../bd/design_1/ipshared/e300/hdl/i2c_v1_0.v" \
+"../../../bd/design_1/ip/design_1_i2c_0_0/sim/design_1_i2c_0_0.v" \
+"../../../bd/design_1/ip/design_1_xbar_0/sim/design_1_xbar_0.v" \
+"../../../bd/design_1/ip/design_1_xlconcat_0_0/sim/design_1_xlconcat_0_0.v" \
+"../../../bd/design_1/sim/design_1.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

@@ -1,0 +1,184 @@
+#include "I2C.h"
+#include "../../common/delay/delay.h"
+
+/*
+ * intr in axi_i2c.sv is level-sensitive:
+ * intr = irq_enable_reg && irq_pending_reg.
+ * The pending bit becomes 1 on every master 'done' and stays high until
+ * software writes CR[16]=1. Thus, the interrupt cannot be missed.
+ */
+static volatile uint32_t i2c_done_event = 0U;
+static volatile uint32_t i2c_interrupt_count = 0U;
+
+static void I2C_WriteCR(I2C_TypeDef_t *i2c, uint32_t value)
+{
+    i2c->CR = value;
+}
+
+static void I2C_BeginCommand(I2C_TypeDef_t *i2c)
+{
+    /* Clear the software marker and previous sticky RTL interrupt first. */
+    i2c_done_event = 0U;
+    I2C_ClearInterrupt(i2c);
+}
+
+static I2C_Status_t I2C_WaitCommandDone(I2C_TypeDef_t *i2c,
+                                        uint32_t timeout_ms)
+{
+    uint32_t start_ms = millis();
+
+    while (1) {
+        /* Primary path: I2C_ISR ran after intr asserted. */
+        if (i2c_done_event != 0U) {
+            return I2C_OK;
+        }
+
+        /* Backup path: done_flag is sticky until the next command arrives. */
+        if ((i2c->SR & I2C_SR_DONE_FLAG) != 0U) {
+            I2C_ClearInterrupt(i2c);
+            return I2C_OK;
+        }
+
+        if ((millis() - start_ms) >= timeout_ms) {
+            return I2C_TIMEOUT;
+        }
+
+        delay_us(1U);
+    }
+}
+
+void I2C_ClearInterrupt(I2C_TypeDef_t *i2c)
+{
+    I2C_WriteCR(i2c, I2C_CR_IRQ_CLEAR);
+}
+
+void I2C_Init(I2C_TypeDef_t *i2c)
+{
+    i2c->TDR = 0U;
+    i2c_done_event = 0U;
+    i2c_interrupt_count = 0U;
+
+    /* Reset stale sticky interrupt state. IRQ remains disabled at reset. */
+    I2C_ClearInterrupt(i2c);
+}
+
+void I2C_EnableInterrupt(I2C_TypeDef_t *i2c)
+{
+    I2C_ClearInterrupt(i2c);
+    I2C_WriteCR(i2c, I2C_CR_IRQ_ENABLE_SET);
+}
+
+void I2C_DisableInterrupt(I2C_TypeDef_t *i2c)
+{
+    I2C_WriteCR(i2c, I2C_CR_IRQ_ENABLE_CLR);
+    I2C_ClearInterrupt(i2c);
+}
+
+void I2C_InterruptHandler(void *CallbackRef)
+{
+    I2C_TypeDef_t *i2c = (I2C_TypeDef_t *)CallbackRef;
+
+    if (i2c == 0) {
+        return;
+    }
+
+    /* Keep ISR short: no LCD command or delay may be issued here. */
+    i2c_done_event = 1U;
+    i2c_interrupt_count++;
+    I2C_ClearInterrupt(i2c);
+}
+
+uint32_t I2C_GetInterruptCount(void)
+{
+    return i2c_interrupt_count;
+}
+
+I2C_Status_t I2C_BusWaitIdle(I2C_TypeDef_t *i2c, uint32_t timeout_ms)
+{
+    uint32_t start_ms = millis();
+
+    while ((i2c->SR & I2C_SR_BUSY) != 0U) {
+        if ((millis() - start_ms) >= timeout_ms) {
+            return I2C_TIMEOUT;
+        }
+        delay_us(1U);
+    }
+
+    return I2C_OK;
+}
+
+I2C_Status_t I2C_Start(I2C_TypeDef_t *i2c)
+{
+    I2C_Status_t status;
+
+    status = I2C_BusWaitIdle(i2c, I2C_WAIT_TIMEOUT_MS);
+    if (status != I2C_OK) {
+        return I2C_BUS_BUSY;
+    }
+
+    I2C_BeginCommand(i2c);
+    I2C_WriteCR(i2c, I2C_CR_START);
+
+    return I2C_WaitCommandDone(i2c, I2C_WAIT_TIMEOUT_MS);
+}
+
+I2C_Status_t I2C_WriteByte(I2C_TypeDef_t *i2c, uint8_t data)
+{
+    I2C_Status_t status;
+
+    i2c->TDR = (uint32_t)data;
+
+    I2C_BeginCommand(i2c);
+    I2C_WriteCR(i2c, I2C_CR_WRITE);
+
+    status = I2C_WaitCommandDone(i2c, I2C_WAIT_TIMEOUT_MS);
+    if (status != I2C_OK) {
+        return status;
+    }
+
+    return ((i2c->SR & I2C_SR_ACK_OUT) != 0U) ? I2C_NACK : I2C_OK;
+}
+
+I2C_Status_t I2C_ReadByte(I2C_TypeDef_t *i2c,
+                          uint8_t *data,
+                          uint8_t nack_after_read)
+{
+    I2C_Status_t status;
+    uint32_t command = I2C_CR_READ;
+
+    if (data == 0) {
+        return I2C_BAD_ARG;
+    }
+
+    /* RTL samples ack_in when it accepts cmd_read in WAIT_CMD. */
+    if (nack_after_read != 0U) {
+        command |= I2C_CR_ACK_IN;
+    }
+
+    I2C_BeginCommand(i2c);
+    I2C_WriteCR(i2c, command);
+
+    status = I2C_WaitCommandDone(i2c, I2C_WAIT_TIMEOUT_MS);
+    if (status != I2C_OK) {
+        return status;
+    }
+
+    /* A read from RDR also clears the RTL rx_valid_flag. */
+    *data = (uint8_t)(i2c->RDR & 0xFFU);
+    return I2C_OK;
+}
+
+I2C_Status_t I2C_Stop(I2C_TypeDef_t *i2c)
+{
+    I2C_Status_t status;
+
+    I2C_BeginCommand(i2c);
+    I2C_WriteCR(i2c, I2C_CR_STOP);
+
+    status = I2C_WaitCommandDone(i2c, I2C_WAIT_TIMEOUT_MS);
+    if (status != I2C_OK) {
+        return status;
+    }
+
+    return I2C_BusWaitIdle(i2c, I2C_WAIT_TIMEOUT_MS);
+}

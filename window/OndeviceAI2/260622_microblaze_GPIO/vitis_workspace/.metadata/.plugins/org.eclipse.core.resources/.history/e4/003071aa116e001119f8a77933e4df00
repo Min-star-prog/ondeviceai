@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "xparameters.h"
+#include "xil_io.h"
+#include "sleep.h"
+#include <stdint.h>
+
+/* GPIOA */
+#define GPIOA_BASEADDR  XPAR_GPIO_0_S00_AXI_BASEADDR
+#define GPIOA_CR        (GPIOA_BASEADDR + 0x00)
+#define GPIOA_IDR       (GPIOA_BASEADDR + 0x04)
+#define GPIOA_ODR       (GPIOA_BASEADDR + 0x08)
+
+/* GPIOB
+ * xparameters.h에서 실제 이름을 확인해야 함.
+ * 보통 GPIO_1 인스턴스면 아래처럼 생성됨.
+ */
+#define GPIOB_BASEADDR  XPAR_GPIO_1_S00_AXI_BASEADDR
+#define GPIOB_CR        (GPIOB_BASEADDR + 0x00)
+#define GPIOB_IDR       (GPIOB_BASEADDR + 0x04)
+#define GPIOB_ODR       (GPIOB_BASEADDR + 0x08)
+
+int main()
+{
+    uint32_t led_data = 0x0001;
+    int direction = 1;   // 1: left shift, -1: right shift
+
+    init_platform();
+
+    xil_printf("GPIOA / GPIOB LED Shift Test Start\r\n");
+
+    /*
+     * 현재 만든 GPIO RTL 기준:
+     * CR bit = 1 이면 output이라고 가정
+     *
+     * GPIOA[15:0], GPIOB[15:0] 모두 output 설정
+     */
+    Xil_Out32(GPIOA_CR, 0x0000FFFF);
+    Xil_Out32(GPIOB_CR, 0x0000FFFF);
+
+    while (1) {
+        /*
+         * GPIOA, GPIOB에 같은 LED 패턴 출력
+         * 둘 다 LED에 연결되어 있다면 같이 이동함.
+         */
+        Xil_Out32(GPIOA_ODR, led_data);
+        Xil_Out32(GPIOB_ODR, led_data);
+
+        usleep(150000);
+
+        /* LED[15]까지 도달하면 오른쪽으로 이동 */
+        if (led_data == 0x8000) {
+            direction = -1;
+        }
+        /* LED[0]까지 도달하면 다시 왼쪽으로 이동 */
+        else if (led_data == 0x0001) {
+            direction = 1;
+        }
+
+        if (direction == 1) {
+            led_data = led_data << 1;
+        }
+        else {
+            led_data = led_data >> 1;
+        }
+    }
+
+    cleanup_platform();
+    return 0;
+}

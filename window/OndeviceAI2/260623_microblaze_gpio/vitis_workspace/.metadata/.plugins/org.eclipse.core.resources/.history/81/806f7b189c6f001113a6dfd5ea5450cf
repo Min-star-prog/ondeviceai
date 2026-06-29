@@ -1,0 +1,83 @@
+/*
+ * StopWatch.c
+ *
+ *  Created on: 2026. 6. 24.
+ *      Author: kccistc
+ */
+
+
+#include "StopWatch.h"
+StopWatch_e StopWatchState;
+uint32_t counter;
+uint8_t ledState;
+void StopWatch_Init()
+{
+
+	LED_Init();
+	FND_Init();
+	Button_Init();
+	StopWatchState = STOP;
+	counter =0;
+	ledState = 0x01;   // LED[0]부터 시작
+}
+
+
+void StopWatch_Execute()
+{
+	StopWatch_RunTime();
+	StopWatch_ControlState();
+	FND_SetNum(counter);
+}
+
+void StopWatch_ControlState()
+{
+	switch (StopWatchState)	{
+	case STOP:
+		if(Button_GetState(&hbtnRunStop) == ACT_PUSHED)
+		{
+			StopWatchState = RUN;
+		}
+		else if(Button_GetState(&hbtnClear) == ACT_PUSHED)
+		{
+			StopWatchState = CLEAR;
+		}
+		break;
+	case RUN:
+		if(Button_GetState(&hbtnRunStop) == ACT_PUSHED)
+		{
+			StopWatchState = STOP;
+		}
+		break;
+	case CLEAR:
+			StopWatchState = STOP;
+			counter =0;
+			ledState = 0x01;
+		break;
+	default:
+			StopWatchState = STOP;
+		break;
+	}
+
+}
+
+
+void StopWatch_RunTime()
+{
+	static uint32_t prevTime = 0;
+	uint32_t curTime = millis();
+	if(curTime - prevTime <100) return;
+	prevTime = curTime;
+
+	if(StopWatchState == RUN)	{
+		counter++;
+		LED_WritePort8(GPIOC, ledState);
+		ledState = (ledState << 1) | (ledState >> 7);	//왼쪽 shift
+
+	}
+}
+
+
+
+
+
+

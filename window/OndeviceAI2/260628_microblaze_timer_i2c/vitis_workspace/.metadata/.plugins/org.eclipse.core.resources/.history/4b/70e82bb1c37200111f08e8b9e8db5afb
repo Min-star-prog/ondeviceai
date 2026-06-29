@@ -1,0 +1,24 @@
+#ifndef SRC_DRIVER_LCD_I2C_LCD_I2C_H_
+#define SRC_DRIVER_LCD_I2C_LCD_I2C_H_
+
+#include <stdint.h>
+#include "../../HAL/I2C/I2C.h"
+
+/* Typical PCF8574 address. Change to 0x3F when your LCD backpack uses 0x3F. */
+#ifndef LCD_I2C_ADDR
+#define LCD_I2C_ADDR 0x27U
+#endif
+
+void LCD_I2C_Init(I2C_TypeDef_t *i2c);
+I2C_Status_t LCD_Init(void);
+I2C_Status_t LCD_Clear(void);
+I2C_Status_t LCD_SetCursor(uint8_t row, uint8_t column);
+I2C_Status_t LCD_Print(const char *text);
+I2C_Status_t LCD_WriteLine(uint8_t row, const char *text);
+I2C_Status_t LCD_ShowStopWatch(uint8_t hour,
+                               uint8_t min,
+                               uint8_t sec,
+                               uint8_t centisecond,
+                               uint8_t is_running);
+
+#endif /* SRC_DRIVER_LCD_I2C_LCD_I2C_H_ */

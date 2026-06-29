@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "xparameters.h"
+#include "xil_io.h"
+#include "sleep.h"
+#include <stdint.h>
+
+#define GPIOA_BASEADDR  XPAR_GPIO_0_S00_AXI_BASEADDR
+
+#define GPIOA_CR_OFFSET   0x00
+#define GPIOA_IDR_OFFSET  0x04
+#define GPIOA_ODR_OFFSET  0x08
+
+#define GPIOA_CR   (GPIOA_BASEADDR + GPIOA_CR_OFFSET)
+#define GPIOA_IDR  (GPIOA_BASEADDR + GPIOA_IDR_OFFSET)
+#define GPIOA_ODR  (GPIOA_BASEADDR + GPIOA_ODR_OFFSET)
+
+int main()
+{
+    uint16_t led_data = 0x0001;   // LED[0], 맨 오른쪽 LED부터 시작
+    int direction = 1;            // 1: left shift, -1: right shift
+
+    init_platform();
+
+    xil_printf("GPIO LED Shift Test Start\r\n");
+
+    // GPIO[15:0] 모두 Output 설정
+    // 현재 GPIO RTL에서 CR=1이 output 설정이라는 기준
+    Xil_Out32(GPIOA_CR, 0x0000FFFF);
+
+    while (1) {
+        // 현재 LED 상태 출력
+        Xil_Out32(GPIOA_ODR, led_data);
+
+        // LED 이동 속도
+        usleep(150000);   // 0.15초
+
+        // 맨 왼쪽 LED[15]까지 도달했으면 오른쪽 이동으로 전환
+        if (led_data == 0x8000) {
+            direction = -1;
+        }
+        // 맨 오른쪽 LED[0]까지 도달했으면 왼쪽 이동으로 전환
+        else if (led_data == 0x0001) {
+            direction = 1;
+        }
+
+        // LED[0]이 오른쪽이고 LED[15]가 왼쪽이라는 기준
+        if (direction == 1) {
+            led_data = led_data << 1;   // 왼쪽 이동
+        }
+        else {
+            led_data = led_data >> 1;   // 오른쪽 이동
+        }
+    }
+
+    cleanup_platform();
+    return 0;
+}

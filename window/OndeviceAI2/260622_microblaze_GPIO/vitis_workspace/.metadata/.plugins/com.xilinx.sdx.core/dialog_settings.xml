@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="sdx.custom.platform.repository.locations" value="C:\Working\OndeviceAI2\260622_microblaze_GPIO\vitis_workspace\gpio_test_wrapper_1\export\gpio_test_wrapper_1;C:\Working\OndeviceAI2\260622_microblaze_GPIO\vitis_workspace\led_1\export\led_1;C:\Working\OndeviceAI2\260622_microblaze_GPIO\vitis_workspace\gpio_test_wrapper\export\gpio_test_wrapper"/>
+</section>
