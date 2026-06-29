@@ -1,0 +1,123 @@
+Magic 271485
+Revision Verdi_X-2025.06-1
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 11 2560 1166 543 63
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+individualSetFormt -File /home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb -BIN /tb_top/dut/s00_axi_rdata[31:0]
+individualSetFormt -File /home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb -BIN /tb_top/dut/u_i2c_master/rx_data[7:0]
+individualSetFormt -File /home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb -BIN /tb_top/dut/s00_axi_araddr[3:0]
+individualSetFormt -File /home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb -BIN /tb_top/dut/u_i2c_master/tx_data[7:0]
+individualSetFormt -File /home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb -BIN /tb_top/dut/s00_axi_awaddr[3:0]
+individualSetFormt -File /home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb -BIN /tb_top/dut/s00_axi_wdata[31:0]
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 67397828736.791161 67983621333.080223
+cursor 67460235000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 17
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb"
+addSignal -h 16 /tb_top/dut/s00_axi_aclk
+addSignal -h 16 -holdScope s00_axi_aresetn
+addSignal -h 16 -UNSIGNED -HEX /tb_top/dut/u_i2c_master/u_i2c_master/state[2:0]
+addSignal -h 16 -holdScope scl_r
+addSignal -h 16 -holdScope sda_r
+addSignal -h 16 -holdScope busy
+addSignal -h 16 -holdScope done
+addSignal -h 16 -UNSIGNED -BIN /tb_top/dut/s00_axi_awaddr[3:0]
+addSignal -h 16 -holdScope s00_axi_awvalid
+addSignal -h 16 -holdScope s00_axi_awready
+addSignal -h 16 -UNSIGNED -BIN -holdScope s00_axi_wdata[31:0]
+addSignal -h 16 -holdScope s00_axi_wvalid
+addSignal -h 16 -holdScope s00_axi_wready
+addSignal -h 16 -UNSIGNED -HEX -holdScope s00_axi_bresp[1:0]
+addSignal -h 16 -holdScope s00_axi_bvalid
+addSignal -h 16 -holdScope s00_axi_bready
+addGroup "read"
+addSignal -h 16 -UNSIGNED -HEX /tb_top/dut/u_i2c_master/u_i2c_master/bit_cnt[2:0]
+addSignal -h 16 -holdScope is_read
+addSignal -h 16 /tb_top/dut/scl
+addSignal -h 16 -holdScope sda
+addSignal -h 16 /tb_top/dut/u_i2c_master/cmd_start
+addSignal -h 16 -holdScope cmd_write
+addSignal -h 16 -holdScope cmd_read
+addSignal -h 16 -holdScope cmd_stop
+addSignal -h 16 -UNSIGNED -BIN -holdScope tx_data[7:0]
+addSignal -h 16 -UNSIGNED -BIN -holdScope rx_data[7:0]
+addSignal -h 16 -holdScope ack_in
+addSignal -h 16 -holdScope ack_out
+addSignal -h 16 -holdScope busy
+addSignal -h 16 -holdScope done
+addSignal -h 16 /tb_top/dut/i2c_v1_0_S00_AXI_inst/intr
+addSignal -h 16 -holdScope done_flag
+addSignal -h 16 -holdScope rx_valid_flag
+addSignal -h 16 -holdScope done
+addSignal -h 16 -UNSIGNED -BIN /tb_top/dut/s00_axi_araddr[3:0]
+addSignal -h 16 -holdScope s00_axi_arvalid
+addSignal -h 16 -holdScope s00_axi_arready
+addSignal -h 16 -UNSIGNED -BIN -holdScope s00_axi_rdata[31:0]
+addSignal -h 16 -holdScope s00_axi_rvalid
+addSignal -h 16 -holdScope s00_axi_rready
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/tb_top"
+"/tb_top/dut"
+"/tb_top/dut/i2c_v1_0_S00_AXI_inst"
+"/tb_top/dut/u_i2c_master"
+"/tb_top/dut/u_i2c_master/u_i2c_master"
+
+SCOPE_LIST_BEGIN
+"/tb_top"
+"/tb_top/dut"
+"/tb_top/dut/u_i2c_master/u_i2c_master"
+"/tb_top/dut/u_i2c_master"
+"/tb_top/dut/i2c_v1_0_S00_AXI_inst"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

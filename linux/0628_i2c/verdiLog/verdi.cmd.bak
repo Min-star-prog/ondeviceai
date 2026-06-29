@@ -1,0 +1,30 @@
+simSetSimulator "-vcssv" -exec "./simv" -args
+debImport "-dbdir" "./simv.daidir"
+wvCreateWindow
+wvConvertFile -win $_nWave2 -o \
+           "/home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb" \
+           "/home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd"
+wvSetPosition -win $_nWave2 {("G1" 0)}
+wvOpenFile -win $_nWave2 \
+           {/home/pedu24/workspace_mini/linux/0628_i2c/i2c_axi_no_slave_uvm.vcd.fsdb}
+wvSetPosition -win $_nWave2 {("G1" 0)}
+nMemSetPreference
+srcSetDisplayAttr -font {-fromGUI}
+srcSetDisplayAttr -annotFont {DejaVu Sans Mono 9}
+srcSetDisplayAttr {Background} -color {ID_WHITE}
+srcSetPreference -treeBgColor "ID_WHITE"
+srcSetSignalPaneAttr -bgColor ID_WHITE
+fsmSetDisplayAttr "Background" -fillColor ID_WHITE
+schResetDisplayAttr -default
+verdiSetActWin -win $_nWave2
+verdiWindowResize -win $_Verdi_1 "1265" "362" "1250" "800"
+verdiSetActWin -dock widgetDock_MTB_SOURCE_TAB_1
+srcDrag -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDrag -win $_nTrace1
+verdiInvokeApp -vdCov
+wvSetCursor -win $_nWave2 3141846678.033551
+verdiSetActWin -dock widgetDock_<Inst._Tree>
+wvSaveSignal -win $_nWave2 \
+           "/home/pedu24/workspace_mini/linux/0628_i2c/verdiLog/novas_autosave.ses.wave.0"
+debExit
