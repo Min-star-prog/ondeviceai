@@ -1,0 +1,26 @@
+PROJECT INTEGRATION CHECKLIST
+=============================
+
+1. Keep these existing project files/settings:
+   - linker script used by the class project
+   - compiler target: Cortex-M4 / STM32F411xE
+   - crt0.s startup entry
+
+2. Add/replace all .c/.h/.s files from this folder.
+
+3. Do not add a second startup file. There must be only one vector table.
+
+4. Required startup-to-C symbol matches:
+   crt0.s symbol                 C definition
+   ------------------------------------------------
+   Main                          main.c
+   _Invalid_ISR                  exception.c
+   TIM4_IRQHandler              exception.c
+   EXTI15_10_IRQHandler         exception.c
+
+5. Gate must be physically closed at reset because there is no limit switch.
+
+6. HC-SR04 ECHO must pass through a 5 V to 3.3 V divider before PA0.
+
+7. If using the Nucleo 5 V pin for the motor during testing, keep
+   MOTOR_HOLD_WHEN_STOPPED = 0 and watch for resets or motor stalling.
