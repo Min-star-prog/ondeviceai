@@ -4,6 +4,18 @@
 #include "integration/trace.h"
 #include "record_replay/motion_record_replay.h"
 #include "integration/cnn_app.h"
+#ifdef ROBOT_UART_POSE_INPUT
+#include "integration/uart_pose_app.h"
+#define pose_app_init uart_pose_app_init
+#define pose_app_service uart_pose_app_service
+#define pose_app_take_control_event uart_pose_app_take_control_event
+#define pose_app_report_control_result uart_pose_app_report_control_result
+#else
+#define pose_app_init cnn_app_init
+#define pose_app_service cnn_app_service
+#define pose_app_take_control_event cnn_app_take_control_event
+#define pose_app_report_control_result cnn_app_report_control_result
+#endif
 
 static void handle_record_or_play_event(MotionRecordReplay *record_replay,
                                        AgentPipelineContext *pipeline,
@@ -41,12 +53,12 @@ int main(void)
         return -1;
     }
     TRACE_INIT(); /* [TRACE] 컬럼 정의(# 줄)와 BOOT 이벤트 */
-    if (cnn_app_init() != 0) return -1;
+    if (pose_app_init() != 0) return -1;
 
     for (;;) {
         /* 1. CNN 완료 결과 처리 + UART R/P에 따른 녹화/재생 모드 전환. */
-        cnn_app_service();
-        if (cnn_app_take_control_event(&control_event)) {
+        pose_app_service();
+        if (pose_app_take_control_event(&control_event)) {
             handle_record_or_play_event(&record_replay, &pipeline, control_event);
         }
 
@@ -96,7 +108,7 @@ static void handle_record_or_play_event(MotionRecordReplay *record_replay,
         accepted = motion_record_replay_on_play_button_pulse(
             record_replay, pipeline, platform_tick_overrun_count());
     }
-    cnn_app_report_control_result(
+    pose_app_report_control_result(
         event, accepted,
         motion_record_replay_mode_name(motion_record_replay_mode(record_replay)),
         motion_record_replay_reason_name(motion_record_replay_reason(record_replay)),

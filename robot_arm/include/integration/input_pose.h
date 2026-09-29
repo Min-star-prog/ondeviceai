@@ -23,4 +23,7 @@ int input_pose_ready(void);
  */
 int input_pose_take(HumanPose2D *pose, float *dt_sec);
 
+/* UART mode publishes a decoded packet through the same one-frame mailbox. */
+int input_pose_uart_publish(const HumanPose2D *pose);
+
 #endif /* INTEGRATION_INPUT_POSE_H */

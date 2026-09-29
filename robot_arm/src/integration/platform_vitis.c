@@ -167,6 +167,15 @@ void platform_uart_service(void)
     }
 }
 
+int platform_uart_read_byte(void)
+{
+    UINTPTR base;
+    if (!s_uart_ready) return -1;
+    base = s_uart.Config.BaseAddress;
+    if (!XUartPs_IsReceiveData(base)) return -1;
+    return (int)(uint8_t)XUartPs_ReadReg(base, XUARTPS_FIFO_OFFSET);
+}
+
 void platform_uart_set_output_enabled(int enabled)
 {
     s_uart_output_enabled = enabled ? 1 : 0;

@@ -1,3 +1,4 @@
+#ifndef ROBOT_UART_POSE_INPUT
 #include "integration/input_pose.h"
 #include "input_pose_cnn.h"
 
@@ -100,3 +101,6 @@ unsigned input_pose_cnn_overwritten(void)
 {
     return s_overwritten;
 }
+#else
+typedef char input_pose_cnn_excluded_in_uart_mode;
+#endif /* !ROBOT_UART_POSE_INPUT */

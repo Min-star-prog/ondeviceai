@@ -17,6 +17,8 @@
 
   사용 예 (기본 XSA는 CNN + camera/robot PWM 통합 하드웨어):
     powershell -ExecutionPolicy Bypass -File robot_arm\vitis\setup_vitis.ps1 -Workspace D:\vws
+  UART 좌표 입력 + 동작 녹화 시험:
+    powershell -ExecutionPolicy Bypass -File robot_arm\vitis\setup_vitis.ps1 -Workspace D:\vws_uart -UartPoseInput
 #>
 param(
     [Parameter(Mandatory = $true)][string]$Workspace,
@@ -24,7 +26,9 @@ param(
     [string]$RepoRoot,                   # 기본값: 이 스크립트의 상위 폴더(robot_arm)
     [string]$VitisBin = "C:\Xilinx\Vitis\2020.2\bin",
     [string]$PlatformName = "cnn_camera_gimbal",
-    [string]$AppName = "robot_testbench"
+    [string]$AppName = "robot_testbench",
+    [switch]$UartPoseInput,
+    [switch]$EnableRobotPwm
 )
 
 $ErrorActionPreference = "Stop"
@@ -75,6 +79,8 @@ function Run-Xsct([string]$tclText, [string]$name) {
 }
 
 $ws = ToTcl $Workspace; $repo = ToTcl $RepoRoot; $xsaT = ToTcl $Xsa
+$uartPoseDefine = if ($UartPoseInput) { "app config -name $AppName -add define-compiler-symbols ROBOT_UART_POSE_INPUT" } else { "" }
+$robotPwmDefine = if ($EnableRobotPwm) { "app config -name $AppName -add define-compiler-symbols ROBOT_ARM_PWM_ENABLE" } else { "" }
 
 # ---- 1단계: 플랫폼 + 앱 + 링크 + 설정 ----
 Write-Host "1/3 플랫폼 생성(BSP 빌드 포함, 몇 분 걸림), 앱 생성, 링크, 설정"
@@ -92,6 +98,8 @@ app config -name $AppName -add include-path $repo/config
 app config -name $AppName -add include-path $repo/src/cnn_firmware
 app config -name $AppName -add define-compiler-symbols SERVO_PWM_DRIVER_USE_XILINX
 app config -name $AppName -add define-compiler-symbols ROBOT_TRACE
+$uartPoseDefine
+$robotPwmDefine
 app config -name $AppName -add libraries m
 puts "include-path: [app config -name $AppName include-path]"
 puts "symbols: [app config -name $AppName define-compiler-symbols]"
@@ -104,7 +112,9 @@ Write-Host "2/3 빌드 제외 파일 등록"
 $cp = Join-Path (Join-Path $Workspace $AppName) ".cproject"
 $txt = [IO.File]::ReadAllText($cp)
 if (([regex]::Matches($txt, 'excluding="_ide"')).Count -ne 2) { throw ".cproject 형식이 예상과 다릅니다(excluding=""_ide"" 2개 필요)" }
-$txt = $txt.Replace('excluding="_ide"', 'excluding="_ide|src/main.c|src/app/main_uart_agent1_test.c|src/human_target_angle/main_integration_shape.c"')
+$excluded = '_ide|src/main.c|src/app/main_uart_agent1_test.c|src/human_target_angle/main_integration_shape.c'
+if ($UartPoseInput) { $excluded += '|src/cnn_firmware' }
+$txt = $txt.Replace('excluding="_ide"', "excluding=`"$excluded`"")
 [IO.File]::WriteAllText($cp, $txt, (New-Object Text.UTF8Encoding($false)))
 Write-Host "  [OK] .cproject 제외 항목 추가"
 

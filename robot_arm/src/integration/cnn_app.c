@@ -1,3 +1,4 @@
+#ifndef ROBOT_UART_POSE_INPUT
 /*
  * Zybo Z7-20 camera, HDMI, CNN, and keypoint-overlay application.
  * Camera format: OV5640 RAW10, 1280x720 at 60 Hz over MIPI CSI-2.
@@ -553,3 +554,6 @@ void cnn_app_service(void)
     camera_tracking_app_service(&camera_tracker);
     cnn_continuous_step();
 }
+#else
+typedef char cnn_app_excluded_in_uart_mode;
+#endif /* !ROBOT_UART_POSE_INPUT */

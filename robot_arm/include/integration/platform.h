@@ -25,6 +25,8 @@ int platform_init(void);
 int platform_tick_due(void);
 /* Drain shared CNN-console and ROBOT_TRACE output without waiting for UART. */
 void platform_uart_service(void);
+/* Return one received UART byte, or -1 when the RX FIFO is empty. */
+int platform_uart_read_byte(void);
 
 /* 시작 이후 버린 20 ms tick의 누적 개수. RECORD/PLAY는 값이 변하면
  * fixed 50 Hz 시간축을 복구할 수 없으므로 현재 동작을 중단한다. */
