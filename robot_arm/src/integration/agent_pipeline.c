@@ -71,11 +71,14 @@ static int home_is_safe(void)
     return forearm_safety_check_apply(&k_home_pose, NULL);
 }
 
-int agent_pipeline_init(AgentPipelineContext *ctx)
+int agent_pipeline_init_mode(AgentPipelineContext *ctx, int enable_robot_pwm)
 {
+    ServoPwmCommand pwm;
+
     if (ctx == NULL) return -1;
 
     memset(ctx, 0, sizeof(*ctx));
+    ctx->output_enabled = enable_robot_pwm ? 1U : 0U;
 
     if (agent1_forearm_stage_init() != 0) return -1;
     forearm_motion_control_unwrap_state_init(&ctx->unwrap);
@@ -93,11 +96,26 @@ int agent_pipeline_init(AgentPipelineContext *ctx)
     forearm_calibration_step(&ctx->motion, &ctx->output);
 
     /* 홈 shadow 쓰기 + UPDATE 후 enable 순서로 부팅 직후 서보가 튀지 않게 한다. */
-    if (!output_control_update(&ctx->output, &ctx->pwm)) return -1;
-    if (!servo_hal_apply(&ctx->pwm)) return -1;
-    if (!servo_hal_enable()) return -1;
+    if (!output_control_update(&ctx->output, &pwm)) return -1;
+    ctx->pwm = pwm;
+    ctx->agent3_command = ctx->output;
+    ctx->agent3_command_valid = 1U;
+    ctx->agent3_command_tick = ctx->ticks;
+    if (ctx->output_enabled) {
+        if (!servo_hal_apply(&pwm)) return -1;
+        ctx->applied_command = ctx->output;
+        ctx->applied_command_valid = 1U;
+        if (!servo_hal_enable()) return -1;
+    } else {
+        if (!servo_hal_disable()) return -1;
+    }
 
     return 0;
+}
+
+int agent_pipeline_init(AgentPipelineContext *ctx)
+{
+    return agent_pipeline_init_mode(ctx, 1);
 }
 
 int agent1_run(AgentPipelineContext *ctx, const HumanPose2D *pose, float dt_sec)
@@ -130,6 +148,7 @@ int agent1_run(AgentPipelineContext *ctx, const HumanPose2D *pose, float dt_sec)
 int agent2_run(AgentPipelineContext *ctx)
 {
     ForearmJointCommand command;
+    int elbow_roll_reachable;
 
     if (ctx != NULL) {
         TRACE_SET_A2_RESULT(ctx, A2_RESULT_NONE); /* [TRACE] 이번 프레임의 결과를 먼저 "없음"으로 둔다. */
@@ -143,20 +162,38 @@ int agent2_run(AgentPipelineContext *ctx)
         return 0;
     }
     forearm_motion_control_unwrap_target(&ctx->unwrap, &ctx->target);
+    elbow_roll_reachable = forearm_motion_control_elbow_roll_reachable(ctx->target.elbow_roll_deg);
 
-    /* With no reconstructed wrist angle yet, keep the robot's current wrist
-     * position and gripper while allowing measured elbow angles to move.
-     * Check the resulting mixed pose, rather than an arbitrary wrist zero. */
+    forearm_motion_control_map_target(&ctx->target, &command);
+    forearm_motion_control_apply_limits(&command);
+
+    /* A wrapped direction outside the finite elbow-roll travel is not an
+     * endpoint target. Keep the last approved target (or boot position),
+     * while allowing the other joints to follow if the mixed pose is safe. */
+    if (!elbow_roll_reachable) {
+        command.elbow_roll_deg = ctx->command_valid ? ctx->command.elbow_roll_deg
+                                                    : ctx->output.elbow_roll_deg;
+    }
+
+    if (ctx->target.wrist_valid) {
+        if (!forearm_motion_control_wrist_pitch_reachable(ctx->target.wrist_pitch_deg)) {
+            command.wrist_pitch_deg = ctx->command_valid ? ctx->command.wrist_pitch_deg
+                                                        : ctx->output.wrist_pitch_deg;
+        }
+        if (!forearm_motion_control_wrist_roll_reachable(ctx->target.wrist_roll_deg)) {
+            command.wrist_roll_deg = ctx->command_valid ? ctx->command.wrist_roll_deg
+                                                       : ctx->output.wrist_roll_deg;
+        }
+    }
+
+    /* Without a reconstructed wrist angle, hold the current wrist and grip.
+     * Safety is checked on the final mixed command in either case. */
     if (!ctx->target.wrist_valid) {
-        forearm_motion_control_map_target(&ctx->target, &command);
-        forearm_motion_control_apply_limits(&command);
         command.wrist_pitch_deg = ctx->output.wrist_pitch_deg;
         command.wrist_roll_deg = ctx->output.wrist_roll_deg;
         command.gripper_norm = ctx->output.gripper_norm;
-        command.valid = forearm_safety_check_apply(&command, NULL) ? 1U : 0U;
-    } else {
-        command.valid = forearm_calibration_apply(&ctx->target, &command) ? 1U : 0U;
     }
+    command.valid = forearm_safety_check_apply(&command, NULL) ? 1U : 0U;
     /* 무효/위험이면 폐기하고 마지막으로 승인한 목표를 계속 유지한다. */
     if (!command.valid) {
         ctx->commands_rejected++;
@@ -202,18 +239,44 @@ int agent2_tick(AgentPipelineContext *ctx)
 
 int agent3_run(AgentPipelineContext *ctx)
 {
-    if (ctx == NULL || !ctx->output.valid) return 0;
+    if (ctx == NULL) return 0;
+    return agent3_apply_command(ctx, &ctx->output);
+}
 
-    /* 변환에 실패하면 pwm은 갱신되지 않으므로 레지스터에 쓰지 않는다. */
-    if (!output_control_update(&ctx->output, &ctx->pwm)) {
+int agent3_apply_command(AgentPipelineContext *ctx,
+                         const ForearmJointCommand *command)
+{
+    ServoPwmCommand pwm;
+
+    if (ctx == NULL || command == NULL || !command->valid) return 0;
+    ctx->agent3_command = *command;
+    ctx->agent3_command_valid = 1U;
+    ctx->agent3_command_tick = ctx->ticks;
+
+    /* PWM-disabled에서는 변환값을 trace용으로 보존한다. PWM-enabled에서는
+     * HAL 실패 시 마지막 실제 적용 PWM을 보존하고 성공 후에만 commit한다. */
+    if (!output_control_update(command, &pwm)) {
         ctx->servo_errors++;
         return 0;
     }
-    if (!servo_hal_apply(&ctx->pwm)) {
+    if (!ctx->output_enabled) {
+        ctx->pwm = pwm;
+        return 1;
+    }
+    if (!servo_hal_apply(&pwm)) {
         ctx->servo_errors++;
         return 0;
     }
 
+    ctx->pwm = pwm;
+    ctx->applied_command = *command;
+    ctx->applied_command_valid = 1U;
     ctx->servo_writes++;
     return 1;
+}
+
+int agent3_command_is_current_tick(const AgentPipelineContext *ctx)
+{
+    return ctx != NULL && ctx->agent3_command_valid != 0U &&
+           ctx->agent3_command_tick == ctx->ticks;
 }

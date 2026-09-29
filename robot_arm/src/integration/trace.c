@@ -10,7 +10,7 @@
  *
  *   A1  agent1_run 직후(프레임마다)  fid,t_ms,dur_us,dt_ms,pv,vm,rc,ov,er,ep,wp,wr,grip
  *   P3  A1 바로 뒤(Agent1 내부)      fid,pm,fl,age_ms, 6점 x,y,z (sl, sr, e, w, f1, f2)
- *   A2  agent2_run 직후              fid,t_ms,dur_us,st,fg, 타겟(unwrap 후) 4개, 매핑된 명령 5개
+ *   A2  agent2_run 직후              fid,t_ms,dur_us,st,fg, 타겟(대표각 정규화 후) 4개, 매핑된 명령 5개
  *   TK  제어 틱마다                  tick,t_ms,dur_us, 출력 5개, PWM 5개, rem,w,er
  *   SM  1초마다                      t_ms,fr,tv,acc,rej,rt,tk,sw,se,ovr,crc,fmt,rng,ow,drop,hi
  *   EV  상태가 바뀔 때만             t_ms,code,arg
@@ -27,6 +27,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "human_target_angle/agent1_forearm_stage.h"
 #include "robot_calibration/forearm_safety_check.h"
@@ -51,6 +52,11 @@ static const char *const k_schema[] = {
     "#TK,tick,t_ms,dur_us,er,ep,wp,wr,g,per,pep,pwp,pwr,pg,rem,w,err",
     "#SM,t_ms,fr,tv,acc,rej,rt,tk,sw,se,ovr,crc,fmt,rng,ow,drop,hi",
     "#EV,t_ms,code,arg"
+    ,"#CN,fid,t_ms,seq,irq,elapsed_us,flags,overwritten"
+    ,"#CAM,fid,t_ms,state,pan_us,tilt_us,pan_target_us,tilt_target_us"
+    ,"#IN,fid,t_ms,slx,sly,slv,srx,sry,srv,ex,ey,ev,wx,wy,wv,f1x,f1y,f1v,f2x,f2y,f2v"
+    ,"#CS,t_ms,irq,ok,error,timeout,last_us,max_us,overwritten"
+    ,"#CE,fid,t_ms,error"
 };
 #define TRACE_SCHEMA_COUNT ((unsigned)(sizeof(k_schema) / sizeof(k_schema[0])))
 
@@ -61,6 +67,8 @@ static uint32_t s_tail;          /* 다음에 보낼 위치(누적 바이트) */
 static uint32_t s_dropped;       /* 통째로 버린 줄 수 */
 static uint32_t s_hi;            /* 최근 SM 주기 동안 링버퍼 사용량의 최대(바이트) */
 static uint32_t s_poll_count;
+static int s_output_enabled;
+static int s_robot_output_enabled;
 
 static uint32_t s_us_last;       /* 마지막으로 읽은 마이크로초 */
 static uint32_t s_us_rem;        /* 밀리초로 못 채운 마이크로초 */
@@ -76,12 +84,20 @@ static uint32_t s_prev_servo_errors;
 static uint32_t s_prev_overruns;
 static uint32_t s_prev_uart_errors;
 static uint32_t s_prev_dropped;
+static uint32_t s_cnn_irq;
+static uint32_t s_cnn_ok;
+static uint32_t s_cnn_error;
+static uint32_t s_cnn_timeout;
+static uint32_t s_cnn_last_us;
+static uint32_t s_cnn_max_us;
+static uint32_t s_cnn_overwritten;
 
 /* ---- 줄 만들기 ---- */
 typedef struct {
     char buf[TRACE_LINE_MAX];
     uint32_t len;
     uint8_t over;                /* 줄이 너무 길어 잘렸으면 1. 그 줄은 버린다 */
+    uint8_t robot;               /* CNN/카메라 출력과 독립적으로 끌 수 있다 */
 } TraceLine;
 
 static void put_ch(TraceLine *l, char c)
@@ -195,10 +211,22 @@ static void f_str(TraceLine *l, const char *s)         { put_ch(l, ','); put_str
 static void f_fx(TraceLine *l, float v, unsigned dec)  { put_ch(l, ','); put_fx(l, v, dec); }
 static void f_empty(TraceLine *l, unsigned n)          { while (n-- != 0U) put_ch(l, ','); }
 
+static int tag_is(const char *name, const char *tag)
+{
+    size_t len = strlen(tag);
+    return strncmp(name, tag, len) == 0 &&
+           (name[len] == '\0' || name[len] == ',');
+}
+
 static void line_begin(TraceLine *l, const char *tag)
 {
+    const char *name = tag[0] == '#' ? tag + 1 : tag;
     l->len = 0U;
     l->over = 0U;
+    l->robot = (uint8_t)(tag_is(name, "IN") || tag_is(name, "A1") ||
+                         tag_is(name, "P3") || tag_is(name, "A2") ||
+                         tag_is(name, "TK") || tag_is(name, "SM") ||
+                         tag_is(name, "EV"));
     put_str(l, tag);
 }
 
@@ -224,6 +252,7 @@ static void ring_put(const char *data, uint32_t len)
 
 static void line_end(TraceLine *l)
 {
+    if (!s_output_enabled || (l->robot && !s_robot_output_enabled)) return;
     if (l->over != 0U) {
         s_dropped++;
         return;
@@ -236,15 +265,16 @@ static void line_end(TraceLine *l)
 /* 링버퍼의 연속 구간을 TX FIFO에 들어가는 만큼만 보낸다. 기다리지 않는다. */
 static void pump(void)
 {
-    uint32_t used = s_head - s_tail;
-    uint32_t idx;
-    uint32_t chunk;
-
-    if (used == 0U) return;
-    idx = s_tail & TRACE_RING_MASK;
-    chunk = TRACE_RING_SIZE - idx;
-    if (chunk > used) chunk = used;
-    s_tail += platform_trace_tx(&s_ring[idx], chunk);
+    while (s_head != s_tail) {
+        uint32_t used = s_head - s_tail;
+        uint32_t idx = s_tail & TRACE_RING_MASK;
+        uint32_t chunk = TRACE_RING_SIZE - idx;
+        uint32_t sent;
+        if (chunk > used) chunk = used;
+        sent = platform_trace_tx(&s_ring[idx], chunk);
+        s_tail += sent;
+        if (sent != chunk) break;
+    }
 }
 
 /* ---- 시간 ---- */
@@ -409,7 +439,7 @@ static void emit_a2_line(const AgentPipelineContext *ctx, uint32_t t_ms, uint32_
     f_str(&l, st);
     f_hex(&l, flags);
     if (has_cmd != 0U) {
-        /* unwrap이 제자리에서 고친 뒤의 타겟 */
+        /* A2가 대표각으로 정규화한 뒤의 타겟. u* 열 이름은 로그 호환을 위해 유지한다. */
         f_fx(&l, ctx->target.elbow_roll_deg, 1U);
         f_fx(&l, ctx->target.elbow_pitch_deg, 1U);
         f_fx(&l, ctx->target.wrist_pitch_deg, 1U);
@@ -492,11 +522,13 @@ static float ramp_remaining(const ForearmMotionState *m)
 
 void trace_tick(const AgentPipelineContext *ctx)
 {
+    const ForearmJointCommand *command;
     TraceLine l;
     uint32_t us_now;
     uint32_t t_ms;
 
     if (ctx == NULL) return;
+    command = agent3_command_is_current_tick(ctx) ? &ctx->agent3_command : NULL;
     us_now = platform_trace_time_us();
     t_ms = ms_update(us_now);
 
@@ -504,12 +536,12 @@ void trace_tick(const AgentPipelineContext *ctx)
     f_u32(&l, ctx->ticks);
     f_u32(&l, t_ms);
     f_u32(&l, us_now - s_mark_us);
-    if (ctx->output.valid != 0U) {
-        f_fx(&l, ctx->output.elbow_roll_deg, 1U);
-        f_fx(&l, ctx->output.elbow_pitch_deg, 1U);
-        f_fx(&l, ctx->output.wrist_pitch_deg, 1U);
-        f_fx(&l, ctx->output.wrist_roll_deg, 1U);
-        f_fx(&l, ctx->output.gripper_norm, 2U);
+    if (command != NULL && command->valid != 0U) {
+        f_fx(&l, command->elbow_roll_deg, 1U);
+        f_fx(&l, command->elbow_pitch_deg, 1U);
+        f_fx(&l, command->wrist_pitch_deg, 1U);
+        f_fx(&l, command->wrist_roll_deg, 1U);
+        f_fx(&l, command->gripper_norm, 2U);
     } else {
         f_empty(&l, 5U);
     }
@@ -530,6 +562,96 @@ void trace_tick(const AgentPipelineContext *ctx)
     if (ctx->servo_errors != s_prev_servo_errors) emit_ev(t_ms, "SERVO_ERR", ctx->servo_errors);
     s_prev_servo_writes = ctx->servo_writes;
     s_prev_servo_errors = ctx->servo_errors;
+}
+
+void trace_cnn_frame(uint32_t frame_id, uint32_t result_seq,
+                     uint32_t irq_count, uint32_t elapsed_us,
+                     uint32_t joint_flags, uint32_t overwritten)
+{
+    TraceLine l;
+    uint32_t t_ms = ms_update(platform_trace_time_us());
+    ++s_cnn_ok;
+    s_cnn_irq = irq_count;
+    s_cnn_last_us = elapsed_us;
+    if (elapsed_us > s_cnn_max_us) s_cnn_max_us = elapsed_us;
+    s_cnn_overwritten = overwritten;
+    line_begin(&l, "CN");
+    f_u32(&l, frame_id);
+    f_u32(&l, t_ms);
+    f_u32(&l, result_seq);
+    f_u32(&l, irq_count);
+    f_u32(&l, elapsed_us);
+    f_hex(&l, joint_flags);
+    f_u32(&l, overwritten);
+    line_end(&l);
+}
+
+void trace_cnn_error(uint32_t frame_id, int error, uint32_t irq_count)
+{
+    TraceLine l;
+    uint32_t t_ms = ms_update(platform_trace_time_us());
+    ++s_cnn_error;
+    s_cnn_irq = irq_count;
+    if (error == -14) ++s_cnn_timeout; /* CNN_ERR_TIMEOUT */
+    line_begin(&l, "CE");
+    f_u32(&l, frame_id);
+    f_u32(&l, t_ms);
+    f_i32(&l, error);
+    line_end(&l);
+}
+
+void trace_camera(uint32_t frame_id, uint32_t state,
+                  uint32_t pan_us, uint32_t tilt_us,
+                  uint32_t pan_target_us, uint32_t tilt_target_us)
+{
+    TraceLine l;
+    line_begin(&l, "CAM");
+    f_u32(&l, frame_id);
+    f_u32(&l, ms_update(platform_trace_time_us()));
+    f_u32(&l, state);
+    f_u32(&l, pan_us);
+    f_u32(&l, tilt_us);
+    f_u32(&l, pan_target_us);
+    f_u32(&l, tilt_target_us);
+    line_end(&l);
+}
+
+void trace_input(const HumanPose2D *pose)
+{
+    const Point2D *points[6];
+    TraceLine l;
+    unsigned i;
+    if (pose == NULL) return;
+    points[0] = &pose->shoulder_l;
+    points[1] = &pose->shoulder_r;
+    points[2] = &pose->elbow;
+    points[3] = &pose->wrist;
+    points[4] = &pose->finger1;
+    points[5] = &pose->finger2;
+    line_begin(&l, "IN");
+    f_u32(&l, pose->frame_id);
+    f_u32(&l, ms_update(platform_trace_time_us()));
+    for (i = 0U; i < 6U; ++i) {
+        f_fx(&l, points[i]->x, 1U);
+        f_fx(&l, points[i]->y, 1U);
+        f_u32(&l, points[i]->valid);
+    }
+    line_end(&l);
+}
+
+static void emit_cs(uint32_t t_ms)
+{
+    TraceLine l;
+    line_begin(&l, "CS");
+    f_u32(&l, t_ms);
+    f_u32(&l, s_cnn_irq);
+    f_u32(&l, s_cnn_ok);
+    f_u32(&l, s_cnn_error);
+    f_u32(&l, s_cnn_timeout);
+    f_u32(&l, s_cnn_last_us);
+    f_u32(&l, s_cnn_max_us);
+    f_u32(&l, s_cnn_overwritten);
+    line_end(&l);
 }
 
 static void emit_sm(const AgentPipelineContext *ctx, const TracePlatformStats *ps, uint32_t t_ms)
@@ -572,6 +694,7 @@ static void periodic(const AgentPipelineContext *ctx)
     }
     if ((int32_t)(t_ms - s_next_sm_ms) >= 0) {
         emit_sm(ctx, &ps, t_ms);
+        emit_cs(t_ms);
         s_next_sm_ms = t_ms + TRACE_SM_PERIOD_MS;
     }
 
@@ -599,11 +722,20 @@ void trace_init(void)
     s_dropped = 0U;
     s_hi = 0U;
     s_poll_count = 0U;
+    s_output_enabled = 1;
+    s_robot_output_enabled = 1;
     s_a1_state = TRACE_STATE_UNKNOWN;
     s_a2_state = TRACE_STATE_UNKNOWN;
     s_prev_servo_writes = 0U;
     s_prev_servo_errors = 0U;
     s_prev_dropped = 0U;
+    s_cnn_irq = 0U;
+    s_cnn_ok = 0U;
+    s_cnn_error = 0U;
+    s_cnn_timeout = 0U;
+    s_cnn_last_us = 0U;
+    s_cnn_max_us = 0U;
+    s_cnn_overwritten = 0U;
 
     s_ms = 0U;
     s_us_rem = 0U;
@@ -621,6 +753,44 @@ void trace_init(void)
     emit_ev(0U, "BOOT", ROBOT_TRACE_UART_BAUD);
 }
 
+void trace_set_output_enabled(int enabled)
+{
+    TracePlatformStats ps;
+    uint32_t t_ms;
+
+    if (!enabled) {
+        s_output_enabled = 0;
+        s_tail = s_head;
+        s_hi = 0U;
+        return;
+    }
+    if (s_output_enabled) return;
+    s_output_enabled = 1;
+    t_ms = ms_update(platform_trace_time_us());
+    platform_trace_stats(&ps);
+    s_prev_overruns = ps.tick_overruns;
+    s_prev_uart_errors = ps.uart_crc_errors + ps.uart_format_errors +
+                         ps.uart_range_errors;
+    s_prev_dropped = s_dropped;
+    s_next_sm_ms = t_ms + TRACE_SM_PERIOD_MS;
+    s_next_schema_ms = t_ms + TRACE_SCHEMA_PERIOD_MS;
+    emit_schema();
+    emit_ev(t_ms, "TRACE_ON", 0U);
+}
+
+void trace_set_robot_output_enabled(int enabled)
+{
+    int next = enabled ? 1 : 0;
+    if (next == s_robot_output_enabled) return;
+    s_robot_output_enabled = next;
+    if (next) emit_schema();
+}
+
+int trace_robot_output_enabled(void)
+{
+    return s_robot_output_enabled;
+}
+
 void trace_mark(void)
 {
     s_mark_us = platform_trace_time_us();
@@ -628,6 +798,7 @@ void trace_mark(void)
 
 void trace_poll(const AgentPipelineContext *ctx)
 {
+    if (!s_output_enabled) return;
     pump();
     if ((++s_poll_count & TRACE_POLL_CHECK_MASK) != 0U) return;
     if (ctx != NULL) periodic(ctx);

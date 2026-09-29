@@ -1,6 +1,8 @@
 #ifndef INTEGRATION_PLATFORM_H
 #define INTEGRATION_PLATFORM_H
 
+#include <stdint.h>
+
 /*
  * 플랫폼 경계 선언 (구현 없음).
  *
@@ -21,5 +23,11 @@ int platform_init(void);
  * ISR 안에서 Agent를 직접 실행하면 안 된다.
  */
 int platform_tick_due(void);
+/* Drain shared CNN-console and ROBOT_TRACE output without waiting for UART. */
+void platform_uart_service(void);
+
+/* 시작 이후 버린 20 ms tick의 누적 개수. RECORD/PLAY는 값이 변하면
+ * fixed 50 Hz 시간축을 복구할 수 없으므로 현재 동작을 중단한다. */
+uint32_t platform_tick_overrun_count(void);
 
 #endif /* INTEGRATION_PLATFORM_H */
