@@ -10,6 +10,9 @@
     5) 앱을 빌드한다.
 
   주의
+    - 로봇 서보 PWM은 Mono의 -EnableRobotPwm 또는 Right의 -EnableStereoRobotPwm에서만 켠다.
+    - StereoRole Left/Right는 새 dual-arm UART0 XSA를 사용하며 로봇 PWM을 기본 비활성화한다.
+      Right의 EnableStereoRobotPwm은 별도 서보 시험용이다. 양팔 구동은 아직 구현하지 않는다.
     - 워크스페이스 경로는 짧아야 한다(80자 이하, 예: D:\vws). Windows 경로 길이 제한(260자) 때문이다.
     - 이 스크립트를 돌리는 동안 Vitis IDE는 이 워크스페이스를 열지 않은 상태여야 한다.
     - xsct 임시폴더(.Xil)와 로그는 "<워크스페이스>_setup_logs" 폴더에 만들어져서 저장소를 더럽히지 않는다.
@@ -22,20 +25,29 @@
 #>
 param(
     [Parameter(Mandatory = $true)][string]$Workspace,
-    [string]$Xsa,                        # 기본값: xsa\cnn_camera_gimbal.xsa
+    [string]$Xsa,                        # 기본값: xsa\cnn_camera_gimbal_rgby_pack77.xsa
     [string]$RepoRoot,                   # 기본값: 이 스크립트의 상위 폴더(robot_arm)
     [string]$VitisBin = "C:\Xilinx\Vitis\2020.2\bin",
     [string]$PlatformName = "cnn_camera_gimbal",
     [string]$AppName = "robot_testbench",
     [switch]$UartPoseInput,
-    [switch]$EnableRobotPwm
+    [switch]$EnableRobotPwm,
+    [ValidateSet("Mono", "Left", "Right")][string]$StereoRole = "Mono",
+    [switch]$EnableStereoRobotPwm,
+    [ValidateRange(9600, 921600)][int]$StereoBaud = 115200
 )
 
 $ErrorActionPreference = "Stop"
 
 # Windows PowerShell 5.1 에서는 param 기본값 안의 $PSScriptRoot 가 비어 있어서 본문에서 계산한다.
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-if (-not $Xsa) { $Xsa = Join-Path $scriptDir "xsa\cnn_camera_gimbal.xsa" }
+if (-not $Xsa) {
+    $xsaName = if ($StereoRole -eq "Mono") { "cnn_camera_gimbal_rgby_pack77.xsa" } else { "cnn_rgby_pack77_dual_arm_uart0.xsa" }
+    $Xsa = Join-Path $scriptDir "xsa\$xsaName"
+}
+if ($EnableStereoRobotPwm -and $StereoRole -ne "Right") { throw "Stereo robot PWM can only be enabled for the Right role." }
+if ($EnableRobotPwm -and $StereoRole -ne "Mono") { throw "EnableRobotPwm can only be used for the Mono role." }
+if ($UartPoseInput -and $StereoRole -ne "Mono") { throw "UART pose input cannot be combined with a stereo role." }
 if (-not $RepoRoot) { $RepoRoot = (Resolve-Path (Join-Path $scriptDir "..")).Path }
 function ToTcl([string]$p) { return ($p -replace '\\', '/') }
 
@@ -67,7 +79,7 @@ function Run-Xsct([string]$tclText, [string]$name) {
     $tcl = Join-Path $logs "$name.tcl"
     Set-Content -Path $tcl -Value $tclText -Encoding ascii
     $out = Join-Path $logs "$name.out"; $err = Join-Path $logs "$name.err"
-    $p = Start-Process -FilePath $xsct -ArgumentList "`"$tcl`"" -WorkingDirectory $logs -NoNewWindow -PassThru `
+    $p = Start-Process -FilePath $xsct -ArgumentList "`"$tcl`"" -WorkingDirectory $logs -WindowStyle Hidden -PassThru `
          -RedirectStandardOutput $out -RedirectStandardError $err
     $null = $p.Handle    # Windows PowerShell 5.1: 핸들을 미리 잡아 두지 않으면 종료 후 ExitCode 가 비어 나온다
     if (-not $p.WaitForExit(900000)) { $p.Kill(); throw "xsct 시간 초과($name)" }
@@ -80,7 +92,14 @@ function Run-Xsct([string]$tclText, [string]$name) {
 
 $ws = ToTcl $Workspace; $repo = ToTcl $RepoRoot; $xsaT = ToTcl $Xsa
 $uartPoseDefine = if ($UartPoseInput) { "app config -name $AppName -add define-compiler-symbols ROBOT_UART_POSE_INPUT" } else { "" }
-$robotPwmDefine = if ($EnableRobotPwm) { "app config -name $AppName -add define-compiler-symbols ROBOT_ARM_PWM_ENABLE" } else { "" }
+$roleSymbols = ""
+if ($StereoRole -ne "Mono") {
+    $roleSymbols = "app config -name $AppName -add define-compiler-symbols ROBOT_STEREO_$($StereoRole.ToUpperInvariant())`n" +
+                   "app config -name $AppName -add define-compiler-symbols ROBOT_STEREO_UART_BAUD=$StereoBaud"
+}
+$pwmSymbol = if ($EnableRobotPwm -or $EnableStereoRobotPwm) {
+    "app config -name $AppName -add define-compiler-symbols ROBOT_ARM_PWM_ENABLE"
+} else { "" }
 
 # ---- 1단계: 플랫폼 + 앱 + 링크 + 설정 ----
 Write-Host "1/3 플랫폼 생성(BSP 빌드 포함, 몇 분 걸림), 앱 생성, 링크, 설정"
@@ -88,6 +107,8 @@ $phase1 = @"
 setws $ws
 platform create -name $PlatformName -hw $xsaT -proc ps7_cortexa9_0 -os standalone
 domain active standalone_domain
+bsp config stdin ps7_uart_1
+bsp config stdout ps7_uart_1
 bsp setlib -name xilffs
 bsp write
 platform generate
@@ -99,7 +120,8 @@ app config -name $AppName -add include-path $repo/src/cnn_firmware
 app config -name $AppName -add define-compiler-symbols SERVO_PWM_DRIVER_USE_XILINX
 app config -name $AppName -add define-compiler-symbols ROBOT_TRACE
 $uartPoseDefine
-$robotPwmDefine
+$pwmSymbol
+$roleSymbols
 app config -name $AppName -add libraries m
 puts "include-path: [app config -name $AppName include-path]"
 puts "symbols: [app config -name $AppName define-compiler-symbols]"
