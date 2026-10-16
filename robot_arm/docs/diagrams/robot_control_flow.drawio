@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.5" type="device">
+  <diagram name="로봇팔 제어 SW 흐름도" id="robot-control-flow">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="outer" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#A8B6E4;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="42" y="156" width="1516" height="690" as="geometry"/>
+        </mxCell>
+        <mxCell id="ps_area" value="" style="rounded=0;fillColor=#E9EDF9;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="245" y="302" width="1025" height="480" as="geometry"/>
+        </mxCell>
+        <mxCell id="bullet" value="›" style="ellipse;html=1;align=center;verticalAlign=middle;fillColor=#536BCB;strokeColor=none;fontColor=#FFFFFF;fontSize=26;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="47" y="57" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="title" value="로봇팔 제어 SW 흐름도" style="text;html=1;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Malgun Gothic;fontColor=#111111;fontSize=38;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="92" y="47" width="950" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="title_rule" value="" style="rounded=0;fillColor=#D4D4D4;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="38" y="128" width="1524" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ps_label" value="Zynq PS · 로봇 제어 SW" style="text;html=1;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;fontFamily=Malgun Gothic;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="266" y="311" width="430" height="31" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cnn_pose" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="cnn" target="pose">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pose_human" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="pose" target="human">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_human_robot" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="human" target="robot">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_robot_rr" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="robot" target="rr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_rr_pwm" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="rr" target="pwm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_pwm_ip" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="pwm" target="ip">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ip_servo" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="ip" target="servos">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_timer_rr" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=0.5;exitY=1;entryX=0.2;entryY=0;" edge="1" parent="1" source="timer" target="rr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_uart_rr" value="" style="edgeStyle=none;rounded=0;html=1;strokeColor=#202020;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Malgun Gothic;fontSize=13;exitX=0.5;exitY=1;entryX=0.8;entryY=0;" edge="1" parent="1" source="uart" target="rr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="timer" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;AXI Timer&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;20 ms 제어 틱&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="797" y="187" width="188" height="71" as="geometry"/>
+        </mxCell>
+        <mxCell id="uart" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;UART 명령&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;R / P&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="1097" y="187" width="188" height="71" as="geometry"/>
+        </mxCell>
+        <mxCell id="cnn" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;CNN 결과&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;(PL)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="66" y="419" width="160" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="pose" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;자세 입력&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;HumanPose2D&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="275" y="419" width="190" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="human" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;사람 동작 해석&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;3D · 사람 목표각&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="510" y="419" width="190" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="robot" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;로봇 동작 변환&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;보정 · 안전 검사&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="745" y="419" width="190" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="rr" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;동작 기록·재생&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;LIVE / REC / PLAY&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="980" y="419" width="190" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="pwm" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;서보 출력 제어&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;각도 → PWM&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="980" y="617" width="190" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="ip" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;servo_pwm IP&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;(PL)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="617" width="190" height="106" as="geometry"/>
+        </mxCell>
+        <mxCell id="servos" value="&lt;div style=&quot;font-size:19px;font-weight:bold&quot;&gt;로봇팔 서보&lt;/div&gt;&lt;div style=&quot;font-size:14px;margin-top:6px&quot;&gt;5채널&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontColor=#111111;fillColor=#FFFFFF;strokeColor=#151515;strokeWidth=2;spacing=3;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="754" width="190" height="73" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_cnn_pose" value="관절·마커 좌표" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="541" width="142" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_pose_human" value="HumanPose2D" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="413" y="541" width="150" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_human_robot" value="사람 목표각" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="651" y="541" width="144" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_robot_rr" value="실시간 로봇 명령" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="860" y="541" width="196" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_rr_pwm" value="선택된 명령" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="558" width="128" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_pwm_ip" value="펄스폭(µs)" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1173" y="633" width="124" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_ip_servo" value="PWM 신호" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="724" width="95" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_timer" value="20 ms 틱" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="865" y="337" width="112" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="lab_uart" value="R / P 명령" style="text;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Malgun Gothic;fontSize=13;fontColor=#111111;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="337" width="130" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

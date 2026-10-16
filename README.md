@@ -13,9 +13,20 @@ FPGA·RTL 설계 경험을 바탕으로 임베디드 제어와 영상 입력을 
 - **담당:** 스테레오 3D 좌표 생성, 사람 팔 각도 계산, UART 설계, 시스템 통합
 - **결과:** 실물 로봇팔의 스테레오 추종과 동작 녹화·재생 시연 확인
 
-[로봇팔 코드·구현 설명 보기](https://github.com/Min-star-prog/ondeviceai/tree/feat/robot/human_target_angle) · [노션 상세·시연 영상](https://app.notion.com/p/3f723ec941b7816881c9fe81751f1529)
+[로봇팔 코드·구현 설명 보기](robot_arm/PORTFOLIO.md) · [노션 상세·시연 영상](https://app.notion.com/p/3f723ec941b7816881c9fe81751f1529)
 
-로봇팔 코드는 `feat/robot/human_target_angle` 브랜치에 있습니다. 아래 학습 기록은 기본 `main` 브랜치에서 볼 수 있습니다.
+로봇팔 코드와 학습 기록은 모두 `main` 브랜치에서 폴더별로 볼 수 있습니다. 로봇팔 소스와 개발 문서는 [`robot_arm/`](robot_arm)에 정리했습니다.
+
+## 저장소 구성
+
+```text
+ondeviceai/
+├── README.md
+├── linux/
+├── window/
+├── 임베디드 시스템/
+└── robot_arm/
+```
 
 ## 학습 기록
 

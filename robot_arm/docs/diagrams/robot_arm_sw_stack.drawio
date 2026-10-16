@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17" type="device">
+  <diagram id="robot-sw-stack" name="SW Stack">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Robot Arm SW Stack" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=42;fontColor=#102D69;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="65" y="39" width="730" height="73" as="geometry"/>
+        </mxCell>
+        <mxCell id="rule" value="" style="rounded=0;html=1;fillColor=#D5DDE8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="65" y="116" width="1470" height="2" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer0" value="" style="rounded=0;html=1;fillColor=#E5F2E2;strokeColor=#88B27C;" vertex="1" parent="1">
+          <mxGeometry x="250" y="158" width="1285" height="289" as="geometry"/>
+        </mxCell>
+        <mxCell id="tag0" value="" style="rounded=0;html=1;fillColor=#173A91;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="273.5" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="tagtext0" value="Application" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=20;fontColor=#FFFFFF;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="273.5" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer1" value="" style="rounded=0;html=1;fillColor=#EEE8F5;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="250" y="471" width="1285" height="93" as="geometry"/>
+        </mxCell>
+        <mxCell id="tag1" value="" style="rounded=0;html=1;fillColor=#173A91;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="488.5" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="tagtext1" value="Driver" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#FFFFFF;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="488.5" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer2" value="" style="rounded=0;html=1;fillColor=#F0EAF7;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="250" y="586" width="1285" height="93" as="geometry"/>
+        </mxCell>
+        <mxCell id="tag2" value="" style="rounded=0;html=1;fillColor=#173A91;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="603.5" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="tagtext2" value="HAL" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#FFFFFF;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="603.5" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="layer3" value="" style="rounded=0;html=1;fillColor=#E7F0FC;strokeColor=#8BACD8;" vertex="1" parent="1">
+          <mxGeometry x="250" y="701" width="1285" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="tag3" value="" style="rounded=0;html=1;fillColor=#173A91;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="721.0" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="tagtext3" value="HW" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#FFFFFF;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="51" y="721.0" width="176" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="main_bg" value="" style="rounded=0;html=1;fillColor=#FFF1CE;strokeColor=#D9AD4F;" vertex="1" parent="1">
+          <mxGeometry x="484" y="178" width="816" height="67" as="geometry"/>
+        </mxCell>
+        <mxCell id="main_text" value="Main Control" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=31;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="183" width="804" height="57" as="geometry"/>
+        </mxCell>
+        <mxCell id="app0_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#91B68B;" vertex="1" parent="1">
+          <mxGeometry x="273" y="290" width="296" height="129" as="geometry"/>
+        </mxCell>
+        <mxCell id="app0_text" value="Pose Mapping" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="279" y="295" width="284" height="119" as="geometry"/>
+        </mxCell>
+        <mxCell id="app1_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#91B68B;" vertex="1" parent="1">
+          <mxGeometry x="588" y="290" width="296" height="129" as="geometry"/>
+        </mxCell>
+        <mxCell id="app1_text" value="Motion Control" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="594" y="295" width="284" height="119" as="geometry"/>
+        </mxCell>
+        <mxCell id="app2_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#91B68B;" vertex="1" parent="1">
+          <mxGeometry x="903" y="290" width="296" height="129" as="geometry"/>
+        </mxCell>
+        <mxCell id="app2_text" value="Record / Replay" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="909" y="295" width="284" height="119" as="geometry"/>
+        </mxCell>
+        <mxCell id="app3_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#91B68B;" vertex="1" parent="1">
+          <mxGeometry x="1218" y="290" width="296" height="129" as="geometry"/>
+        </mxCell>
+        <mxCell id="app3_text" value="Servo Control" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=27;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1224" y="295" width="284" height="119" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver0_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="273" y="485" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver0_text" value="CNN Input" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="279" y="490" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver1_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="588" y="485" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver1_text" value="UART Driver" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="594" y="490" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver2_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="903" y="485" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver2_text" value="Timer Driver" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="909" y="490" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver3_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="1218" y="485" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="driver3_text" value="PWM Driver" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1224" y="490" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal0_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="273" y="600" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal0_text" value="Interrupt" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="279" y="605" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal1_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="588" y="600" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal1_text" value="UART" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="594" y="605" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal2_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="903" y="600" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal2_text" value="Timer" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="909" y="605" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal3_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#B59BCB;" vertex="1" parent="1">
+          <mxGeometry x="1218" y="600" width="296" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="hal3_text" value="Register I/O" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=24;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1224" y="605" width="284" height="54" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw0_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#8BACD8;" vertex="1" parent="1">
+          <mxGeometry x="273" y="715" width="236" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw0_text" value="CNN IP" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=23;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="279" y="720" width="224" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw1_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#8BACD8;" vertex="1" parent="1">
+          <mxGeometry x="525" y="715" width="236" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw1_text" value="PS UART" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=23;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="531" y="720" width="224" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw2_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#8BACD8;" vertex="1" parent="1">
+          <mxGeometry x="777" y="715" width="236" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw2_text" value="AXI Timer" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=23;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="783" y="720" width="224" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw3_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#8BACD8;" vertex="1" parent="1">
+          <mxGeometry x="1029" y="715" width="236" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw3_text" value="PWM IP" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=23;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1035" y="720" width="224" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw4_bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=#8BACD8;" vertex="1" parent="1">
+          <mxGeometry x="1281" y="715" width="236" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="hw4_text" value="5 Servos" style="text;html=1;whiteSpace=wrap;verticalAlign=middle;align=center;fontFamily=Malgun Gothic;fontSize=23;fontColor=#172033;fontStyle=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1287" y="720" width="224" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
