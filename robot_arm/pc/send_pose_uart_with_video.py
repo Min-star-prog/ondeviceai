@@ -216,32 +216,6 @@ def wait_until(deadline: float):
             time.sleep(0.0005)
 
 
-def send_rr_command(ser_obj, command: str, timeout: float = 2.0) -> bool:
-    """Send one control byte and wait for the board's accepted/rejected reply."""
-    ser_obj.write(command.encode("ascii"))
-    response = bytearray()
-    deadline = time.perf_counter() + timeout
-    # The board prints RECORD/PLAY rather than the one-byte command.
-    label = "RECORD" if command == "R" else "PLAY"
-    accepted = f"[RR] {label} accepted".encode("ascii")
-    rejected = f"[RR] {label} rejected".encode("ascii")
-    while time.perf_counter() < deadline:
-        waiting = ser_obj.in_waiting
-        if waiting:
-            chunk = ser_obj.read(waiting)
-            response.extend(chunk)
-            sys.stdout.write(chunk.decode("utf-8", errors="replace"))
-            sys.stdout.flush()
-            if accepted in response:
-                return True
-            if rejected in response:
-                return False
-            if len(response) > 16384:
-                del response[:-1024]
-        time.sleep(0.01)
-    raise SystemExit(f"[ERR] UART {label} 응답이 {timeout:g}초 안에 오지 않았습니다")
-
-
 def main():
     ap = argparse.ArgumentParser(description="UART pose sender + synchronized video viewer")
     ap.add_argument("--port", required=True, help="Windows: COM5, Linux: /dev/ttyUSB0")
@@ -250,12 +224,6 @@ def main():
     ap.add_argument("--baud", type=int, default=921600)
     ap.add_argument("--hz", type=float, default=20.0)
     ap.add_argument("--loop", action="store_true")
-    ap.add_argument("--record", action="store_true",
-                    help="Send R before and after one CSV pass (UART pose firmware)")
-    ap.add_argument("--play-after-record", action="store_true",
-                    help="Send P after recording is closed")
-    ap.add_argument("--max-rows", type=int, default=0,
-                    help="Send at most this many CSV rows; --record defaults to 15 seconds")
     ap.add_argument("--no-board-text", action="store_true")
     ap.add_argument("--start-frame-id", type=int, default=1)
     ap.add_argument("--window-width", type=int, default=960,
@@ -273,28 +241,16 @@ def main():
         raise SystemExit("opencv-python이 없습니다. 설치: pip install opencv-python")
     if args.hz <= 0:
         raise SystemExit("--hz must be > 0")
-    if args.max_rows < 0:
-        raise SystemExit("--max-rows must be >= 0")
-    if args.record and args.loop:
-        raise SystemExit("--record and --loop cannot be used together")
-    if args.play_after_record and not args.record:
-        raise SystemExit("--play-after-record requires --record")
     if not Path(args.csv).is_file():
         raise SystemExit(f"CSV를 찾을 수 없습니다: {args.csv}")
     if not Path(args.video).is_file():
         raise SystemExit(f"동영상을 찾을 수 없습니다: {args.video}")
 
-    all_poses = uart_sender.load_csv(args.csv)
-    if not all_poses:
+    poses = uart_sender.load_csv(args.csv)
+    if not poses:
         raise SystemExit("CSV에 pose row가 없습니다.")
 
-    csv_times = load_csv_times(args.csv, len(all_poses), args.hz)
-    max_rows = args.max_rows or (max(1, int(args.hz * 15)) if args.record else len(all_poses))
-    poses = all_poses[:max_rows]
-    csv_times = csv_times[:len(poses)]
-    if args.record and len(poses) / args.hz >= 20.0:
-        raise SystemExit("녹화 구간은 20초 미만으로 지정하세요 (--max-rows/--hz).")
-
+    csv_times = load_csv_times(args.csv, len(poses), args.hz)
     video = VideoReader(args.video)
 
     log_path = make_log_path(args.log_dir)
@@ -315,82 +271,62 @@ def main():
     tx_frame_id = args.start_frame_id & 0xFFFFFFFF
     period = 1.0 / args.hz
     stop_requested = False
-    recording_started = False
-    recording_closed = False
 
     try:
         with serial.Serial(args.port, args.baud, timeout=0, write_timeout=1.0) as ser_obj:
             time.sleep(0.2)
 
-            if args.record:
-                recording_started = send_rr_command(ser_obj, "R")
-                if not recording_started:
-                    raise SystemExit("[ERR] board rejected RECORD start")
+            while not stop_requested:
+                video.reset()
+                loop_start = time.perf_counter()
 
-            try:
-                while not stop_requested:
-                    video.reset()
-                    loop_start = time.perf_counter()
+                for row_index, pose in enumerate(poses):
+                    # Keep UART transmission at exactly --hz.
+                    deadline = loop_start + row_index * period
+                    wait_until(deadline)
 
-                    for row_index, pose in enumerate(poses):
-                        # Keep UART transmission at exactly --hz.
-                        deadline = loop_start + row_index * period
-                        wait_until(deadline)
-
-                        # Use CSV time_sec to select the matching video frame.
-                        video_time = csv_times[row_index]
-                        frame = video.frame_at_time(video_time)
-                        if frame is None:
-                            print("[WARN] video ended before CSV")
-                            stop_requested = True
-                            break
-
-                        packet = uart_sender.make_packet(pose, tx_frame_id)
-                        ser_obj.write(packet)
-
-                        if not args.no_board_text:
-                            uart_sender.read_board_text(ser_obj)
-
-                        display = draw_status(
-                            frame, video_time, row_index, len(poses),
-                            tx_frame_id, pose.frame_id_from_csv
-                        )
-
-                        if args.window_width > 0 and display.shape[1] != args.window_width:
-                            scale = args.window_width / float(display.shape[1])
-                            new_h = max(1, int(round(display.shape[0] * scale)))
-                            display = cv2.resize(display, (args.window_width, new_h),
-                                                 interpolation=cv2.INTER_AREA)
-
-                        cv2.imshow("Pose Video + UART TX", display)
-                        key = cv2.waitKey(1) & 0xFF
-                        if key in (27, ord("q"), ord("Q")):
-                            stop_requested = True
-                            break
-
-                        if (tx_frame_id % 20) == 0:
-                            print(f"[TX] frame={tx_frame_id} csv_frame={pose.frame_id_from_csv} time={video_time:.2f}s")
-
-                        tx_frame_id = (tx_frame_id + 1) & 0xFFFFFFFF
-
-                    if stop_requested or not args.loop:
+                    # Use CSV time_sec to select the matching video frame.
+                    video_time = csv_times[row_index]
+                    frame = video.frame_at_time(video_time)
+                    if frame is None:
+                        print("[WARN] video ended before CSV")
+                        stop_requested = True
                         break
-            finally:
-                if recording_started:
-                    recording_closed = send_rr_command(ser_obj, "R")
-                    if not recording_closed:
-                        print("[WARN] board rejected RECORD stop")
+
+                    packet = uart_sender.make_packet(pose, tx_frame_id)
+                    ser_obj.write(packet)
+
+                    if not args.no_board_text:
+                        uart_sender.read_board_text(ser_obj)
+
+                    display = draw_status(
+                        frame, video_time, row_index, len(poses),
+                        tx_frame_id, pose.frame_id_from_csv
+                    )
+
+                    if args.window_width > 0 and display.shape[1] != args.window_width:
+                        scale = args.window_width / float(display.shape[1])
+                        new_h = max(1, int(round(display.shape[0] * scale)))
+                        display = cv2.resize(display, (args.window_width, new_h),
+                                             interpolation=cv2.INTER_AREA)
+
+                    cv2.imshow("Pose Video + UART TX", display)
+                    key = cv2.waitKey(1) & 0xFF
+                    if key in (27, ord("q"), ord("Q")):
+                        stop_requested = True
+                        break
+
+                    if (tx_frame_id % 20) == 0:
+                        print(f"[TX] frame={tx_frame_id} csv_frame={pose.frame_id_from_csv} time={video_time:.2f}s")
+
+                    tx_frame_id = (tx_frame_id + 1) & 0xFFFFFFFF
+
+                if stop_requested or not args.loop:
+                    break
 
             time.sleep(0.1)
-            if not args.no_board_text or args.record:
+            if not args.no_board_text:
                 uart_sender.read_board_text(ser_obj)
-            if args.play_after_record and recording_closed and not stop_requested:
-                if not send_rr_command(ser_obj, "P"):
-                    raise SystemExit("[ERR] board rejected PLAY start")
-                end = time.perf_counter() + 12.0 + len(poses) * 0.02
-                while time.perf_counter() < end:
-                    uart_sender.read_board_text(ser_obj)
-                    time.sleep(0.05)
 
     except serial.SerialException as exc:
         raise SystemExit(f"Serial port error: {exc}") from exc
