@@ -15,7 +15,7 @@ reviews:
       - "dev/robot"
 
   path_instructions:
-    - path: "CNN/**"
+    - path: "robot_arm/CNN/**"
       instructions: |
         FPGA/CNN RTL 및 검증 관점에서 리뷰한다.
         기능 오류, 합성 가능성, signed/unsigned 및 bit width, overflow/truncation,
@@ -25,7 +25,7 @@ reviews:
         rounding, tensor shape/channel ordering, padding/stride와 RTL bit-exact 대응을 확인한다.
         단순 스타일보다 실제 기능 오류, 합성/timing 위험, 검증 누락을 우선 지적한다.
 
-    - path: "robot_arm/**"
+    - path: "robot_arm/robot_arm/**"
       instructions: |
         임베디드 로봇팔 제어 관점에서 리뷰한다.
         포인터/배열 범위, 초기화, servo angle clamp, PWM 범위 및 단위 변환,
