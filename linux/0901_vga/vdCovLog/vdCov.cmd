@@ -1,0 +1,28 @@
+verdiWindowResize -win $_vdCoverage_1 "8" "31" "2560" "1369"
+gui_set_pref_value -category {coveragesetting} -key {geninfodumping} -value 1
+gui_exclusion -set_force true
+verdiSetFont  -font  {DejaVu Sans}  -size  12
+verdiSetFont -font "DejaVu Sans" -size "12"
+gui_assert_mode -mode flat
+gui_class_mode -mode hier
+gui_excl_mgr_flat_list -on  0
+gui_covdetail_select -id  CovDetail.1   -name   Line
+verdiWindowWorkMode -win $_vdCoverage_1 -coverageAnalysis
+gui_open_cov  -hier coverage.vdb -testdir {} -test {coverage/score coverage/speed_ram coverage/full_case coverage/full} -merge MergedTest -db_max_tests 10 -sdc_level 1 -fsm transition
+verdiSetActWin -dock widgetDock_<CovDetail>
+gui_list_expand -id  CoverageTable.1   -list {covtblInstancesList} tb_top
+verdiSetActWin -dock widgetDock_<Summary>
+gui_list_expand -id  CoverageTable.1   -list {covtblInstancesList} tb_top.dut
+gui_covtable_show -show  { Asserts } -id  CoverageTable.1  -test  MergedTest
+gui_covtable_show -show  { Function Groups } -id  CoverageTable.1  -test  MergedTest
+gui_list_expand -id  CoverageTable.1   -list {covtblFGroupsList} /game_logic_pkg::game_logic_coverage::game_logic_cg
+gui_list_select -id CoverageTable.1 -list covtblFGroupsList { game_logic_pkg::game_logic_coverage::game_logic_cg.cp_volume   }
+gui_list_select -id CoverageTable.1 -list covtblFGroupsList { game_logic_pkg::game_logic_coverage::game_logic_cg.cp_volume  game_logic_pkg::game_logic_coverage::game_logic_cg.cp_pattern_transition   }
+gui_list_action -id  CoverageTable.1 -list {covtblFGroupsList} game_logic_pkg::game_logic_coverage::game_logic_cg.cp_pattern_transition  -column {} 
+gui_list_select -id CovDetail.1 -list {covergroup detail} { p4_to_stop   }
+verdiSetActWin -dock widgetDock_<CovDetail>
+gui_list_select -id CovDetail.1 -list {covergroup detail} { p4_to_stop   }
+verdiSetActWin -dock widgetDock_Message
+verdiSetActWin -dock widgetDock_<CovDetail>
+gui_list_select -id CovDetail.1 -list covergroup { game_logic_pkg::game_logic_coverage::game_logic_cg.cp_pattern_transition   } -type { {Cover Group}  }
+vdCovExit -noprompt

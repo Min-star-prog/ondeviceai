@@ -1,0 +1,290 @@
+global coverage_group 0 0 game_logic_pkg::game_logic_coverage::game_logic_cg __coverage_game_logic_coverage.game_logic_cg unused_game_logic_coverage_game_logic_cg_loop_label game_logic_pkg 0 0 0 0 0  ( 0 
+)
+ 1 1
+ 0 66 /home/pedu24/workspace_mini/linux/0901_vga/tb_ai/game_logic_pkg.sv
+ 836 0 0 0 1 0 0 0 0  1
+0
+0
+0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_29
+ 0
+0
+0
+0
+64
+0
+ 0
+
+8
+0
+0
+0
+ 16 cp_pattern_state 840 0 0 0 0 0 0 137 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn 137 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 3 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 8 1 1 0 0 1 1 4 idle 841 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_0 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 5 start 842 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 5 ready 843 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_2 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 9 pattern_1 844 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_3 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 9 pattern_2 845 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_4 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 9 pattern_3 846 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_5 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 9 pattern_4 847 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_6 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 4 stop 848 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_7 0 0 0 0 0 0 0
+ 0
+
+ 21 cp_pattern_transition 852 0 0 0 0 0 0 137 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn 137 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 3 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 12 1 4 0 0 1 1 13 idle_to_start 853 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_0 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 14 start_to_ready 854 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_2 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 11 ready_to_p1 855 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_2 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_3 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 8 p1_to_p2 856 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_3 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_4 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 8 p2_to_p3 857 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_4 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_5 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 8 p3_to_p4 858 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_5 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_6 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 8 p4_to_p1 859 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_6 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_3 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 10 p1_to_stop 860 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_3 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_7 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 10 p2_to_stop 861 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_4 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_7 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 10 p3_to_stop 862 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_5 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_7 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 10 p4_to_stop 863 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_6 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_7 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 12 stop_to_idle 864 0 0 4 0 -1 0 0 0 0 0 0 1 2 0 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_7 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_0 0 0 0 0 0 0 0
+ 0
+
+ 13 cp_game_state 868 0 0 0 0 0 0 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_8 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_8 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 2 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 4 1 1 0 0 1 1 4 idle 869 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 5 ready 870 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_a 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 8 game_ing 871 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_b 0 0 0 0 0 0 0
+ 0
+ 1 3 0 0 1 1 7 invalid 872 0 0 3 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_c 0 0 0 0 0 0 0
+ 0
+
+ 18 cp_game_transition 876 0 0 0 0 0 0 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_8 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_8 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 2 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 4 1 4 0 0 1 1 13 idle_to_ready 877 0 0 4 0 -1 0 0 0 0 0 0 1 2 1 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_a 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 13 ready_to_game 878 0 0 4 0 -1 0 0 0 0 0 0 1 2 1 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_a 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_b 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 13 ready_to_idle 879 0 0 4 0 -1 0 0 0 0 0 0 1 2 1 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_a 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 0 0 0 0 0 0
+ 0
+ 1 4 0 0 1 1 12 game_to_idle 880 0 0 4 0 -1 0 0 0 0 0 0 1 2 1 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_b 0 0 0 0 0 0 0
+ 0
+ 1 0 0 -1 0 4 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 0 0 0 0 0 0
+ 0
+
+ 6 cp_bpm 884 0 0 0 0 0 0 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_d 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_d 0 0 0 0 0 0 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_e 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 8 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 4 1 1 0 0 1 1 4 slow 885 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_f 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_10 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 10 song_range 886 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_11 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_12 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 4 fast 887 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_13 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_14 0 0 0 0 0
+ 0
+ 1 3 0 0 1 1 12 out_of_range 889 0 0 3 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 2 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_15 0 0 0 0 0
+ 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_16 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_17 0 0 0 0 0
+ 0
+
+ 8 cp_score 893 0 0 0 0 0 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_18 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_18 0 0 0 0 0 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_19 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 4 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 5 1 1 0 0 1 1 7 minimum 894 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 3 low 895 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_a 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1a 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 13 initial_score 896 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1b 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 4 high 897 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1c 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1d 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 7 maximum 898 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1e 0 0 0 0 0 0 0
+ 0
+
+ 9 cp_volume 902 0 0 0 0 0 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1f 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1f 0 0 0 0 0 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_20 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 7 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 5 1 1 0 0 1 1 7 minimum 903 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 3 low 904 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_a 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_21 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 6 middle 905 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_22 0 0 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 4 high 906 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_23 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_24 0 0 0 0 0
+ 0
+ 1 1 0 0 1 1 7 maximum 907 0 0 1 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_25 0 0 0 0 0 0 0
+ 0
+
+ 7 cp_song 911 0 0 0 0 0 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_26 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_26 0 0 0 0 0 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_27 0 0 0 0 -1 0 0 -1 0 0 0 -1 2 3 0 0 1 0 0 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 2 1 1 1 0 1 1 10 valid_song 912 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 139 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_9 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1a 0 0 0 0 0
+ 0
+ 1 1 1 0 1 1 12 default_song 913 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 1 1 1 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_1b 0 140 game_logic_pkg_game_logic_coverage_11_0::game_logic_pkg_game_logic_coverage_11_0_game_logic_pkg_game_logic_coverage_11_0_game_logic_cg_fn_28 0 0 0 0 0
+ 0
+
+end_coverage_group

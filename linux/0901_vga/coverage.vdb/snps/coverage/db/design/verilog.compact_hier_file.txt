@@ -1,0 +1,5 @@
+\$unit::./rtl/game_fsm.sv::./rtl/game_logic.sv...@3136691315 02
+tb_top00
+tb_top.dut2790
+uvm_custom_install_recording00
+uvm_custom_install_verdi_recording00

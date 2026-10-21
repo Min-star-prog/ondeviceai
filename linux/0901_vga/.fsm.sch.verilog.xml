@@ -1,0 +1,32 @@
+<Command name="schRTLInfo"  delimiter="."  >
+<RTLBlock >
+<RTLInfo   name="c_state_0"  type="2"  fileName="./rtl/game_fsm.sv"  >
+    <Seg beginLine="53"  endLine="80"  />
+  </RTLInfo>
+ <Instance name="tb_top.dut.u_game_fsm"  />
+</RTLBlock>
+<RTLBlock >
+<RTLInfo   name="c_state_1"  type="2"  fileName="./rtl/game_score.sv"  >
+    <Seg beginLine="56"  endLine="83"  />
+  </RTLInfo>
+ <Instance name="tb_top.dut.u_game_score"  />
+</RTLBlock>
+<RTLBlock >
+<RTLInfo   name="c_state_2"  type="2"  fileName="./rtl/stick_speed_calc.sv"  >
+    <Seg beginLine="95"  endLine="126"  />
+  </RTLInfo>
+ <Instance name="tb_top.dut.u_speed_calc"  />
+</RTLBlock>
+<RTLBlock >
+<RTLInfo   name="c_state_3"  type="2"  fileName="./rtl/volume_ctrl.sv"  >
+    <Seg beginLine="56"  endLine="149"  />
+  </RTLInfo>
+ <Instance name="tb_top.dut.u_vol_control"  />
+</RTLBlock>
+<RTLBlock >
+<RTLInfo   name="c_state_4"  type="2"  fileName="./rtl/pattern_stick.sv"  >
+    <Seg beginLine="68"  endLine="141"  />
+  </RTLInfo>
+ <Instance name="tb_top.dut.u_pattern_stick"  />
+</RTLBlock>
+ </Command>

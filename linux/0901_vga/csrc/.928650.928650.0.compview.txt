@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1788515277.511186620, "rt":4.34, "ut":4.49, "st":0.26}}
+{"vcselab":{"timestamp_begin":1788515281.903098948, "rt":0.18, "ut":0.13, "st":0.04}}
+{"link":{"timestamp_begin":1788515282.118273655, "rt":0.27, "ut":0.17, "st":0.09}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1788515277.134436284}
+{"VCS_COMP_START_TIME": 1788515277.134436284}
+{"VCS_COMP_END_TIME": 1788515282.462540420}
+{"VCS_USER_OPTIONS": "-full64 -sverilog -ntb_opts uvm-1.2 -timescale=1ns/1ps -debug_access+all -kdb -lca -cm line+cond+branch+fsm+tgl -cm_hier tb_ai/cm_hier.cfg -f tb_ai/files.f -o simv -cm_dir coverage.vdb"}
+{"vcs1": {"peak_mem": 477372}}
+{"vcselab": {"peak_mem": 174956}}

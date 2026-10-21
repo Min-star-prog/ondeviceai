@@ -40,7 +40,7 @@ class ram_sequence extends uvm_sequence#(ram_seq_item);     //sequence에 item�
     function new(
         string name = "ram_sequence"
     );  //sequence 생성자. sequence의 new()생성자에는 uvm_component가 안 들어간다(parent 인자가 안 들어간다).
-        super.new(name);  //부모 class의 생성자를 호출
+        super.new(name);  //부모 class의 생성자를 호출  
     endfunction
 
 
@@ -82,7 +82,8 @@ class ram_driver extends uvm_driver#(ram_seq_item);         //uvm_driver에서 �
     function new(
         string name = "ram_drv", uvm_component c = null
     );  //driver 생성자, component는 parent가 필요
-        super.new(name, c);  //부모 class 생성자
+        super.new(name, c);  //부모 class 생성자를 호출 
+        // name은 부모 클래스 생성자에게 instance이름 전달 // c는 부모 클래스의 메모리 주소(핸들)
     endfunction
 
     virtual function void build_phase(

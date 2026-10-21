@@ -1,0 +1,21 @@
+verdiSetActWin -dock widgetDock_<Message>
+verdiWindowResize -win $_Verdi_1 "8" "31" "2560" "1369"
+verdiSetActWin -dock widgetDock_MTB_SOURCE_TAB_1
+simSetSimulator "-vcssv" -exec "/home/pedu24/workspace_mini/linux/0901_vga/simv" \
+           -args \
+           "+UVM_TESTNAME=score_test +SEQ_REPEAT=3 +FSDB_FILE=score_test.fsdb -cm line+cond+branch+fsm+tgl -cm_dir coverage.vdb -cm_name score"
+debImport "-dbdir" "/home/pedu24/workspace_mini/linux/0901_vga/simv.daidir"
+debLoadSimResult /home/pedu24/workspace_mini/linux/0901_vga/score_test.fsdb
+wvCreateWindow
+wvSetCursor -win $_nWave2 831928327382.868652
+verdiSetActWin -win $_nWave2
+wvSelectGroup -win $_nWave2 {G1}
+wvGetSignalOpen -win $_nWave2
+wvGetSignalSetScope -win $_nWave2 "/_vcs_msglog"
+wvGetSignalSetScope -win $_nWave2 "/tb_top"
+wvGetSignalSetScope -win $_nWave2 "/uvm_custom_install_recording"
+wvGetSignalSetScope -win $_nWave2 "/tb_top"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/intf"
+wvGetSignalSetScope -win $_nWave2 "/tb_top/dut"
+wvGetSignalClose -win $_nWave2
+debExit
